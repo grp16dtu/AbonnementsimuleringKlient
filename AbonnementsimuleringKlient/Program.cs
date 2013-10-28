@@ -9,7 +9,7 @@ namespace AbonnementsimuleringKlient
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application. Det er DIN SKYLD MADS....
+        /// The main entry point for the application. Det er IKKE DIN SKYLD MADS....
         /// </summary>
         [STAThread]
         static void Main()
