@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\EConomicCredentialsDAO.cs" />
     <Compile Include="Indstillinger\IIndstillingerController.cs" />
+    <Compile Include="Indstillinger\IndstillingerVindueController.cs" />
     <Compile Include="Login\IloginVindueController.cs" />
     <Compile Include="Indstillinger\IndstillingerVindue.cs">
       <SubType>Form</SubType>
