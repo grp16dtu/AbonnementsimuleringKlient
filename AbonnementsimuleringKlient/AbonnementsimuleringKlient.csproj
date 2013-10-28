@@ -44,17 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IloginVindueController.cs" />
+    <Compile Include="Indstillinger\IIndstillingerController.cs" />
+    <Compile Include="Login\IloginVindueController.cs" />
     <Compile Include="IndstillingerVindue.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IndstillingerVindue.Designer.cs">
       <DependentUpon>IndstillingerVindue.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginVindue.cs">
+    <Compile Include="Login\LoginVindue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginVindue.Designer.cs">
+    <Compile Include="Login\LoginVindue.Designer.cs">
       <DependentUpon>LoginVindue.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -62,7 +63,7 @@
     <EmbeddedResource Include="IndstillingerVindue.resx">
       <DependentUpon>IndstillingerVindue.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginVindue.resx">
+    <EmbeddedResource Include="Login\LoginVindue.resx">
       <DependentUpon>LoginVindue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -87,6 +88,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

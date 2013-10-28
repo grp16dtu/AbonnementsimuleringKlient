@@ -14,6 +14,7 @@ namespace AbonnementsimuleringKlient
     {
         public LoginVindue()
         {
+            //
             InitializeComponent();
         }
     }

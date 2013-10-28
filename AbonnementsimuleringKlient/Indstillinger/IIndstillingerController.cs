@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface IloginVindueController
+    interface IIndstillingerController
     {
-        public bool LoginVerificering();
     }
 }
