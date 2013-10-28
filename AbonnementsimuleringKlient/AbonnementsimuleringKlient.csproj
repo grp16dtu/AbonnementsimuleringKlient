@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IloginVindueController.cs" />
     <Compile Include="IndstillingerVindue.cs">
       <SubType>Form</SubType>
     </Compile>
