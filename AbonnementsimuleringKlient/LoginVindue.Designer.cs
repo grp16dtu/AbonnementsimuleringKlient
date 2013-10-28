@@ -100,7 +100,7 @@
             this.Controls.Add(this.kodeord);
             this.Controls.Add(this.brugernavn);
             this.Name = "LoginVindue";
-            this.Text = "LoginVindue";
+            this.Text = "Logind";
             this.ResumeLayout(false);
             this.PerformLayout();
 
