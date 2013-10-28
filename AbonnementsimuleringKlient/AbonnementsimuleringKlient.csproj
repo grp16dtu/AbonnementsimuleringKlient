@@ -46,10 +46,10 @@
   <ItemGroup>
     <Compile Include="Indstillinger\IIndstillingerController.cs" />
     <Compile Include="Login\IloginVindueController.cs" />
-    <Compile Include="IndstillingerVindue.cs">
+    <Compile Include="Indstillinger\IndstillingerVindue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IndstillingerVindue.Designer.cs">
+    <Compile Include="Indstillinger\IndstillingerVindue.Designer.cs">
       <DependentUpon>IndstillingerVindue.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\LoginVindue.cs">
@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="IndstillingerVindue.resx">
+    <EmbeddedResource Include="Indstillinger\IndstillingerVindue.resx">
       <DependentUpon>IndstillingerVindue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginVindue.resx">

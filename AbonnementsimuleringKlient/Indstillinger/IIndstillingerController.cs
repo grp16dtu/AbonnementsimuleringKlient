@@ -8,5 +8,16 @@ namespace AbonnementsimuleringKlient
 {
     interface IIndstillingerController
     {
+        /// <summary>
+        /// Henter credentials i form af DAO fra db gennem DTO
+        /// </summary>
+        /// <param name="brugernavn">EConomic brugernavn</param>
+        /// <returns>EConomicCredentialsObject er DAO for EConomic credentials</returns>
+        public EConomicCredentialsObject HentCredentials(string brugernavn);
+        /// <summary>
+        /// Gemmer credentials fra DAO i db gennem DTO
+        /// </summary>
+        /// <param name="eConomicCredentialsObject">DAO for EConomic account credentials</param>
+        public void GemCredentials(EConomicCredentialsObject eConomicCredentialsObject);
     }
 }
