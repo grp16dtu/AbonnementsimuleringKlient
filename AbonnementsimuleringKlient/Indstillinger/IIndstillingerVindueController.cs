@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface IIndstillingerController
+    interface IIndstillingerVindueController
     {
         /// <summary>
         /// Henter credentials i form af DAO fra db gennem DTO

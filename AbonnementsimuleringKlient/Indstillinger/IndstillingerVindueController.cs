@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    class IndstillingerVindueController : IIndstillingerController
+    class IndstillingerVindueController : IIndstillingerVindueController
     {
 
 
