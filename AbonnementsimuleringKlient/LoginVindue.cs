@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AbonnementsimuleringKlient
 {
-    public partial class Form1 : Form
+    public partial class LoginVindue : Form
     {
-        public Form1()
+        public LoginVindue()
         {
             InitializeComponent();
         }
