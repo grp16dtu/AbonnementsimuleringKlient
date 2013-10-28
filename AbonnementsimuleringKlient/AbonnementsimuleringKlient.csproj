@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IndstillingerVindue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndstillingerVindue.Designer.cs">
+      <DependentUpon>IndstillingerVindue.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginVindue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,6 +58,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="IndstillingerVindue.resx">
+      <DependentUpon>IndstillingerVindue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginVindue.resx">
       <DependentUpon>LoginVindue.cs</DependentUpon>
     </EmbeddedResource>
