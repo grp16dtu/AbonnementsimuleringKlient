@@ -8,11 +8,16 @@ namespace AbonnementsimuleringKlient
 {
     interface IBrugerDAO
     {
+        string Fornavn { get; set; }
+        string Efternavn { get; set; }
+        int ID { get; set; }
+        bool ansvarlig { get; set; }
+
         /// <summary>
         /// Henter en liste over brugshistorik, i form af objekterne BrugsHistorik
         /// </summary>
         /// <returns>En liste med Brugshistorik, som indeholder oplysninger on type historik, id for hvem der er i historikken, og hvornår det var gjort</returns>
-        List<BrugsHistorik> HentBrugsHistorik();
+        List<IBrugsHistorik> HentBrugsHistorik();
 
         //ikke sikker paa at den skal vaere der?
         void Id_Klikket();
