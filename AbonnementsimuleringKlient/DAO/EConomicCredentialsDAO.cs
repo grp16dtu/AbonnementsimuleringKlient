@@ -10,5 +10,22 @@ namespace AbonnementsimuleringKlient
         public string Brugernavn { get; set; }
         public string Kodeord { get; set; }
         public string Aftalenummer { get; set; }
+
+        private IDTO DTO;
+
+        public bool LoginVerificering()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string KrypterKodeord(string kodeord)
+        {
+            return "";
+        }
+
+        private string DekrypterKodeord(string kodeord)
+        {
+            return "";
+        }
     }
 }

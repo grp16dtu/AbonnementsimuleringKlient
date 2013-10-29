@@ -59,6 +59,7 @@
     <Compile Include="DAO\IBrugsHistorik.cs" />
     <Compile Include="Indstillinger\IIndstillingerVindueController.cs" />
     <Compile Include="Indstillinger\IndstillingerVindueController.cs" />
+    <Compile Include="DAO\IEConomicCredentialsDAO.cs" />
     <Compile Include="Login\ILoginVindueController.cs" />
     <Compile Include="Indstillinger\IndstillingerVindue.cs">
       <SubType>Form</SubType>
@@ -72,6 +73,7 @@
     <Compile Include="Login\LoginVindue.Designer.cs">
       <DependentUpon>LoginVindue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\LoginVindueController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BrugerAdministration\BrugerAdminVindue.resx">
