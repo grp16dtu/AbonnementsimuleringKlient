@@ -50,6 +50,7 @@
     <Compile Include="BrugerAdministration\BrugerAdminVindue.Designer.cs">
       <DependentUpon>BrugerAdminVindue.cs</DependentUpon>
     </Compile>
+    <Compile Include="BrugerAdministration\BrugerAdminVindueController.cs" />
     <Compile Include="BrugerAdministration\IBrugerAdminVindueController.cs" />
     <Compile Include="DAO\EConomicCredentialsDAO.cs" />
     <Compile Include="Indstillinger\IIndstillingerVindueController.cs" />
