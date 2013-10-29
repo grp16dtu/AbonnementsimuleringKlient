@@ -11,7 +11,7 @@ namespace AbonnementsimuleringKlient
         private BrugerAdminVindue brugerAdminVindue;
         private IBrugerDAO iBrugerDAO;
 
-        public List<Medarbejder> Medarbejderlist { get; set; }
+        public List<IBrugerDAO> MedarbejderList { get; set; }
 
 
         public void HentIndstillingerVindue()

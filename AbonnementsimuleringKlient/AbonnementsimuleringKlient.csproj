@@ -52,7 +52,9 @@
     </Compile>
     <Compile Include="BrugerAdministration\BrugerAdminVindueController.cs" />
     <Compile Include="BrugerAdministration\IBrugerAdminVindueController.cs" />
+    <Compile Include="DAO\BrugerDAO.cs" />
     <Compile Include="DAO\EConomicCredentialsDAO.cs" />
+    <Compile Include="DAO\IBrugerDAO.cs" />
     <Compile Include="Indstillinger\IIndstillingerVindueController.cs" />
     <Compile Include="Indstillinger\IndstillingerVindueController.cs" />
     <Compile Include="Login\ILoginVindueController.cs" />
