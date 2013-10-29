@@ -167,7 +167,7 @@
             this.Controls.Add(this.fornavn);
             this.Controls.Add(this.medarbejder);
             this.Name = "BrugerAdminVindue";
-            this.Text = "BrugerAdminVindue";
+            this.Text = "Brugeradministration";
             this.Load += new System.EventHandler(this.OnLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
