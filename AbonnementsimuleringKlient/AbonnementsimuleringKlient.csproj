@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrugerAdministration\BrugerAdminVindue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrugerAdministration\BrugerAdminVindue.Designer.cs">
+      <DependentUpon>BrugerAdminVindue.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAO\EConomicCredentialsDAO.cs" />
     <Compile Include="Indstillinger\IIndstillingerVindueController.cs" />
     <Compile Include="Indstillinger\IndstillingerVindueController.cs" />
@@ -62,6 +68,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BrugerAdministration\BrugerAdminVindue.resx">
+      <DependentUpon>BrugerAdminVindue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Indstillinger\IndstillingerVindue.resx">
       <DependentUpon>IndstillingerVindue.cs</DependentUpon>
     </EmbeddedResource>
