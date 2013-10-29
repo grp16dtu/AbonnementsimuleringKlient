@@ -52,6 +52,12 @@
     </Compile>
     <Compile Include="BrugerAdministration\BrugerAdminVindueController.cs" />
     <Compile Include="BrugerAdministration\IBrugerAdminVindueController.cs" />
+    <Compile Include="BrugerHistorik\BrugsHistorikVindue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrugerHistorik\BrugsHistorikVindue.Designer.cs">
+      <DependentUpon>BrugsHistorikVindue.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAO\BrugerDAO.cs" />
     <Compile Include="DAO\BrugsHistorik.cs" />
     <Compile Include="DAO\EConomicCredentialsDAO.cs" />
@@ -78,6 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BrugerAdministration\BrugerAdminVindue.resx">
       <DependentUpon>BrugerAdminVindue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrugerHistorik\BrugsHistorikVindue.resx">
+      <DependentUpon>BrugsHistorikVindue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Indstillinger\IndstillingerVindue.resx">
       <DependentUpon>IndstillingerVindue.cs</DependentUpon>
@@ -107,9 +116,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BrugerHistorik\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
