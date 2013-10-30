@@ -65,6 +65,8 @@
     <Compile Include="DAO\EConomicCredentialsDAO.cs" />
     <Compile Include="DAO\IBrugerDAO.cs" />
     <Compile Include="DAO\IBrugsHistorik.cs" />
+    <Compile Include="DTO\DTO.cs" />
+    <Compile Include="DTO\IDTO.cs" />
     <Compile Include="Indstillinger\IIndstillingerVindueController.cs" />
     <Compile Include="Indstillinger\IndstillingerVindueController.cs" />
     <Compile Include="DAO\IEConomicCredentialsDAO.cs" />
