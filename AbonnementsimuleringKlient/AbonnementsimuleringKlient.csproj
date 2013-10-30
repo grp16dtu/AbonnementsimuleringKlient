@@ -52,12 +52,14 @@
     </Compile>
     <Compile Include="BrugerAdministration\BrugerAdminVindueController.cs" />
     <Compile Include="BrugerAdministration\IBrugerAdminVindueController.cs" />
-    <Compile Include="BrugerHistorik\BrugsHistorikVindue.cs">
+    <Compile Include="BrugsHistorik\BrugsHistorikVindue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BrugerHistorik\BrugsHistorikVindue.Designer.cs">
+    <Compile Include="BrugsHistorik\BrugsHistorikVindue.Designer.cs">
       <DependentUpon>BrugsHistorikVindue.cs</DependentUpon>
     </Compile>
+    <Compile Include="BrugsHistorik\BrugsHistorikVindueController.cs" />
+    <Compile Include="BrugsHistorik\IBrugsHistorikVindueController.cs" />
     <Compile Include="DAO\BrugerDAO.cs" />
     <Compile Include="DAO\BrugsHistorik.cs" />
     <Compile Include="DAO\EConomicCredentialsDAO.cs" />
@@ -85,7 +87,7 @@
     <EmbeddedResource Include="BrugerAdministration\BrugerAdminVindue.resx">
       <DependentUpon>BrugerAdminVindue.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BrugerHistorik\BrugsHistorikVindue.resx">
+    <EmbeddedResource Include="BrugsHistorik\BrugsHistorikVindue.resx">
       <DependentUpon>BrugsHistorikVindue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Indstillinger\IndstillingerVindue.resx">

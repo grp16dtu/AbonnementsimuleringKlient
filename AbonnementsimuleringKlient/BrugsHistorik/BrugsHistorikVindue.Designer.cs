@@ -1,4 +1,4 @@
-﻿namespace AbonnementsimuleringKlient.BrugerHistorik
+﻿namespace AbonnementsimuleringKlient
 {
     partial class BrugsHistorikVindue
     {
