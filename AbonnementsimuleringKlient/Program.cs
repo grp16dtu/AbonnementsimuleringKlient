@@ -18,6 +18,10 @@ namespace AbonnementsimuleringKlient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginVindue());
+
+            SimuleringsDAO simuleringsDAO = new SimuleringsDAO();
+            SimuleringsVindue simuleringsVindue = new SimuleringsVindue();
+            SimuleringsVindueController simuleringsVindueController = new SimuleringsVindueController(simuleringsVindue, simuleringsDAO);
         }
     }
 }
