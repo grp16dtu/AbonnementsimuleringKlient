@@ -10,13 +10,12 @@ using System.Windows.Forms;
 
 namespace AbonnementsimuleringKlient
 {
-    public partial class BrugerAdminVindue : Form
+    public partial class BrugerAdminVindue : Form, IBrugerAdminVindue
     {
-        IBrugerAdminVindueController brugerAdminVindueController;
+        BrugerAdminVindueController brugerAdminVindueController;
         public BrugerAdminVindue()
         {
             InitializeComponent();
-            brugerAdminVindueController = new BrugerAdminVindueController();
         }
 
         private void instillinger_Click(object sender, EventArgs e)
@@ -41,6 +40,57 @@ namespace AbonnementsimuleringKlient
 
         private void OnLoad(object sender, EventArgs e)
         {
+        }
+
+        public void HentIndstillingerVindue()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OpretBruger()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SletBruger()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GemBruger()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MedarbejderFraListe()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void HentMedarbejderListe()
+        {
+            for(int i = 0; i < brugerAdminVindueController.medarbejderListe.Count; i++)
+            {
+                this.medarbejdere.Rows[i].Cells[0].Value = brugerAdminVindueController.medarbejderListe[i].ID;
+                this.medarbejdere.Rows[i].Cells[1].Value = brugerAdminVindueController.medarbejderListe[i].Fornavn +
+                    brugerAdminVindueController.medarbejderListe[i].Efternavn;
+            }
+        }
+
+        public void SetBrugerAdminVindueController(BrugerAdminVindueController controller)
+        {
+            this.brugerAdminVindueController = controller;
+        }
+
+
+        public void OpenVindue()
+        {
+            this.Show();
+        }
+
+        public void CloseVindue()
+        {
+            this.Hide();
         }
     }
 }

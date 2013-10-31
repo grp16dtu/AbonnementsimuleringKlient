@@ -51,7 +51,7 @@
       <DependentUpon>BrugerAdminVindue.cs</DependentUpon>
     </Compile>
     <Compile Include="BrugerAdministration\BrugerAdminVindueController.cs" />
-    <Compile Include="BrugerAdministration\IBrugerAdminVindueController.cs" />
+    <Compile Include="BrugerAdministration\IBrugerAdminVindue.cs" />
     <Compile Include="BrugsHistorik\BrugsHistorikVindue.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,42 +6,29 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    class BrugerAdminVindueController : IBrugerAdminVindueController
+    class BrugerAdminVindueController
     {
-        private BrugerAdminVindue brugerAdminVindue;
-        private IBrugerDAO iBrugerDAO;
+        private IBrugerAdminVindue brugerAdminVindue;
+        private IBrugerDAO brugerDAO;
 
-        public List<IBrugerDAO> MedarbejderList { get; set; }
+        public List<IBrugerDAO> medarbejderListe { get; set; }
 
-
-        public void HentIndstillingerVindue()
+        public BrugerAdminVindueController(IBrugerAdminVindue brugerAdminVindue, IBrugerDAO brugerDAO)
         {
-            throw new NotImplementedException();
+            this.brugerAdminVindue = brugerAdminVindue;
+            this.brugerDAO = brugerDAO;
+
+            brugerAdminVindue.SetBrugerAdminVindueController(this);
         }
 
-        public void OpretBruger()
+        public void OpenVindue()
         {
-            throw new NotImplementedException();
+            brugerAdminVindue.OpenVindue();
         }
 
-        public void SletBruger()
+        public void CloseVindue()
         {
-            throw new NotImplementedException();
-        }
-
-        public void GemBruger()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MedarbejderFraListe()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void HentMedarbejderListe()
-        {
-            throw new NotImplementedException();
+            brugerAdminVindue.CloseVindue();
         }
     }
 }

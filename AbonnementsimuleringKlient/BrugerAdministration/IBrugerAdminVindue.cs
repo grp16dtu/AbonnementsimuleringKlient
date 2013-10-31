@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface IBrugerAdminVindueController
+    interface IBrugerAdminVindue
     {
         /// <summary>
         /// Åbner vinduet Instillinger
@@ -45,5 +45,11 @@ namespace AbonnementsimuleringKlient
         /// Sender en forespørgsel til serveren om at hente listen over brugere
         /// </summary>
         void HentMedarbejderListe();
+
+        void SetBrugerAdminVindueController(BrugerAdminVindueController controller);
+
+        void OpenVindue();
+
+        void CloseVindue();
     }
 }
