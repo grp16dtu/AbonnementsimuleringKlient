@@ -8,8 +8,8 @@ namespace AbonnementsimuleringKlient
 {
     class EConomicCredentialsDAO : IEConomicCredentialsDAO
     {
-        private string Brugernavn { get; set; }
-        private string Kodeord { get; set; }
+        public string Brugernavn { get; set; }
+        public string Kodeord { get; set; }
         public string Aftalenummer { get; set; }
 
         private IDTO DTO;
@@ -91,5 +91,5 @@ namespace AbonnementsimuleringKlient
     }
 
 
-    }
 }
+
