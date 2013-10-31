@@ -9,13 +9,15 @@ namespace AbonnementsimuleringKlient
     class LoginVindueController : ILoginVindueController
     {
 
-        private LoginVindue loginVindue;
+        private LoginVindue loginVindue = new LoginVindue();
 
-        private IEConomicCredentialsDAO iEConomicCredentialsDAO;
+        private IEConomicCredentialsDAO EConomicCredentialsDAO = new EConomicCredentialsDAO();
 
-        public bool LoginVerificering()
+        public bool LoginVerificering(string brugernavn, string kodeord)
         {
-            throw new NotImplementedException();
+            EConomicCredentialsDAO.Brugernavn = brugernavn;
+            EConomicCredentialsDAO.Kodeord = kodeord;
+            return EConomicCredentialsDAO.LoginVerificering();
         }
     }
 }

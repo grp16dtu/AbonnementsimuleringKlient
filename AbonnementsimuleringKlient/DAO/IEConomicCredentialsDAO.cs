@@ -7,6 +7,10 @@ namespace AbonnementsimuleringKlient
 {
     interface IEConomicCredentialsDAO
     {
+        string Brugernavn { get; set; }
+        string Kodeord { get; set; }
+        string Aftalenummer { get; set; }
+
         bool LoginVerificering();
         string KrypterKodeord(string kodeord);
         string DekrypterKodeord(string kodeord);

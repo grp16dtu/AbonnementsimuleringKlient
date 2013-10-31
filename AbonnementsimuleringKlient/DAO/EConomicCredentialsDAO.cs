@@ -6,17 +6,17 @@ using System.Text;
 
 namespace AbonnementsimuleringKlient
 {
-    class EConomicCredentialsDAO
+    class EConomicCredentialsDAO : IEConomicCredentialsDAO
     {
-        public string Brugernavn { get; set; }
-        public string Kodeord { get; set; }
+        private string Brugernavn { get; set; }
+        private string Kodeord { get; set; }
         public string Aftalenummer { get; set; }
 
         private IDTO DTO;
 
         public bool LoginVerificering()
         {
-            throw new NotImplementedException();
+           return true; 
         }
 
         public string KrypterKodeord(string kodeord)

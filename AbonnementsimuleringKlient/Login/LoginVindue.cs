@@ -12,10 +12,28 @@ namespace AbonnementsimuleringKlient
 {
     public partial class LoginVindue : Form
     {
+        private ILoginVindueController LoginVindueController = new LoginVindueController();
+
         public LoginVindue()
         {
-            //
             InitializeComponent();
+        }
+
+        private void LoginKnap_Klikket() 
+        {
+            if (LoginVindueController.LoginVerificering(brugernavn.Text, kodeord.Text))
+            {
+                //open main vindue
+            }
+            else
+            {
+                SkiftLabelStatus();
+            }
+        }
+
+        private void SkiftLabelStatus() 
+        {
+            status.Text = "Forkert Brugernavn eller Kodeord";
         }
     }
 }

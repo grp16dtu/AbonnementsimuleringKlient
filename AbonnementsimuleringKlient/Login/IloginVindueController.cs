@@ -8,6 +8,6 @@ namespace AbonnementsimuleringKlient
 {
     interface ILoginVindueController
     {
-       bool LoginVerificering();
+       bool LoginVerificering(string brugernavn, string kodeord);
     }
 }
