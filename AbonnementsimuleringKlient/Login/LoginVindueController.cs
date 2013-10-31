@@ -8,9 +8,6 @@ namespace AbonnementsimuleringKlient
 {
     class LoginVindueController : ILoginVindueController
     {
-
-        private LoginVindue loginVindue = new LoginVindue();
-
         private IEConomicCredentialsDAO EConomicCredentialsDAO = new EConomicCredentialsDAO();
 
         public bool LoginVerificering(string brugernavn, string kodeord)
@@ -19,5 +16,6 @@ namespace AbonnementsimuleringKlient
             EConomicCredentialsDAO.Kodeord = kodeord;
             return EConomicCredentialsDAO.LoginVerificering();
         }
+
     }
 }
