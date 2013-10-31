@@ -16,24 +16,12 @@ namespace AbonnementsimuleringKlient
 
         public bool ansvarlig { get; set; }
 
-        public List<IBrugsHistorik> HentBrugsHistorik()
+        public BrugerDAO(string fornavn, string efternavn, int id, bool ansvarlig)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Id_Klikket()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TidsStempel_klikket()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void HistorikType_klikket()
-        {
-            throw new NotImplementedException();
+            this.Fornavn = fornavn;
+            this.Efternavn = efternavn;
+            this.ID = id;
+            this.ansvarlig = ansvarlig;
         }
     }
 }
