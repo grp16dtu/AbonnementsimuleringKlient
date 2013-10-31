@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.medarbejder = new System.Windows.Forms.ListBox();
             this.fornavn = new System.Windows.Forms.TextBox();
             this.efternavn = new System.Windows.Forms.TextBox();
             this.medarbejdernummer = new System.Windows.Forms.TextBox();
@@ -40,16 +39,11 @@
             this.sletBruger = new System.Windows.Forms.Button();
             this.gemBruger = new System.Windows.Forms.Button();
             this.ansvarlig = new System.Windows.Forms.CheckBox();
+            this.medarbejdere = new System.Windows.Forms.DataGridView();
+            this.IDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NavnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.medarbejdere)).BeginInit();
             this.SuspendLayout();
-            // 
-            // medarbejder
-            // 
-            this.medarbejder.FormattingEnabled = true;
-            this.medarbejder.Location = new System.Drawing.Point(12, 12);
-            this.medarbejder.Name = "medarbejder";
-            this.medarbejder.Size = new System.Drawing.Size(120, 277);
-            this.medarbejder.TabIndex = 0;
-            this.medarbejder.SelectedIndexChanged += new System.EventHandler(this.medarbejderFraListe_valgt);
             // 
             // fornavn
             // 
@@ -149,11 +143,40 @@
             this.ansvarlig.Text = "Ansvarlig";
             this.ansvarlig.UseVisualStyleBackColor = true;
             // 
+            // medarbejdere
+            // 
+            this.medarbejdere.AllowUserToAddRows = false;
+            this.medarbejdere.AllowUserToDeleteRows = false;
+            this.medarbejdere.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.medarbejdere.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDColumn,
+            this.NavnColumn});
+            this.medarbejdere.Dock = System.Windows.Forms.DockStyle.Left;
+            this.medarbejdere.Location = new System.Drawing.Point(0, 0);
+            this.medarbejdere.Name = "medarbejdere";
+            this.medarbejdere.ReadOnly = true;
+            this.medarbejdere.RowHeadersVisible = false;
+            this.medarbejdere.Size = new System.Drawing.Size(132, 301);
+            this.medarbejdere.TabIndex = 12;
+            // 
+            // IDColumn
+            // 
+            this.IDColumn.HeaderText = "ID";
+            this.IDColumn.Name = "IDColumn";
+            this.IDColumn.ReadOnly = true;
+            // 
+            // NavnColumn
+            // 
+            this.NavnColumn.HeaderText = "Navn";
+            this.NavnColumn.Name = "NavnColumn";
+            this.NavnColumn.ReadOnly = true;
+            // 
             // BrugerAdminVindue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 301);
+            this.Controls.Add(this.medarbejdere);
             this.Controls.Add(this.ansvarlig);
             this.Controls.Add(this.gemBruger);
             this.Controls.Add(this.sletBruger);
@@ -165,10 +188,10 @@
             this.Controls.Add(this.medarbejdernummer);
             this.Controls.Add(this.efternavn);
             this.Controls.Add(this.fornavn);
-            this.Controls.Add(this.medarbejder);
             this.Name = "BrugerAdminVindue";
             this.Text = "Brugeradministration";
             this.Load += new System.EventHandler(this.OnLoad);
+            ((System.ComponentModel.ISupportInitialize)(this.medarbejdere)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,7 +199,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox medarbejder;
         private System.Windows.Forms.TextBox fornavn;
         private System.Windows.Forms.TextBox efternavn;
         private System.Windows.Forms.TextBox medarbejdernummer;
@@ -188,5 +210,8 @@
         private System.Windows.Forms.Button sletBruger;
         private System.Windows.Forms.Button gemBruger;
         private System.Windows.Forms.CheckBox ansvarlig;
+        private System.Windows.Forms.DataGridView medarbejdere;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NavnColumn;
     }
 }

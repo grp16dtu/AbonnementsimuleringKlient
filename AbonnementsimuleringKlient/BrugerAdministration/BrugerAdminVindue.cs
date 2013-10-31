@@ -12,14 +12,11 @@ namespace AbonnementsimuleringKlient
 {
     public partial class BrugerAdminVindue : Form
     {
+        IBrugerAdminVindueController brugerAdminVindueController;
         public BrugerAdminVindue()
         {
             InitializeComponent();
-        }
-
-        private void medarbejderFraListe_valgt(object sender, EventArgs e)
-        {
-
+            brugerAdminVindueController = new BrugerAdminVindueController();
         }
 
         private void instillinger_Click(object sender, EventArgs e)
@@ -44,7 +41,6 @@ namespace AbonnementsimuleringKlient
 
         private void OnLoad(object sender, EventArgs e)
         {
-
         }
     }
 }
