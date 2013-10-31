@@ -7,7 +7,7 @@ namespace AbonnementsimuleringKlient
 {
     class BrugerDAO:IBrugerDAO
     {
-        private IDTO _DTO;
+        private IDTO DTO;
         public string Fornavn {get; set;}
 
         public string Efternavn { get; set; }
