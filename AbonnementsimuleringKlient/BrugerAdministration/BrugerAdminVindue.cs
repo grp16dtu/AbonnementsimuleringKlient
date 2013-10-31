@@ -40,6 +40,7 @@ namespace AbonnementsimuleringKlient
 
         private void OnLoad(object sender, EventArgs e)
         {
+            HentMedarbejderListe();
         }
 
         public void HentIndstillingerVindue()
