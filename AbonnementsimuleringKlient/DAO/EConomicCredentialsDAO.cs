@@ -16,7 +16,7 @@ namespace AbonnementsimuleringKlient
 
         public bool LoginVerificering()
         {
-           return true; 
+           return true; // ikke færdig
         }
 
         public string KrypterKodeord(string kodeord)
