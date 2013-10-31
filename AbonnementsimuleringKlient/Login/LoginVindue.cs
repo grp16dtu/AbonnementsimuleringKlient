@@ -12,7 +12,7 @@ namespace AbonnementsimuleringKlient
 {
     public partial class LoginVindue : Form
     {
-        private ILoginVindueController LoginVindueController = new LoginVindueController();
+        private LoginVindueController LoginVindueController = new LoginVindueController();
 
         public LoginVindue()
         {
