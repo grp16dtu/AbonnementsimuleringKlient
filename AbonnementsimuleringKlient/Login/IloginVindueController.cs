@@ -8,6 +8,11 @@ namespace AbonnementsimuleringKlient
 {
     interface ILoginVindueController
     {
-       bool LoginVerificering(string brugernavn, string kodeord);
+        bool LoginVerificering(string brugernavn, string kodeord);
+
+        void OpenVindue();
+        void CloseVindue();
+
+        void SetLoginVindueController(LoginVindueController controller);
     }
 }
