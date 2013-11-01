@@ -17,5 +17,19 @@ namespace AbonnementsimuleringKlient
             return EConomicCredentialsDAO.LoginVerificering();
         }
 
+        public void OpenVindue()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CloseVindue()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetLoginVindueController(LoginVindueController controller)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
