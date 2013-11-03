@@ -8,13 +8,22 @@ namespace AbonnementsimuleringKlient
 {
     class LoginVindueController : ILoginVindueController
     {
-        private IEConomicCredentialsDAO EConomicCredentialsDAO = new EConomicCredentialsDAO();
+        private IEConomicCredentialsDAO eConomicCredentialsDAO;
+        private LoginVindue loginVindue;
+
+        public LoginVindueController(LoginVindue loginVindue, IEConomicCredentialsDAO eConomicCredentialsDAO)
+        {
+            this.eConomicCredentialsDAO = eConomicCredentialsDAO;
+            this.loginVindue = loginVindue;
+
+            SetLoginVindueController(this);
+        }
 
         public bool LoginVerificering(string brugernavn, string kodeord)
         {
-            EConomicCredentialsDAO.Brugernavn = brugernavn;
-            EConomicCredentialsDAO.Kodeord = kodeord;
-            return EConomicCredentialsDAO.LoginVerificering();
+            eConomicCredentialsDAO.Brugernavn = brugernavn;
+            eConomicCredentialsDAO.Kodeord = kodeord;
+            return eConomicCredentialsDAO.LoginVerificering();
         }
 
         public void OpenVindue()

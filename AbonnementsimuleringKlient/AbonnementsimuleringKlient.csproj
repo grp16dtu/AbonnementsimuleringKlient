@@ -81,6 +81,7 @@
     <Compile Include="Login\LoginVindue.Designer.cs">
       <DependentUpon>LoginVindue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\LoginVindueController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimuleringsVindue\ISimuleringsDAO.cs" />
