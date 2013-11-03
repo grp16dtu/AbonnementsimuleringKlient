@@ -33,7 +33,8 @@ namespace AbonnementsimuleringKlient
             BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
             BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue, brugerDAO);
 
-
+            IndstillingerVindue indStillingerVindue = new IndstillingerVindue();
+            IndstillingerVindueController indstillingerVindueController = new IndstillingerVindueController(indStillingerVindue, eConomicCredentialsDAO);
         }
     }
 }
