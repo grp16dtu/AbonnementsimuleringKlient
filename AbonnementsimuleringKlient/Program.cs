@@ -22,11 +22,18 @@ namespace AbonnementsimuleringKlient
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(loginVindue = new LoginVindue());
 
-            LoginVindueController loginVindueController = new LoginVindueController(
+            LoginVindueController loginVindueController = new LoginVindueController(loginVindue, eConomicCredentialsDAO);
 
             SimuleringsDAO simuleringsDAO = new SimuleringsDAO();
             SimuleringsVindue simuleringsVindue = new SimuleringsVindue();
             SimuleringsVindueController simuleringsVindueController = new SimuleringsVindueController(simuleringsVindue, simuleringsDAO);
+
+            // BrugerDAO brugerDAO = new BrugerDAO();           den skal nok laves lidt anderledes
+
+            BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
+            BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue, brugerDAO);
+
+
         }
     }
 }
