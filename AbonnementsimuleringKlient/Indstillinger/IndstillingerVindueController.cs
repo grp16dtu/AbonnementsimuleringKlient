@@ -6,18 +6,27 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    class IndstillingerVindueController : IIndstillingerVindueController
+    class IndstillingerVindueController
     {
+        private IIndstillingerVindue indstillingerVindue;
+        private IEConomicCredentialsDAO eConomicCredentialsDAO;
 
-
-        public EConomicCredentialsDAO HentCredentials(string brugernavn)
+        public IndstillingerVindueController(IIndstillingerVindue indstillingerVindue, IEConomicCredentialsDAO eConomicCredentialsDAO)
         {
-            throw new NotImplementedException();
+            this.indstillingerVindue = indstillingerVindue;
+            this.eConomicCredentialsDAO = eConomicCredentialsDAO;
+
+            indstillingerVindue.SetIndstillingerVindueController(this);
         }
 
-        public void GemCredentials(EConomicCredentialsDAO eConomicCredentialsObject)
+        public void OpenVindue()
         {
-            throw new NotImplementedException();
+            indstillingerVindue.OpenVindue();
+        }
+
+        public void CloseVindue()
+        {
+            indstillingerVindue.CloseVindue();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface IIndstillingerVindueController
+    interface IIndstillingerVindue
     {
         /// <summary>
         /// Henter credentials i form af DAO fra db gennem DTO
@@ -19,5 +19,11 @@ namespace AbonnementsimuleringKlient
         /// </summary>
         /// <param name="eConomicCredentialsObject">DAO for EConomic account credentials</param>
         void GemCredentials(EConomicCredentialsDAO eConomicCredentialsObject);
+
+        void SetIndstillingerVindueController(IndstillingerVindueController controller);
+
+        void OpenVindue();
+
+        void CloseVindue();
     }
 }
