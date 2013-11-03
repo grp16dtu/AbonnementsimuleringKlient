@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AbonnementsimuleringKlient
 {
-    class EConomicCredentialsDAO
+    class EConomicCredentialsDAO : IEConomicCredentialsDAO
     {
         public string Brugernavn { get; set; }
         public string Kodeord { get; set; }
