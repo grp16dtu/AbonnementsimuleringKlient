@@ -71,7 +71,7 @@
     <Compile Include="DTO\IDTO.cs" />
     <Compile Include="Indstillinger\IIndstillingerVindue.cs" />
     <Compile Include="Indstillinger\IndstillingerVindueController.cs" />
-    <Compile Include="Login\ILoginVindueController.cs" />
+    <Compile Include="Login\ILoginVindue.cs" />
     <Compile Include="Indstillinger\IndstillingerVindue.cs">
       <SubType>Form</SubType>
     </Compile>
