@@ -39,6 +39,8 @@ namespace AbonnementsimuleringKlient
             BrugsHistorikVindue brugsHistorikVindue = new BrugsHistorikVindue();
             BrugsHistorikVindueController brugsHistorikVindueController = new BrugsHistorikVindueController(brugsHistorikVindue, brugsHistorik);
 
+            loginVindueController.SetControllers(simuleringsVindueController);
+
             Application.Run(loginVindue);
         }
     }
