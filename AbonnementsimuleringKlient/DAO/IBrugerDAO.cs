@@ -12,5 +12,7 @@ namespace AbonnementsimuleringKlient
         string Efternavn { get; set; }
         int ID { get; set; }
         bool ansvarlig { get; set; }
+
+        event EventHandler Changed;
     }
 }

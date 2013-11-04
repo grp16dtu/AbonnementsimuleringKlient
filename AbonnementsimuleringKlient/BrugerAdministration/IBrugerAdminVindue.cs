@@ -51,5 +51,7 @@ namespace AbonnementsimuleringKlient
         void OpenVindue();
 
         void CloseVindue();
+
+        
     }
 }

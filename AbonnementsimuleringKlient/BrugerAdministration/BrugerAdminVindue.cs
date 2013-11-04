@@ -13,6 +13,7 @@ namespace AbonnementsimuleringKlient
     public partial class BrugerAdminVindue : Form, IBrugerAdminVindue
     {
         BrugerAdminVindueController brugerAdminVindueController;
+        private List<IBrugerDAO> medarbejderListe;
         public BrugerAdminVindue()
         {
             InitializeComponent();
@@ -40,7 +41,17 @@ namespace AbonnementsimuleringKlient
 
         private void OnLoad(object sender, EventArgs e)
         {
+            OpdaterMedarbejderListe(sender, e);
+         
+        }
+
+        private void OpdaterMedarbejderListe(Object sender, EventArgs e)
+        {
             HentMedarbejderListe();
+            foreach(BrugerDAO bruger in medarbejderListe)
+            {
+                bruger.Changed += new EventHandler(OpdaterMedarbejderListe);
+            }
         }
 
         public void HentIndstillingerVindue()
@@ -70,11 +81,11 @@ namespace AbonnementsimuleringKlient
 
         public void HentMedarbejderListe()
         {
-            for(int i = 0; i < brugerAdminVindueController.medarbejderListe.Count; i++)
+            medarbejderListe = brugerAdminVindueController.medarbejderListe;
+            for(int i = 0; i < medarbejderListe.Count; i++)
             {
-                this.medarbejdere.Rows[i].Cells[0].Value = brugerAdminVindueController.medarbejderListe[i].ID;
-                this.medarbejdere.Rows[i].Cells[1].Value = brugerAdminVindueController.medarbejderListe[i].Fornavn +
-                    brugerAdminVindueController.medarbejderListe[i].Efternavn;
+                this.medarbejdere.Rows[i].Cells[0].Value = medarbejderListe[i].ID;
+                this.medarbejdere.Rows[i].Cells[1].Value = medarbejderListe[i].Fornavn + medarbejderListe[i].Efternavn;
             }
         }
 
