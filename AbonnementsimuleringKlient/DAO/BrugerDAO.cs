@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AbonnementsimuleringKlient
 {
-    class BrugerDAO:IBrugerDAO
+    public class BrugerDAO:IBrugerDAO
     {
         private IDTO DTO;
         public string Fornavn {get; set;}

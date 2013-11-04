@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    class IndstillingerVindueController
+    public class IndstillingerVindueController
     {
         private IIndstillingerVindue indstillingerVindue;
         private IEConomicCredentialsDAO eConomicCredentialsDAO;

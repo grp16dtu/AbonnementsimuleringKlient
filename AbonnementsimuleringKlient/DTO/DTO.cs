@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace AbonnementsimuleringKlient
 {
-    class DTO : IDTO
+    public class DTO : IDTO
     {
-        private HttpKlient httpKlient;
+        private HttpClient httpKlient;
 
         private IDTO iDTO;
 
-        public List<Medarbejder> HentMedarbejderList()
+        public List<IBrugerDAO> HentMedarbejderList()
         {
             throw new NotImplementedException();
         }
@@ -32,7 +34,7 @@ namespace AbonnementsimuleringKlient
             throw new NotImplementedException();
         }
 
-        public List<string[]> HentBrugsHistorik(TidsInterval tidsInterval, HistorikType historikType, Id id)
+        public List<string[]> HentBrugsHistorik()
         {
             throw new NotImplementedException();
         }
@@ -47,7 +49,7 @@ namespace AbonnementsimuleringKlient
             throw new NotImplementedException();
         }
 
-        public List<Simuleringer> HentSimuleringsListe()
+        public List<SimuleringsDAO> HentSimuleringsListe()
         {
             throw new NotImplementedException();
         }

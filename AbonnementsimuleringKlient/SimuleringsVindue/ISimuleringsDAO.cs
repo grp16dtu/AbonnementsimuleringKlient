@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface ISimuleringsDAO
+    public interface ISimuleringsDAO
     {
         List<string> HentXakse();
         List<double> HentYakse();
         void GenererNySimulering();
         List<string> HentSimuleringsListe();
-        List<string> Xakse { get; private set; }
-        List<double> Yakse { get; private set; }
+        List<string> Xakse { get;}
+        List<double> Yakse { get;}
         void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, string tidsStempel);
     }
 }

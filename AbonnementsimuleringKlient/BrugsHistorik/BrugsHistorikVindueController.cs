@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    class BrugsHistorikVindueController
+    public class BrugsHistorikVindueController
     {
         private IBrugsHistorikVindue brugsHistorikVindue;
         private IBrugsHistorik brugsHistorik;

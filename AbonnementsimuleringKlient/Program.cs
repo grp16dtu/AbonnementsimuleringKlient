@@ -22,7 +22,7 @@ namespace AbonnementsimuleringKlient
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(loginVindue = new LoginVindue());
 
-            LoginVindueController loginVindue = new LoginVindueController(loginVindue, eConomicCredentialsDAO);
+            LoginVindueController loginVindueController = new LoginVindueController(loginVindue, eConomicCredentialsDAO);
 
             SimuleringsDAO simuleringsDAO = new SimuleringsDAO();
             SimuleringsVindue simuleringsVindue = new SimuleringsVindue();
@@ -30,8 +30,8 @@ namespace AbonnementsimuleringKlient
 
             // BrugerDAO brugerDAO = new BrugerDAO();           den skal nok laves lidt anderledes
 
-            BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
-            BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue, brugerDAO);
+            //BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
+            //BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue, brugerDAO);
 
             IndstillingerVindue indStillingerVindue = new IndstillingerVindue();
             IndstillingerVindueController indstillingerVindueController = new IndstillingerVindueController(indStillingerVindue, eConomicCredentialsDAO);

@@ -19,7 +19,7 @@ namespace AbonnementsimuleringKlient
             InitializeComponent();
         }
 
-        private List<BrugsHistorik> HentBrugsHistorik()
+        public List<BrugsHistorik> HentBrugsHistorik()
         {
             return null;
         }

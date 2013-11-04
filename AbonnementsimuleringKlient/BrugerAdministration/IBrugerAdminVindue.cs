@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface IBrugerAdminVindue
+    public interface IBrugerAdminVindue
     {
         /// <summary>
         /// Åbner vinduet Instillinger

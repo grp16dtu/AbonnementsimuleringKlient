@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface IDTO
+    public interface IDTO
     {
-        List<Medarbejder> HentMedarbejderList();
+        List<IBrugerDAO> HentMedarbejderList();
 
         void SletMedarbejder();
 
@@ -16,13 +16,13 @@ namespace AbonnementsimuleringKlient
 
         void RedigerMedarbejder();
 
-        List<string[]> HentBrugsHistorik(TidsInterval tidsInterval, HistorikType historikType, Id id);
+        List<string[]> HentBrugsHistorik();
 
         List<string> HentGrafDataDropdown();
 
         void KoerNySimulering();
 
-        List<Simuleringer> HentSimuleringsListe();
+        List<SimuleringsDAO> HentSimuleringsListe();
 
         void HentEnkeltSimulering();
 
