@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    class BrugsHistorik : IBrugsHistorik
+    public class BrugsHistorik : IBrugsHistorik
     {
         public enum HistorikType
         {

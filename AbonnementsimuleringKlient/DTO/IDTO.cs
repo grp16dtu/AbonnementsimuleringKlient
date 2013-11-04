@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface IDTO
+    public interface IDTO
     {
         List<IBrugerDAO> HentMedarbejderList();
 

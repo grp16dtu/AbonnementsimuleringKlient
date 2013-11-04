@@ -22,7 +22,7 @@ namespace AbonnementsimuleringKlient
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(loginVindue = new LoginVindue());
 
-            LoginVindueController loginVindue = new LoginVindueController(loginVindue, eConomicCredentialsDAO);
+            LoginVindueController loginVindueController = new LoginVindueController(loginVindue, eConomicCredentialsDAO);
 
             SimuleringsDAO simuleringsDAO = new SimuleringsDAO();
             SimuleringsVindue simuleringsVindue = new SimuleringsVindue();

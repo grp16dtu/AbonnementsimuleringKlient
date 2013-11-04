@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    class BrugerAdminVindueController
+    public class BrugerAdminVindueController
     {
         private IBrugerAdminVindue brugerAdminVindue;
         private IBrugerDAO brugerDAO;

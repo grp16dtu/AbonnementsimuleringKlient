@@ -8,7 +8,7 @@ using System.Net.Http.Headers;
 
 namespace AbonnementsimuleringKlient
 {
-    class DTO : IDTO
+    public class DTO : IDTO
     {
         private HttpClient httpKlient;
 
