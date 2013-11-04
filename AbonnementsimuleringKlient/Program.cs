@@ -30,8 +30,8 @@ namespace AbonnementsimuleringKlient
 
             // BrugerDAO brugerDAO = new BrugerDAO();           den skal nok laves lidt anderledes
 
-            BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
-            BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue, brugerDAO);
+            //BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
+            //BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue, brugerDAO);
 
             IndstillingerVindue indStillingerVindue = new IndstillingerVindue();
             IndstillingerVindueController indstillingerVindueController = new IndstillingerVindueController(indStillingerVindue, eConomicCredentialsDAO);

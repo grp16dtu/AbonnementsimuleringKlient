@@ -8,7 +8,7 @@ namespace AbonnementsimuleringKlient
 {
     class BrugsHistorik : IBrugsHistorik
     {
-        enum HistorikType
+        public enum HistorikType
         {
             Simulering,
             Login

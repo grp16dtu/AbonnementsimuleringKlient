@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface ISimuleringsVindue
+    public interface ISimuleringsVindue
     {
-        public List<string> VisSimuleringsListe();
-        public SimuleringsDAO VisValgteSimulering(string tidsstempel);
-        public void GenererNySimulering(int index);
-        public void BrugerAdministration();
-        public void XAkse();
-        public void YAkse();
+        List<string> VisSimuleringsListe();
+        SimuleringsDAO VisValgteSimulering(string tidsstempel);
+        void GenererNySimulering(int index);
+        void BrugerAdministration();
+        void XAkse();
+        void YAkse();
 
         void OpenVindue();
 

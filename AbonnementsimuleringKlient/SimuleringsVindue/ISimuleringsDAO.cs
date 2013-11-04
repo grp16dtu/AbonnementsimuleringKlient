@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface ISimuleringsDAO
+    public interface ISimuleringsDAO
     {
         List<string> HentXakse();
         List<double> HentYakse();

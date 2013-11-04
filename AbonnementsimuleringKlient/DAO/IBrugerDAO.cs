@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface IBrugerDAO
+    public interface IBrugerDAO
     {
         string Fornavn { get; set; }
         string Efternavn { get; set; }
