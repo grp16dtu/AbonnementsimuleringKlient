@@ -27,10 +27,10 @@ namespace AbonnementsimuleringKlient
             SimuleringsVindue simuleringsVindue = new SimuleringsVindue();
             SimuleringsVindueController simuleringsVindueController = new SimuleringsVindueController(simuleringsVindue, simuleringsDAO);
 
-            // BrugerDAO brugerDAO = new BrugerDAO();           den skal nok laves lidt anderledes
+            //BrugerDAO brugerDAO = new BrugerDAO();           den skal nok laves lidt anderledes
 
-            //BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
-            //BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue, brugerDAO);
+            BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
+            BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue);
 
             IndstillingerVindue indStillingerVindue = new IndstillingerVindue();
             IndstillingerVindueController indstillingerVindueController = new IndstillingerVindueController(indStillingerVindue, eConomicCredentialsDAO);
@@ -40,6 +40,7 @@ namespace AbonnementsimuleringKlient
             BrugsHistorikVindueController brugsHistorikVindueController = new BrugsHistorikVindueController(brugsHistorikVindue, brugsHistorik);
 
             loginVindueController.SetControllers(simuleringsVindueController);
+            brugerAdminVindueController.SetControllers(indstillingerVindueController);
 
             Application.Run(loginVindue);
         }
