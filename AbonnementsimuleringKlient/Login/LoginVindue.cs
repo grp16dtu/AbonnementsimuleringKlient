@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AbonnementsimuleringKlient
 {
-    public partial class LoginVindue : Form
+    public partial class LoginVindue : Form, ILoginVindue
     {
-        private LoginVindueController LoginVindueController = new LoginVindueController();
+        private LoginVindueController controller;
 
         public LoginVindue()
         {
@@ -22,7 +22,7 @@ namespace AbonnementsimuleringKlient
         //TODO Ikke færdig
         private void LoginKnap_Klikket()
         {
-            if (LoginVindueController.LoginVerificering(brugernavn.Text, kodeord.Text))
+            if (controller.LoginVerificering(brugernavn.Text, kodeord.Text))
             {
                 //open main vindue
             }
@@ -41,6 +41,21 @@ namespace AbonnementsimuleringKlient
         private bool Ansvarlig()
         {
             return false; 
+        }
+
+        public void OpenVindue()
+        {
+            this.Show();
+        }
+
+        public void CloseVindue()
+        {
+            this.Hide();
+        }
+
+        public void SetLoginVindueController(LoginVindueController controller)
+        {
+            this.controller = controller;
         }
     }
 }

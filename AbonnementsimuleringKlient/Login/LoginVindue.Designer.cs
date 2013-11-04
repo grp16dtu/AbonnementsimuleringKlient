@@ -88,7 +88,7 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Kodeord";
             // 
-            // LoginVindue
+            // controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

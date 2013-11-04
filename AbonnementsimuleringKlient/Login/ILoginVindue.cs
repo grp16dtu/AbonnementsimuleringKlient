@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface ILoginVindueController
+    public interface ILoginVindue
     {
-        bool LoginVerificering(string brugernavn, string kodeord);
-
         void OpenVindue();
         void CloseVindue();
 

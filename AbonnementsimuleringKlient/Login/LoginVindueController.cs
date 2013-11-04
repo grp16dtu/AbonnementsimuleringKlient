@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    class LoginVindueController : ILoginVindueController
+    public class LoginVindueController
     {
         private IEConomicCredentialsDAO eConomicCredentialsDAO;
         private LoginVindue loginVindue;
