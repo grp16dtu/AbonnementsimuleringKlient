@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.visBrugshistorikKnap = new System.Windows.Forms.Button();
+            this.visBrugerAdminKnap = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.visSimuleringKnap = new System.Windows.Forms.Button();
             this.KorNy = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,16 +46,16 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(12, 50);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(423, 300);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -76,23 +76,25 @@
             this.comboBox2.Size = new System.Drawing.Size(50, 21);
             this.comboBox2.TabIndex = 2;
             // 
-            // button1
+            // visBrugshistorikKnap
             // 
-            this.button1.Location = new System.Drawing.Point(209, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Vis brugshistorik";
-            this.button1.UseVisualStyleBackColor = true;
+            this.visBrugshistorikKnap.Location = new System.Drawing.Point(209, 20);
+            this.visBrugshistorikKnap.Name = "visBrugshistorikKnap";
+            this.visBrugshistorikKnap.Size = new System.Drawing.Size(110, 23);
+            this.visBrugshistorikKnap.TabIndex = 3;
+            this.visBrugshistorikKnap.Text = "Vis brugshistorik";
+            this.visBrugshistorikKnap.UseVisualStyleBackColor = true;
+            this.visBrugshistorikKnap.Click += new System.EventHandler(this.visBrugshistorikKnap_Click);
             // 
-            // button2
+            // visBrugerAdminKnap
             // 
-            this.button2.Location = new System.Drawing.Point(325, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Brugeradministration";
-            this.button2.UseVisualStyleBackColor = true;
+            this.visBrugerAdminKnap.Location = new System.Drawing.Point(325, 20);
+            this.visBrugerAdminKnap.Name = "visBrugerAdminKnap";
+            this.visBrugerAdminKnap.Size = new System.Drawing.Size(110, 23);
+            this.visBrugerAdminKnap.TabIndex = 4;
+            this.visBrugerAdminKnap.Text = "Brugeradministration";
+            this.visBrugerAdminKnap.UseVisualStyleBackColor = true;
+            this.visBrugerAdminKnap.Click += new System.EventHandler(this.visBrugerAdminKnap_Click);
             // 
             // listBox1
             // 
@@ -108,14 +110,14 @@
             this.listBox1.Size = new System.Drawing.Size(135, 69);
             this.listBox1.TabIndex = 5;
             // 
-            // button3
+            // visSimuleringKnap
             // 
-            this.button3.Location = new System.Drawing.Point(441, 125);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(135, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Vis";
-            this.button3.UseVisualStyleBackColor = true;
+            this.visSimuleringKnap.Location = new System.Drawing.Point(441, 125);
+            this.visSimuleringKnap.Name = "visSimuleringKnap";
+            this.visSimuleringKnap.Size = new System.Drawing.Size(135, 23);
+            this.visSimuleringKnap.TabIndex = 6;
+            this.visSimuleringKnap.Text = "Vis";
+            this.visSimuleringKnap.UseVisualStyleBackColor = true;
             // 
             // KorNy
             // 
@@ -145,7 +147,7 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Index";
             // 
-            // Form1
+            // SimuleringsVindue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,14 +155,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.KorNy);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.visSimuleringKnap);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.visBrugerAdminKnap);
+            this.Controls.Add(this.visBrugshistorikKnap);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.chart1);
-            this.Name = "Form1";
+            this.Name = "SimuleringsVindue";
             this.Text = "Simulering";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
@@ -173,10 +175,10 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button visBrugshistorikKnap;
+        private System.Windows.Forms.Button visBrugerAdminKnap;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button visSimuleringKnap;
         private System.Windows.Forms.Button KorNy;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;

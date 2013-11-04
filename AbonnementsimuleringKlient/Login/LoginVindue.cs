@@ -19,9 +19,16 @@ namespace AbonnementsimuleringKlient
             InitializeComponent();
         }
 
-        private void SkiftLabelStatus()
+        private void SkiftLabelStatus(int statusTal)
         {
-            status.Text = "Forkert Brugernavn eller Kodeord";
+            if(statusTal == 1)
+            {
+                status.Text = "Forkert Brugernavn eller Kodeord";
+            }
+            else
+            {
+                status.Text = "Mangler Bruger navn eller kodeord";
+            }
         }
 
         //TODO Ikke færdig
@@ -47,15 +54,21 @@ namespace AbonnementsimuleringKlient
 
         private void LoginKnap_Klikket(object sender, EventArgs e)
         {
-            if (controller.LoginVerificering(brugernavn.Text, kodeord.Text))
+            if (brugernavn.Text == "" || kodeord.Text == "")
             {
-                //open main vindue
-
-                CloseVindue();
+                SkiftLabelStatus(0);
             }
             else
             {
-                SkiftLabelStatus();
+                if (controller.LoginVerificering(brugernavn.Text, kodeord.Text))
+                {
+                    controller.OpenSimuleringsVindue();
+                    CloseVindue();
+                }
+                else
+                {
+                    SkiftLabelStatus(1);
+                }
             }
         }
     }

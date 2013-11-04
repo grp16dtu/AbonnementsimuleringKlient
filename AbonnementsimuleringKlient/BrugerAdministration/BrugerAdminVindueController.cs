@@ -8,27 +8,38 @@ namespace AbonnementsimuleringKlient
 {
     public class BrugerAdminVindueController
     {
-        private IBrugerAdminVindue brugerAdminVindue;
-        private IBrugerDAO brugerDAO;
+        private IBrugerAdminVindue _brugerAdminVindue;
+        private IBrugerDAO _brugerDAO;
+        private IndstillingerVindueController _indstillingerVindueController;
+
 
         public List<IBrugerDAO> medarbejderListe { get; set; }
 
-        public BrugerAdminVindueController(IBrugerAdminVindue brugerAdminVindue, IBrugerDAO brugerDAO)
+        public BrugerAdminVindueController(IBrugerAdminVindue brugerAdminVindue)
         {
-            this.brugerAdminVindue = brugerAdminVindue;
-            this.brugerDAO = brugerDAO;
+            this._brugerAdminVindue = brugerAdminVindue;
 
             brugerAdminVindue.SetBrugerAdminVindueController(this);
         }
 
+        public void SetControllers(IndstillingerVindueController indstillingerVindueController)
+        {
+            this._indstillingerVindueController = indstillingerVindueController;
+        }
+
+        public void OpenIndstilleringVindue()
+        {
+            _indstillingerVindueController.OpenVindue();
+        }
+
         public void OpenVindue()
         {
-            brugerAdminVindue.OpenVindue();
+            _brugerAdminVindue.OpenVindue();
         }
 
         public void CloseVindue()
         {
-            brugerAdminVindue.CloseVindue();
+            _brugerAdminVindue.CloseVindue();
         }
     }
 }
