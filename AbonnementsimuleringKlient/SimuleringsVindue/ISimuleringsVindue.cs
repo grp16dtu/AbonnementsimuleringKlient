@@ -18,5 +18,6 @@ namespace AbonnementsimuleringKlient
         void OpenVindue();
 
         void CloseVindue();
+        void SetSimuleringsVindueController(SimuleringsVindueController controller);
     }
 }
