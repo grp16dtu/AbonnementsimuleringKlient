@@ -16,7 +16,7 @@ namespace AbonnementsimuleringKlient
             this.eConomicCredentialsDAO = eConomicCredentialsDAO;
             this.loginVindue = loginVindue;
 
-            SetLoginVindueController(this);
+            loginVindue.SetLoginVindueController(this);
         }
 
         public bool LoginVerificering(string brugernavn, string kodeord)
@@ -32,11 +32,6 @@ namespace AbonnementsimuleringKlient
         }
 
         public void CloseVindue()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetLoginVindueController(LoginVindueController controller)
         {
             throw new NotImplementedException();
         }

@@ -15,13 +15,12 @@ namespace AbonnementsimuleringKlient
         [STAThread]
         static void Main()
         {
-            EConomicCredentialsDAO eConomicCredentialsDAO = new EConomicCredentialsDAO();
-            LoginVindue loginVindue;
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(loginVindue = new LoginVindue());
 
+            EConomicCredentialsDAO eConomicCredentialsDAO = new EConomicCredentialsDAO();
+
+            LoginVindue loginVindue = new LoginVindue();
             LoginVindueController loginVindueController = new LoginVindueController(loginVindue, eConomicCredentialsDAO);
 
             SimuleringsDAO simuleringsDAO = new SimuleringsDAO();
@@ -39,6 +38,8 @@ namespace AbonnementsimuleringKlient
             BrugsHistorik brugsHistorik = new BrugsHistorik();
             BrugsHistorikVindue brugsHistorikVindue = new BrugsHistorikVindue();
             BrugsHistorikVindueController brugsHistorikVindueController = new BrugsHistorikVindueController(brugsHistorikVindue, brugsHistorik);
+
+            Application.Run(loginVindue);
         }
     }
 }

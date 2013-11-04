@@ -60,6 +60,7 @@
             this.logindKnap.TabIndex = 2;
             this.logindKnap.Text = "Log ind";
             this.logindKnap.UseVisualStyleBackColor = true;
+            this.logindKnap.Click += new System.EventHandler(this.LoginKnap_Klikket);
             // 
             // status
             // 
@@ -88,7 +89,7 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Kodeord";
             // 
-            // controller
+            // LoginVindue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
