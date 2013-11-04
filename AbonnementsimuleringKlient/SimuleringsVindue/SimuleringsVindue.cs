@@ -26,6 +26,13 @@ namespace AbonnementsimuleringKlient
             this.yKey = yAkseKey.Pris;
 
             OpdaterVindue(xKey, yKey, Tidsstempel);
+
+            this.FormClosing += new FormClosingEventHandler(Closing_From);
+        }
+
+        private void Closing_From(object sender, FormClosingEventArgs e)
+        {
+            Application.OpenForms["LoginVindue"].Close();
         }
 
         public List<DateTime> VisSimuleringsListe()
@@ -96,6 +103,7 @@ namespace AbonnementsimuleringKlient
             InitializeComponent();
         }
         
+
 
      
     }
