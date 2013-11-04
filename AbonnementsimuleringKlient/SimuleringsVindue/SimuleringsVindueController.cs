@@ -26,5 +26,10 @@ namespace AbonnementsimuleringKlient
         {
             SimuleringsVindue.CloseVindue();
         }
+
+        internal void OpdaterVindue(AbonnementsimuleringKlient.SimuleringsVindue.xAkseKey xKey, AbonnementsimuleringKlient.SimuleringsVindue.yAkseKey yKey, DateTime tidsstempel)
+        {
+            SimuleringsDAO.HentSimulering(xKey, yKey, tidsstempel);
+        }
     }      
 }

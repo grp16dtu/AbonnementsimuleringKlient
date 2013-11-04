@@ -8,7 +8,7 @@ namespace AbonnementsimuleringKlient
 {
     public interface ISimuleringsVindue
     {
-        List<string> VisSimuleringsListe();
+        List<DateTime> VisSimuleringsListe();
         SimuleringsDAO VisValgteSimulering(string tidsstempel);
         void GenererNySimulering(int index);
         void BrugerAdministration();

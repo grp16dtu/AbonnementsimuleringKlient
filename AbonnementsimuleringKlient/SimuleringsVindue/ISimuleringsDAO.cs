@@ -14,6 +14,6 @@ namespace AbonnementsimuleringKlient
         List<string> HentSimuleringsListe();
         List<string> Xakse { get;}
         List<double> Yakse { get;}
-        void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, string tidsStempel);
+        void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel);
     }
 }

@@ -15,17 +15,20 @@ namespace AbonnementsimuleringKlient
         private SimuleringsVindueController simuleringsVindueController;
         public enum yAkseKey { Stk, Pris };
         public enum xAkseKey { Tid, Afdeling, Debitor, Vare };
-        public SimuleringsVindue()
-        {
-            InitializeComponent();
-        }
-
+        public xAkseKey xKey { get; set; }
+        public yAkseKey yKey { get; set; }
+        public DateTime Tidsstempel { get; set; }
+        public List<DateTime> SimuleringsListe; 
         public void SetSimuleringsVindueController(SimuleringsVindueController controller)
         {
             this.simuleringsVindueController = controller;
+            this.xKey = xAkseKey.Tid;
+            this.yKey = yAkseKey.Pris;
+
+            OpdaterVindue(xKey, yKey, Tidsstempel);
         }
 
-        public List<string> VisSimuleringsListe()
+        public List<DateTime> VisSimuleringsListe()
         {
             throw new NotImplementedException();
         }
@@ -47,7 +50,7 @@ namespace AbonnementsimuleringKlient
 
         public void XAkse()
         {
-            throw new NotImplementedException();
+            OpdaterVindue(xKey, yKey, Tidsstempel);
         }
 
         public void YAkse()
@@ -64,5 +67,24 @@ namespace AbonnementsimuleringKlient
         {
             this.Hide();
         }
+
+        public void OpdaterVindue(xAkseKey xKey, yAkseKey yKey, DateTime tidsstempel)
+        {
+            if (tidsstempel != null)
+            {
+                simuleringsVindueController.OpdaterVindue(xKey, yKey, tidsstempel);
+            }else
+            {
+                SimuleringsListe = VisSimuleringsListe();
+                simuleringsVindueController.OpdaterVindue(xKey, yKey, SimuleringsListe.Last());
+            }
+        }
+        public SimuleringsVindue()
+        {
+            InitializeComponent();
+        }
+        
+
+     
     }
 }

@@ -63,5 +63,11 @@ namespace AbonnementsimuleringKlient
         {
             throw new NotImplementedException();
         }
+
+
+        public void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

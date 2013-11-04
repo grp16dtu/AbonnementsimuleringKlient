@@ -37,9 +37,9 @@ namespace AbonnementsimuleringKlient
             throw new NotImplementedException();
         }
 
-        public void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, string tidsStempel)
+        public void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel)
         {
-            throw new NotImplementedException();
+            this.DTO.HentSimulering(xKey, yKey, tidsStempel);
         }
 
         public List<string> HentXakse()
