@@ -79,6 +79,18 @@ namespace AbonnementsimuleringKlient
                 simuleringsVindueController.OpdaterVindue(xKey, yKey, SimuleringsListe.Last());
             }
         }
+
+
+        private void visBrugshistorikKnap_Click(object sender, EventArgs e)
+        {
+            simuleringsVindueController.OpenBrugerHisturikVindue();
+        }
+
+        private void visBrugerAdminKnap_Click(object sender, EventArgs e)
+        {
+            simuleringsVindueController.OpenBrugerAdminVindue();
+        }
+
         public SimuleringsVindue()
         {
             InitializeComponent();
