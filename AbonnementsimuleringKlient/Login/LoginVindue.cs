@@ -22,13 +22,13 @@ namespace AbonnementsimuleringKlient
         //TODO Ikke færdig
         private void LoginKnap_Klikket()
         {
-            if (controller.LoginVerificering(brugernavn.Text, kodeord.Text))
+            if (!controller.LoginVerificering(brugernavn.Text, kodeord.Text))
             {
-                //open main vindue
+                SkiftLabelStatus();
             }
             else
             {
-                SkiftLabelStatus();
+                //open main vindue
             }
         }
 
