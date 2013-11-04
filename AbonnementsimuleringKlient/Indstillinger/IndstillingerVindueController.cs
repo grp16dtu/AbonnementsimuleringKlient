@@ -8,25 +8,25 @@ namespace AbonnementsimuleringKlient
 {
     public class IndstillingerVindueController
     {
-        private IIndstillingerVindue indstillingerVindue;
-        private IEConomicCredentialsDAO eConomicCredentialsDAO;
+        private IIndstillingerVindue _indstillingerVindue;
+        private IEConomicCredentialsDAO _eConomicCredentialsDAO;
 
         public IndstillingerVindueController(IIndstillingerVindue indstillingerVindue, IEConomicCredentialsDAO eConomicCredentialsDAO)
         {
-            this.indstillingerVindue = indstillingerVindue;
-            this.eConomicCredentialsDAO = eConomicCredentialsDAO;
+            this._indstillingerVindue = indstillingerVindue;
+            this._eConomicCredentialsDAO = eConomicCredentialsDAO;
 
             indstillingerVindue.SetIndstillingerVindueController(this);
         }
 
         public void OpenVindue()
         {
-            indstillingerVindue.OpenVindue();
+            _indstillingerVindue.OpenVindue();
         }
 
         public void CloseVindue()
         {
-            indstillingerVindue.CloseVindue();
+            _indstillingerVindue.CloseVindue();
         }
     }
 }

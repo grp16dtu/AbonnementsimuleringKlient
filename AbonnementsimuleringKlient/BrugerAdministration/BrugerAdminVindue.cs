@@ -12,16 +12,22 @@ namespace AbonnementsimuleringKlient
 {
     public partial class BrugerAdminVindue : Form, IBrugerAdminVindue
     {
-        BrugerAdminVindueController brugerAdminVindueController;
-        private List<IBrugerDAO> medarbejderListe;
+        private BrugerAdminVindueController _controller;
+        private IndstillingerVindueController _indstillingerVindueController;
+        private List<IBrugerDAO> _medarbejderListe;
         public BrugerAdminVindue()
         {
             InitializeComponent();
         }
 
+        public void SetBrugerAdminVindueController(BrugerAdminVindueController controller)
+        {
+            this._controller = controller;
+        }
+
         private void instillinger_Click(object sender, EventArgs e)
         {
-
+            _controller.OpenIndstilleringVindue();
         }
 
         private void opretBruger_Click(object sender, EventArgs e)
@@ -48,7 +54,7 @@ namespace AbonnementsimuleringKlient
         private void OpdaterMedarbejderListe(Object sender, EventArgs e)
         {
             HentMedarbejderListe();
-            foreach(BrugerDAO bruger in medarbejderListe)
+            foreach(BrugerDAO bruger in _medarbejderListe)
             {
                 bruger.Changed += new EventHandler(OpdaterMedarbejderListe);
             }
@@ -81,19 +87,13 @@ namespace AbonnementsimuleringKlient
 
         public void HentMedarbejderListe()
         {
-            medarbejderListe = brugerAdminVindueController.medarbejderListe;
-            for(int i = 0; i < medarbejderListe.Count; i++)
+            _medarbejderListe = _controller.medarbejderListe;
+            for(int i = 0; i < _medarbejderListe.Count; i++)
             {
-                this.medarbejdere.Rows[i].Cells[0].Value = medarbejderListe[i].ID;
-                this.medarbejdere.Rows[i].Cells[1].Value = medarbejderListe[i].Fornavn + medarbejderListe[i].Efternavn;
+                this.medarbejdere.Rows[i].Cells[0].Value = _medarbejderListe[i].ID;
+                this.medarbejdere.Rows[i].Cells[1].Value = _medarbejderListe[i].Fornavn + _medarbejderListe[i].Efternavn;
             }
         }
-
-        public void SetBrugerAdminVindueController(BrugerAdminVindueController controller)
-        {
-            this.brugerAdminVindueController = controller;
-        }
-
 
         public void OpenVindue()
         {

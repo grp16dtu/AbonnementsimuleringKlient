@@ -12,7 +12,7 @@ namespace AbonnementsimuleringKlient
 {
     public partial class LoginVindue : Form, ILoginVindue
     {
-        private LoginVindueController controller;
+        private LoginVindueController _controller;
 
         public LoginVindue()
         {
@@ -49,7 +49,7 @@ namespace AbonnementsimuleringKlient
 
         public void SetLoginVindueController(LoginVindueController controller)
         {
-            this.controller = controller;
+            this._controller = controller;
         }
 
         private void LoginKnap_Klikket(object sender, EventArgs e)
@@ -60,9 +60,9 @@ namespace AbonnementsimuleringKlient
             }
             else
             {
-                if (controller.LoginVerificering(brugernavn.Text, kodeord.Text))
+                if (_controller.LoginVerificering(brugernavn.Text, kodeord.Text))
                 {
-                    controller.OpenSimuleringsVindue();
+                    _controller.OpenSimuleringsVindue();
                     CloseVindue();
                 }
                 else
