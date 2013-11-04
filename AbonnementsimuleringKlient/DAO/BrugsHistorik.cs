@@ -49,5 +49,6 @@ namespace AbonnementsimuleringKlient
                 throw new NotImplementedException();
             }
         }
+
     }
 }

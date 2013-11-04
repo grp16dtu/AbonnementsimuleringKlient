@@ -35,6 +35,10 @@ namespace AbonnementsimuleringKlient
 
             IndstillingerVindue indStillingerVindue = new IndstillingerVindue();
             IndstillingerVindueController indstillingerVindueController = new IndstillingerVindueController(indStillingerVindue, eConomicCredentialsDAO);
+
+            BrugsHistorik brugsHistorik = new BrugsHistorik();
+            BrugsHistorikVindue brugsHistorikVindue = new BrugsHistorikVindue();
+            BrugsHistorikVindueController brugsHistorikVindueController = new BrugsHistorikVindueController(brugsHistorikVindue, brugsHistorik);
         }
     }
 }

@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    interface IBrugsHistorikVindueController
+    interface IBrugsHistorikVindue
     {
         List<BrugsHistorik> HentBrugsHistorik();
 
-        void Id_klikket();
+        void SetBrugsHistorikVindueController(BrugsHistorikVindueController controller);
 
-        void TidsStempel_klikket();
-
-        void HistorikType_klikket();
+        void OpenVindue();
+        void CloseVindue();
     }
 }

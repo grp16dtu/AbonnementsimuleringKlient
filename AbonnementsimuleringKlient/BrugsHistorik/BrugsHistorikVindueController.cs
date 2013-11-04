@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    class BrugsHistorikVindueController : IBrugsHistorikVindueController
+    class BrugsHistorikVindueController
     {
-        private BrugsHistorikVindue brugsHistorikVindue;
+        private IBrugsHistorikVindue brugsHistorikVindue;
+        private IBrugsHistorik brugsHistorik;
+
+        public BrugsHistorikVindueController(IBrugsHistorikVindue brugsHistorikVindue, IBrugsHistorik brugsHistorik)
+        {
+            this.brugsHistorikVindue = brugsHistorikVindue;
+            this.brugsHistorik = brugsHistorik;
+        }
 
         public List<BrugsHistorik> HentBrugsHistorik()
         {
@@ -28,6 +35,16 @@ namespace AbonnementsimuleringKlient
         public void HistorikType_klikket()
         {
             throw new NotImplementedException();
+        }
+
+        public void OpenVindue()
+        {
+            brugsHistorikVindue.OpenVindue();
+        }
+
+        public void CloseVindue()
+        {
+            brugsHistorikVindue.CloseVindue();
         }
     }
 }

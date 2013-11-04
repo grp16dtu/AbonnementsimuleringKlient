@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace AbonnementsimuleringKlient
 {
-    public partial class BrugsHistorikVindue : Form
+    public partial class BrugsHistorikVindue : Form,IBrugsHistorikVindue
     {
+        private BrugsHistorikVindueController controller;
+
         public BrugsHistorikVindue()
         {
             InitializeComponent();
@@ -35,6 +37,21 @@ namespace AbonnementsimuleringKlient
         private void HistorikType_klikket()
         {
 
+        }
+
+        public void SetBrugsHistorikVindueController(BrugsHistorikVindueController controller)
+        {
+            this.controller = controller;
+        }
+
+        public void OpenVindue()
+        {
+            this.Show();
+        }
+
+        public void CloseVindue()
+        {
+            this.Hide();
         }
     }
 }
