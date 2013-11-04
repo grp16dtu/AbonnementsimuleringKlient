@@ -40,6 +40,7 @@ namespace AbonnementsimuleringKlient
             BrugsHistorikVindueController brugsHistorikVindueController = new BrugsHistorikVindueController(brugsHistorikVindue, brugsHistorik);
 
             loginVindueController.SetControllers(simuleringsVindueController);
+            simuleringsVindueController.SetControllers(brugsHistorikVindueController, brugerAdminVindueController);
 
             Application.Run(loginVindue);
         }

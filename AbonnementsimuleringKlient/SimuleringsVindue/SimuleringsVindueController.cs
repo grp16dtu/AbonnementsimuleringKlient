@@ -10,6 +10,8 @@ namespace AbonnementsimuleringKlient
     {
         ISimuleringsVindue SimuleringsVindue { get; set; }
         ISimuleringsDAO SimuleringsDAO { get; set; }
+        private BrugsHistorikVindueController _brugsHisturikController; 
+        private BrugerAdminVindueController _brugerAdminVindueController;
 
         public SimuleringsVindueController(ISimuleringsVindue simuleringsVindue, ISimuleringsDAO simuleringsDAO)
         {
@@ -25,6 +27,22 @@ namespace AbonnementsimuleringKlient
         public void CloseVindue()
         {
             SimuleringsVindue.CloseVindue();
+        }
+
+        public void SetControllers(BrugsHistorikVindueController brugsHisturikController, BrugerAdminVindueController brugerAdminVindueController)
+        {
+            this._brugsHisturikController = brugsHisturikController;
+            this._brugerAdminVindueController = brugerAdminVindueController;
+        }
+
+        public void OpenBrugerHisturikVindue()
+        {
+            _brugsHisturikController.OpenVindue();
+        }
+
+        public void OpenBrugerAdminVindue()
+        {
+            _brugerAdminVindueController.OpenVindue();
         }
     }      
 }
