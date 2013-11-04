@@ -50,6 +50,8 @@ namespace AbonnementsimuleringKlient
             if (controller.LoginVerificering(brugernavn.Text, kodeord.Text))
             {
                 //open main vindue
+
+                CloseVindue();
             }
             else
             {
