@@ -95,13 +95,13 @@ namespace AbonnementsimuleringKlient
             throw new NotImplementedException();
         }
 
-        public ILoginBruger LoginVerificering(ILoginBruger bruger)
+        public IBrugerDAO LoginVerificering(IBrugerDAO bruger)
         {
-
+                                                                 //SKAL SLETTES             //SKAL SLETE`TES
             response = httpKlient.GetAsync("API/validerBruger/" + bruger.Brugernavn + "/" + bruger.Kodeord).Result;
             if(response.IsSuccessStatusCode)
             {
-                return response.Content.ReadAsAsync<ILoginBruger>().Result;
+                return response.Content.ReadAsAsync<IBrugerDAO>().Result;
             }
             else 
             {

@@ -34,8 +34,7 @@ namespace AbonnementsimuleringKlient
 
         public bool LoginVerificering(string brugernavn, string kodeord)
         {
-            _aktuelBruger = new LoginBruger(brugernavn, kodeord);
-            _aktuelBruger =_dto.LoginVerificering(_aktuelBruger);
+            _aktuelBruger =_dto.LoginVerificering(brugernavn, kodeord);
             return (_aktuelBruger != null);
         }
     

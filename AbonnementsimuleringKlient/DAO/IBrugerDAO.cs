@@ -10,9 +10,13 @@ namespace AbonnementsimuleringKlient
     {
         string Fornavn { get; set; }
         string Efternavn { get; set; }
-        int ID { get; set; }
-        bool ansvarlig { get; set; }
+        int MedarbejderNummer { get; set; }
+        bool Ansvarlig { get; set; }
+        //email bruges som unik identifier for brugernavn
+        string Brugernavn { get; set; }
+        string Kodeord { get; set; }
 
         event EventHandler Changed;
+
     }
 }
