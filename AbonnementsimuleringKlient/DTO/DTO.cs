@@ -106,5 +106,20 @@ namespace AbonnementsimuleringKlient
             }
             
         }
+
+
+        public ISimuleringsDAO HentNyesteSimulering(string xAkse, string yAkse)
+        {
+            //TODO: TEST og ret
+            response = httpKlient.GetAsync("API/bruger/hent/?xakse=" + xAkse + "&yakse=" + yAkse).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return response.Content.ReadAsAsync<ISimuleringsDAO>().Result;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

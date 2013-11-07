@@ -117,7 +117,7 @@ namespace AbonnementsimuleringKlient
 
         private void visSimuleringKnap_Click(object sender, EventArgs e)
         {
-            if(simuleringsVindueController
+            //TODO: implement
         }
         
 
