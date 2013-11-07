@@ -53,6 +53,9 @@ namespace AbonnementsimuleringKlient
             chart1.Titles.Add(xAkseKey + "/" + yAkseKey);
             for(int i = 0; i< xAkse.Count; i++)
             {
+                //seriens navn (det er står ude ved den lille firkant)
+                //serie.Name = "";
+
                 //Datapunkterne skal laegges her i
                 DataPoint data = new DataPoint();
                 //dataen tilfoejes en af gangen, der skal være lige mange x, som y vaerdien
