@@ -118,6 +118,7 @@
             this.visSimuleringKnap.TabIndex = 6;
             this.visSimuleringKnap.Text = "Vis";
             this.visSimuleringKnap.UseVisualStyleBackColor = true;
+            this.visSimuleringKnap.Click += new System.EventHandler(this.visSimuleringKnap_Click);
             // 
             // KorNy
             // 

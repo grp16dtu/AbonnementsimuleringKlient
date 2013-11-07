@@ -45,6 +45,10 @@ namespace AbonnementsimuleringKlient
         public void VisValgteSimulering(string xAkseKey, string yAkseKey, List<string> xAkse, List<double> yAkse)
         {
             Series serie = new Series();
+
+            //fjerner den gamle data, hvis der er noget
+            chart1.Titles.Clear();
+
             //serie.Name = xAkseKey + "/" + yAkseKey;
             chart1.Titles.Add(xAkseKey + "/" + yAkseKey);
             for(int i = 0; i< xAkse.Count; i++)
@@ -63,6 +67,10 @@ namespace AbonnementsimuleringKlient
                 //tilfoejer dataen til serien
                 serie.Points.Add(data);
             }
+
+            //fjerner den gamle data, hvis der er noget
+            chart1.Series.Clear();
+
             //tilfoejer serien til grafen
             chart1.Series.Add(serie);
         }
