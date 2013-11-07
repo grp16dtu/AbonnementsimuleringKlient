@@ -13,11 +13,13 @@ namespace AbonnementsimuleringKlient
         private BrugsHistorikVindueController _brugsHistorikController; 
         private BrugerAdminVindueController _brugerAdminVindueController;
         private IBrugerDAO _aktuelBruger;
+        private IDTO _dto;
 
         public SimuleringsVindueController(ISimuleringsVindue simuleringsVindue, ISimuleringsDAO simuleringsDAO)
         {
             this._simuleringsVindue = simuleringsVindue;
             this._simuleringsDAO = simuleringsDAO;
+            this._dto = DTO.Instance;
 
             _simuleringsVindue.SetSimuleringsVindueController(this);
         }
@@ -88,6 +90,25 @@ namespace AbonnementsimuleringKlient
         public void OpenBrugerAdminVindue()
         {
             _brugerAdminVindueController.OpenVindue(_aktuelBruger);
+        }
+
+        public void BygNyesteSimuleringsDAO(string xAkse, string yAkse)
+        {
+            //TODO: OPTIMER!!
+            _simuleringsDAO.XakseAfdeling = _dto.HentNyesteSimulering("Afdeling", "Stk").XakseAfdeling;
+            _simuleringsDAO.XakseDebitor = _dto.HentNyesteSimulering("Debitor", "Stk").XakseDebitor;
+            _simuleringsDAO.XakseTid = _dto.HentNyesteSimulering("Tid", "Stk").XakseTid;
+            _simuleringsDAO.XakseVare = _dto.HentNyesteSimulering("Vare", "Stk").XakseVare;
+
+            _simuleringsDAO.YakseStkAfdeling = _dto.HentNyesteSimulering("Afdeling", "Stk").YakseStkAfdeling;
+            _simuleringsDAO.YakseStkDebitor = _dto.HentNyesteSimulering("Debitor", "Stk").YakseStkDebitor;
+            _simuleringsDAO.YakseStkTid = _dto.HentNyesteSimulering("Tid", "Stk").YakseStkTid;
+            _simuleringsDAO.YakseStkVare = _dto.HentNyesteSimulering("Vare", "Stk").YakseStkVare;
+
+            _simuleringsDAO.YaksePrisAfdeling = _dto.HentNyesteSimulering("Afdeling", "Pris").YaksePrisAfdeling;
+            _simuleringsDAO.YaksePrisDebitor = _dto.HentNyesteSimulering("Debitor", "Pris").YaksePrisDebitor;
+            _simuleringsDAO.YaksePrisTid = _dto.HentNyesteSimulering("Tid", "Pris").YaksePrisTid;
+            _simuleringsDAO.YaksePrisVare = _dto.HentNyesteSimulering("Vare", "Pris").YaksePrisVare;
         }
     }      
 }

@@ -29,7 +29,7 @@ namespace AbonnementsimuleringKlient
 
         public void OpenSimuleringsVindue()
         {
-            _simuleringsVindueController.OpenVindue(/*_aktuelBruger*/);
+            _simuleringsVindueController.OpenVindue(_aktuelBruger);
         }
 
         public bool LoginVerificering(string brugernavn, string kodeord)
