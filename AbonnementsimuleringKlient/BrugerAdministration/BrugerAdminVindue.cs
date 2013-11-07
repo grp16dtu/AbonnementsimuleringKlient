@@ -32,7 +32,18 @@ namespace AbonnementsimuleringKlient
 
         private void opretBruger_Click(object sender, EventArgs e)
         {
-
+            if (email.Text.Contains(":"))
+            {
+                this.colonWar.BackColor = Color.Red;
+                this.colonWar.Text = "Der må ikke være kolon i Email adressen";
+            }
+            else
+            {
+                this.colonWar.Text = "";
+                //TODO: Skal laves færdig 
+            }
+                
+   
         }
 
         private void sletBruger_Click(object sender, EventArgs e)

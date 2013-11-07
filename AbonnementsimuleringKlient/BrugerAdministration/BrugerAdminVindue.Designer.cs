@@ -42,26 +42,29 @@
             this.medarbejdere = new System.Windows.Forms.DataGridView();
             this.IDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NavnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.TextBox();
+            this.colonWar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.medarbejdere)).BeginInit();
             this.SuspendLayout();
             // 
             // fornavn
             // 
-            this.fornavn.Location = new System.Drawing.Point(138, 28);
+            this.fornavn.Location = new System.Drawing.Point(138, 67);
             this.fornavn.Name = "fornavn";
             this.fornavn.Size = new System.Drawing.Size(139, 20);
             this.fornavn.TabIndex = 1;
             // 
             // efternavn
             // 
-            this.efternavn.Location = new System.Drawing.Point(138, 79);
+            this.efternavn.Location = new System.Drawing.Point(138, 112);
             this.efternavn.Name = "efternavn";
             this.efternavn.Size = new System.Drawing.Size(139, 20);
             this.efternavn.TabIndex = 2;
             // 
             // medarbejdernummer
             // 
-            this.medarbejdernummer.Location = new System.Drawing.Point(138, 132);
+            this.medarbejdernummer.Location = new System.Drawing.Point(138, 156);
             this.medarbejdernummer.Name = "medarbejdernummer";
             this.medarbejdernummer.Size = new System.Drawing.Size(139, 20);
             this.medarbejdernummer.TabIndex = 3;
@@ -69,7 +72,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(138, 12);
+            this.label1.Location = new System.Drawing.Point(135, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 4;
@@ -78,7 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(138, 63);
+            this.label2.Location = new System.Drawing.Point(135, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 5;
@@ -87,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(138, 116);
+            this.label3.Location = new System.Drawing.Point(135, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 6;
@@ -95,7 +98,7 @@
             // 
             // instillinger
             // 
-            this.instillinger.Location = new System.Drawing.Point(283, 28);
+            this.instillinger.Location = new System.Drawing.Point(283, 67);
             this.instillinger.Name = "instillinger";
             this.instillinger.Size = new System.Drawing.Size(108, 23);
             this.instillinger.TabIndex = 7;
@@ -105,7 +108,7 @@
             // 
             // opretBruger
             // 
-            this.opretBruger.Location = new System.Drawing.Point(283, 79);
+            this.opretBruger.Location = new System.Drawing.Point(283, 112);
             this.opretBruger.Name = "opretBruger";
             this.opretBruger.Size = new System.Drawing.Size(108, 23);
             this.opretBruger.TabIndex = 8;
@@ -115,7 +118,7 @@
             // 
             // sletBruger
             // 
-            this.sletBruger.Location = new System.Drawing.Point(283, 130);
+            this.sletBruger.Location = new System.Drawing.Point(283, 154);
             this.sletBruger.Name = "sletBruger";
             this.sletBruger.Size = new System.Drawing.Size(108, 23);
             this.sletBruger.TabIndex = 9;
@@ -136,7 +139,7 @@
             // ansvarlig
             // 
             this.ansvarlig.AutoSize = true;
-            this.ansvarlig.Location = new System.Drawing.Point(138, 167);
+            this.ansvarlig.Location = new System.Drawing.Point(138, 191);
             this.ansvarlig.Name = "ansvarlig";
             this.ansvarlig.Size = new System.Drawing.Size(69, 17);
             this.ansvarlig.TabIndex = 11;
@@ -171,11 +174,38 @@
             this.NavnColumn.Name = "NavnColumn";
             this.NavnColumn.ReadOnly = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(135, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(101, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Email ( brugernavn )";
+            // 
+            // email
+            // 
+            this.email.Location = new System.Drawing.Point(138, 26);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(253, 20);
+            this.email.TabIndex = 13;
+            // 
+            // colonWar
+            // 
+            this.colonWar.AutoSize = true;
+            this.colonWar.Location = new System.Drawing.Point(138, 211);
+            this.colonWar.Name = "colonWar";
+            this.colonWar.Size = new System.Drawing.Size(0, 13);
+            this.colonWar.TabIndex = 15;
+            // 
             // BrugerAdminVindue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 301);
+            this.Controls.Add(this.colonWar);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.email);
             this.Controls.Add(this.medarbejdere);
             this.Controls.Add(this.ansvarlig);
             this.Controls.Add(this.gemBruger);
@@ -213,5 +243,8 @@
         private System.Windows.Forms.DataGridView medarbejdere;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn NavnColumn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.Label colonWar;
     }
 }
