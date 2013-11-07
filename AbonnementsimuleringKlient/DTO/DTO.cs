@@ -37,8 +37,6 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-
-
         public List<IBrugerDAO> HentMedarbejderList()
         {
             throw new NotImplementedException();
@@ -95,13 +93,12 @@ namespace AbonnementsimuleringKlient
         //    throw new NotImplementedException();
         //}
 
-        public IBrugerDAO LoginVerificering(IBrugerDAO bruger)
+        public IBrugerDAO LoginVerificering(string brugernavn, string kodeord)
         {
-                                                                 //SKAL SLETTES             //SKAL SLETE`TES
-            response = httpKlient.GetAsync("API/validerBruger/" + bruger.Brugernavn + "/" + bruger.Kodeord).Result;
+            response = httpKlient.GetAsync("API/bruger/hent/?brugernavn=" + brugernavn + "&kodeord=" + kodeord).Result;
             if(response.IsSuccessStatusCode)
             {
-                return response.Content.ReadAsAsync<IBrugerDAO>().Result;
+                return response.Content.ReadAsAsync<BrugerDAO>().Result;
             }
             else 
             {

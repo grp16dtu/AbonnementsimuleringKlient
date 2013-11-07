@@ -11,7 +11,7 @@ namespace AbonnementsimuleringKlient
         private LoginVindue _loginVindue;
         private SimuleringsVindueController _simuleringsVindueController;
         private IDTO _dto;
-        private ILoginBruger _aktuelBruger;
+        private IBrugerDAO _aktuelBruger;
 
         public LoginVindueController(LoginVindue loginVindue, IEConomicCredentialsDAO eConomicCredentialsDAO)
         {
@@ -29,7 +29,7 @@ namespace AbonnementsimuleringKlient
 
         public void OpenSimuleringsVindue()
         {
-            _simuleringsVindueController.OpenVindue();
+            _simuleringsVindueController.OpenVindue(/*_aktuelBruger*/);
         }
 
         public bool LoginVerificering(string brugernavn, string kodeord)
@@ -50,12 +50,8 @@ namespace AbonnementsimuleringKlient
 
         public string KrypterKodeord(string kodeord)
         {
-
+            return "";
         }
         
-        public bool LoginVerificering(ILoginBruger bruger)
-        {
-            bruger = _dto.LoginVerificering(bruger);
-        }
     }
 }

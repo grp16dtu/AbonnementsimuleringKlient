@@ -10,15 +10,23 @@ namespace AbonnementsimuleringKlient
         public event EventHandler Changed;
 
         private IDTO DTO;
+        private string _fornavn;
+        private string _efternavn;
+        private int _medarbejderNummer;
+        private bool _ansvarlig;
+        private string _brugernavn;
+        private string _kodeord;
+
+
         public string Fornavn
         {
             get
             {
-                return Fornavn;
+                return _fornavn;
             }
             set
             {
-                Fornavn = value;
+                _fornavn = value;
                 OnChanged(EventArgs.Empty);
             }
         }
@@ -27,11 +35,11 @@ namespace AbonnementsimuleringKlient
         {
             get
             {
-                return Efternavn;
+                return _efternavn;
             }
             set
             {
-                Efternavn = value;
+                _efternavn = value;
                 OnChanged(EventArgs.Empty);
             }
         }
@@ -39,24 +47,24 @@ namespace AbonnementsimuleringKlient
         { 
             get
             {
-                return MedarbejderNummer;
+                return _medarbejderNummer;
             }
             set
             {
-                MedarbejderNummer = value;
+                _medarbejderNummer = value;
                 OnChanged(EventArgs.Empty);
             }
         }
 
-        public bool ansvarlig 
+        public bool Ansvarlig 
         { 
             get
             {
-                return ansvarlig;
+                return _ansvarlig;
             }
             set
             {
-                ansvarlig = value;
+                _ansvarlig = value;
                 OnChanged(EventArgs.Empty);
             }
         }
@@ -66,7 +74,7 @@ namespace AbonnementsimuleringKlient
             this.Fornavn = fornavn;
             this.Efternavn = efternavn;
             this.MedarbejderNummer = id;
-            this.ansvarlig = ansvarlig;
+            this.Ansvarlig = ansvarlig;
         }
 
         protected virtual void OnChanged(EventArgs e)
@@ -74,6 +82,33 @@ namespace AbonnementsimuleringKlient
             if (Changed != null)
             {
                 Changed(this, e);
+            }
+        }
+
+
+        public string Brugernavn
+        {
+            get
+            {
+                return _brugernavn;
+            }
+            set
+            {
+                _brugernavn = value;
+                OnChanged(EventArgs.Empty);
+            }
+        }
+
+        public string Kodeord
+        {
+            get
+            {
+                return _kodeord;
+            }
+            set
+            {
+                _kodeord = value;
+                OnChanged(EventArgs.Empty);
             }
         }
     }
