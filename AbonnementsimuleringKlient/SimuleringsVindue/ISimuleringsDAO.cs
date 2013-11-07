@@ -8,12 +8,18 @@ namespace AbonnementsimuleringKlient
 {
     public interface ISimuleringsDAO
     {
-        List<string> HentXakse();
-        List<double> HentYakse();
-        void GenererNySimulering();
-        List<string> HentSimuleringsListe();
-        List<string> Xakse { get;}
-        List<double> Yakse { get;}
-      //  void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel);
+        List<DateTime> SimuleringsListe { get; set; }
+        List<string> XakseTid { get; set; }
+        List<string> XakseAfdeling { get; set; }
+        List<string> XakseDebitor { get; set; }
+        List<string> XakseVare { get; set; }
+        List<double> YakseStkTid { get; set; }
+        List<double> YaksePrisTid { get; set; }
+        List<double> YakseStkAfdeling { get; set; }
+        List<double> YaksePrisAfdeling { get; set; }
+        List<double> YakseStkDebitor { get; set; }
+        List<double> YaksePrisDebitor { get; set; }
+        List<double> YakseStkVare { get; set; }
+        List<double> YaksePrisVare { get; set; }
     }
 }

@@ -8,27 +8,29 @@ namespace AbonnementsimuleringKlient
 {
     public class SimuleringsVindueController
     {
-        ISimuleringsVindue SimuleringsVindue { get; set; }
-        ISimuleringsDAO SimuleringsDAO { get; set; }
+        private ISimuleringsVindue _simuleringsVindue;
+        private ISimuleringsDAO _simuleringsDAO;
         private BrugsHistorikVindueController _brugsHistorikController; 
         private BrugerAdminVindueController _brugerAdminVindueController;
+        private IBrugerDAO _aktuelBruger;
 
         public SimuleringsVindueController(ISimuleringsVindue simuleringsVindue, ISimuleringsDAO simuleringsDAO)
         {
-            this.SimuleringsVindue = simuleringsVindue;
-            this.SimuleringsDAO = simuleringsDAO;
+            this._simuleringsVindue = simuleringsVindue;
+            this._simuleringsDAO = simuleringsDAO;
 
-            SimuleringsVindue.SetSimuleringsVindueController(this);
+            _simuleringsVindue.SetSimuleringsVindueController(this);
         }
 
-        public void OpenVindue() 
+        public void OpenVindue(IBrugerDAO bruger) 
         {
-            SimuleringsVindue.OpenVindue();
+            this._simuleringsVindue.OpenVindue();
+            this._aktuelBruger = bruger;
         }
 
         public void CloseVindue()
         {
-            SimuleringsVindue.CloseVindue();
+            _simuleringsVindue.CloseVindue();
         }
 
         public void SetControllers(BrugsHistorikVindueController brugsHisturikController, BrugerAdminVindueController brugerAdminVindueController)
@@ -36,20 +38,56 @@ namespace AbonnementsimuleringKlient
             this._brugsHistorikController = brugsHisturikController;
             this._brugerAdminVindueController = brugerAdminVindueController;
         }
-        /*
-        internal void OpdaterVindue(AbonnementsimuleringKlient.SimuleringsVindue.xAkseKey xKey, AbonnementsimuleringKlient.SimuleringsVindue.yAkseKey yKey, DateTime tidsstempel)
+
+        internal void OpdaterVindue(string xKey, string yKey, DateTime tidsstempel)
         {
-            SimuleringsDAO.HentSimulering(xKey, yKey, tidsstempel);
+            switch(yKey)
+            {
+                case "Stk":
+                    switch(xKey)
+                    {
+                        case "Tid":
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseTid, _simuleringsDAO.YakseStkTid);
+                            break;
+                        case "Vare":
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseVare, _simuleringsDAO.YakseStkVare);
+                            break;
+                        case "Debitor":
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseDebitor, _simuleringsDAO.YakseStkDebitor);
+                            break;
+                        case "Afdeling":
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseAfdeling, _simuleringsDAO.YakseStkAfdeling);
+                            break;
+                    }
+                    break;
+                case "Pris":
+                    switch (xKey)
+                    {
+                        case "Tid":
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseTid, _simuleringsDAO.YaksePrisTid);
+                            break;
+                        case "Vare":
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseVare, _simuleringsDAO.YaksePrisVare);
+                            break;
+                        case "Debitor":
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseDebitor, _simuleringsDAO.YaksePrisDebitor);
+                            break;
+                        case "Afdeling":
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseAfdeling, _simuleringsDAO.YaksePrisAfdeling);
+                            break;
+                    }
+                    break;
+            }
         }
-         */
-        public void OpenBrugerHisturikVindue()
+         
+        public void OpenBrugerHistorikVindue()
         {
-            _brugsHistorikController.OpenVindue();
+            _brugsHistorikController.OpenVindue(_aktuelBruger);
         }
 
         public void OpenBrugerAdminVindue()
         {
-            _brugerAdminVindueController.OpenVindue();
+            _brugerAdminVindueController.OpenVindue(_aktuelBruger);
         }
     }      
 }

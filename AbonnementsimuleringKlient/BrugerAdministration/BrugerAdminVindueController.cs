@@ -9,7 +9,7 @@ namespace AbonnementsimuleringKlient
     public class BrugerAdminVindueController
     {
         private IBrugerAdminVindue _brugerAdminVindue;
-        private IBrugerDAO _brugerDAO;
+        private IBrugerDAO _aktuelBruger;
         private IndstillingerVindueController _indstillingerVindueController;
 
 
@@ -32,9 +32,10 @@ namespace AbonnementsimuleringKlient
             _indstillingerVindueController.OpenVindue();
         }
 
-        public void OpenVindue()
+        public void OpenVindue(IBrugerDAO bruger)
         {
-            _brugerAdminVindue.OpenVindue();
+            this._brugerAdminVindue.OpenVindue();
+            this._aktuelBruger = bruger;
         }
 
         public void CloseVindue()

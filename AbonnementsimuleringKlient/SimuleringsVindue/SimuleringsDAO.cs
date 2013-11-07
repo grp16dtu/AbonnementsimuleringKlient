@@ -8,48 +8,38 @@ namespace AbonnementsimuleringKlient
 {
     public class SimuleringsDAO : ISimuleringsDAO
     {
-        private IDTO DTO;
+        public List<DateTime> SimuleringsListe { get; set; }
+        public List<string> XakseTid { get; set; }
 
-        public List<string> Xakse
-        {
-            get;
-            private set;
-        }
+        public List<string> XakseAfdeling { get; set; }
+        
+        public List<string> XakseDebitor{ get; set; }
+      
 
-        public List<double> Yakse
-        {
-            get;
-            private set;
-        }
+        public List<string> XakseVare{ get; set; }
+      
+        public List<double> YakseStkTid{ get; set; }
+     
+        public List<double> YaksePrisTid{ get; set; }
+     
 
-        public SimuleringsDAO()
-        {
-            //this.DTO = DTO.Instance;    
-        }
+        public List<double> YakseStkAfdeling{ get; set; }
+        
 
-        public void GenererNySimulering()
-        {
-            throw new NotImplementedException();
-        }
+        public List<double> YaksePrisAfdeling{ get; set; }
+        
 
-        public List<string> HentSimuleringsListe()
-        {
-            throw new NotImplementedException();
-        }
-        /*
-        public void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel)
-        {
-          //  this.DTO.HentSimulering(xKey, yKey, tidsStempel);
-        }
-        */
-        public List<string> HentXakse()
-        {
-            throw new NotImplementedException();
-        }
+        public List<double> YakseStkDebitor{ get; set; }
+       
+        public List<double> YaksePrisDebitor{ get; set; }
+       
 
-        public List<double> HentYakse()
-        {
-            throw new NotImplementedException();
-        }
+        public List<double> YakseStkVare{ get; set; }
+
+
+        public List<double> YaksePrisVare { get; set; }
+
+
+      
     }
 }

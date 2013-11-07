@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AbonnementsimuleringKlient
 {
@@ -15,8 +16,6 @@ namespace AbonnementsimuleringKlient
         private SimuleringsVindueController simuleringsVindueController;
         public string[] yAkseKey = new string[] {"Stk", "Pris"};
         public string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
-        //public xAkseKey xKey { get; set; }
-        //public yAkseKey yKey { get; set; }
         public DateTime Tidsstempel { get; set; }
         public List<DateTime> SimuleringsListe; 
         public void SetSimuleringsVindueController(SimuleringsVindueController controller)
@@ -24,7 +23,9 @@ namespace AbonnementsimuleringKlient
             this.simuleringsVindueController = controller;
 
             comboBox1.Items.AddRange(yAkseKey);
+            comboBox1.DisplayMember = yAkseKey[0];
             comboBox2.Items.AddRange(xAkseKey);
+            comboBox2.DisplayMember = xAkseKey[0];
 
 
            // OpdaterVindue(xKey, yKey, Tidsstempel);
@@ -42,9 +43,18 @@ namespace AbonnementsimuleringKlient
             throw new NotImplementedException();
         }
 
-        public SimuleringsDAO VisValgteSimulering(string tidsstempel)
+        public void VisValgteSimulering(string xAkseKey, string yAkseKey, List<string> xAkse, List<double> yAkse)
         {
-            throw new NotImplementedException();
+            //TODO: Kik over om det reelt virker
+            for(int i = 0; i<xAkse.Count;i++)
+            {
+                Series serie = new Series("test");
+
+                serie.ChartType = SeriesChartType.RangeColumn;
+                serie.Points.Add(yAkse[i]);
+
+                chart1.Series.Add(serie);
+            }
         }
 
         public void GenererNySimulering(int index)
@@ -92,7 +102,7 @@ namespace AbonnementsimuleringKlient
 
         private void visBrugshistorikKnap_Click(object sender, EventArgs e)
         {
-            simuleringsVindueController.OpenBrugerHisturikVindue();
+            simuleringsVindueController.OpenBrugerHistorikVindue();
         }
 
         private void visBrugerAdminKnap_Click(object sender, EventArgs e)

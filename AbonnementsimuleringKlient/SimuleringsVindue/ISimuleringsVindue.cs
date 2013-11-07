@@ -9,7 +9,7 @@ namespace AbonnementsimuleringKlient
     public interface ISimuleringsVindue
     {
         List<DateTime> VisSimuleringsListe();
-        SimuleringsDAO VisValgteSimulering(string tidsstempel);
+        void VisValgteSimulering(string xAkseKey, string yAkseKey, List<string> xAkse, List<double> yAkse);
         void GenererNySimulering(int index);
         void BrugerAdministration();
         void XAkse();
