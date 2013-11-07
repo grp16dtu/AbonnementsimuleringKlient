@@ -42,7 +42,7 @@ namespace AbonnementsimuleringKlient
             loginVindueController.SetControllers(simuleringsVindueController);
             simuleringsVindueController.SetControllers(brugsHistorikVindueController, brugerAdminVindueController);
             brugerAdminVindueController.SetControllers(indstillingerVindueController);
-
+            
             Application.Run(loginVindue);
 
         }

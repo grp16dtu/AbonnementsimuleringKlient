@@ -106,6 +106,8 @@
             this.Controls.Add(this.economicKodeord);
             this.Controls.Add(this.economicBrugernavn);
             this.Controls.Add(this.economicAftalenummer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "IndstillingerVindue";
             this.Text = "Indstillinger";
             this.ResumeLayout(false);

@@ -12,7 +12,7 @@ namespace AbonnementsimuleringKlient
 {
     public partial class BrugsHistorikVindue : Form,IBrugsHistorikVindue
     {
-        private BrugsHistorikVindueController controller;
+        private BrugsHistorikVindueController _controller;
 
         public BrugsHistorikVindue()
         {
@@ -41,7 +41,14 @@ namespace AbonnementsimuleringKlient
 
         public void SetBrugsHistorikVindueController(BrugsHistorikVindueController controller)
         {
-            this.controller = controller;
+            this._controller = controller;
+            this.FormClosing += new FormClosingEventHandler(Closing_From);
+        }
+
+        private void Closing_From(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
 
         public void OpenVindue()

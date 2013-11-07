@@ -23,6 +23,13 @@ namespace AbonnementsimuleringKlient
         public void SetBrugerAdminVindueController(BrugerAdminVindueController controller)
         {
             this._controller = controller;
+            this.FormClosing += new FormClosingEventHandler(Closing_From);
+        }
+
+        private void Closing_From(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
 
         private void instillinger_Click(object sender, EventArgs e)

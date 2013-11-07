@@ -62,6 +62,7 @@
             // 
             // tidsIntervalValg
             // 
+            this.tidsIntervalValg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tidsIntervalValg.FormattingEnabled = true;
             this.tidsIntervalValg.Location = new System.Drawing.Point(12, 12);
             this.tidsIntervalValg.Name = "tidsIntervalValg";
@@ -70,6 +71,7 @@
             // 
             // historikTypeValg
             // 
+            this.historikTypeValg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.historikTypeValg.FormattingEnabled = true;
             this.historikTypeValg.Location = new System.Drawing.Point(234, 12);
             this.historikTypeValg.Name = "historikTypeValg";
@@ -78,6 +80,7 @@
             // 
             // idValg
             // 
+            this.idValg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.idValg.FormattingEnabled = true;
             this.idValg.Location = new System.Drawing.Point(460, 12);
             this.idValg.Name = "idValg";
@@ -95,6 +98,8 @@
             this.Controls.Add(this.id);
             this.Controls.Add(this.historikType);
             this.Controls.Add(this.tidsInterval);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "BrugsHistorikVindue";
             this.Text = "BrugsHistorikVindue";
             this.ResumeLayout(false);
