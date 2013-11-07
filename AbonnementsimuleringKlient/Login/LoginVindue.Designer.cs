@@ -101,6 +101,8 @@
             this.Controls.Add(this.logindKnap);
             this.Controls.Add(this.kodeord);
             this.Controls.Add(this.brugernavn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "LoginVindue";
             this.Text = "Logind";
             this.ResumeLayout(false);

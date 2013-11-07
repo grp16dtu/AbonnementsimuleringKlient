@@ -23,10 +23,9 @@ namespace AbonnementsimuleringKlient
             this.simuleringsVindueController = controller;
 
             comboBox1.Items.AddRange(yAkseKey);
-            comboBox1.DisplayMember = yAkseKey[0];
+            comboBox1.SelectedIndex = 0;
             comboBox2.Items.AddRange(xAkseKey);
-            comboBox2.DisplayMember = xAkseKey[0];
-
+            comboBox2.SelectedIndex = 0;
 
            // OpdaterVindue(xKey, yKey, Tidsstempel);
 
