@@ -106,6 +106,9 @@ namespace AbonnementsimuleringKlient
         public void HentMedarbejderListe()
         {
             _medarbejderListe = _controller.medarbejderListe;
+
+            _medarbejderListe = new List<IBrugerDAO>(); //skal laves om og i Controlleren, men af en eller anden grund er der ændret noget der får den til ik at blive oprettet nogle steder
+
             for(int i = 0; i < _medarbejderListe.Count; i++)
             {
                 this.medarbejdere.Rows[i].Cells[0].Value = _medarbejderListe[i].MedarbejderNummer;
