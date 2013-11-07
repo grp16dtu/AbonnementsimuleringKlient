@@ -101,7 +101,7 @@ namespace AbonnementsimuleringKlient
             _medarbejderListe = _controller.medarbejderListe;
             for(int i = 0; i < _medarbejderListe.Count; i++)
             {
-                this.medarbejdere.Rows[i].Cells[0].Value = _medarbejderListe[i].ID;
+                this.medarbejdere.Rows[i].Cells[0].Value = _medarbejderListe[i].MedarbejderNummer;
                 this.medarbejdere.Rows[i].Cells[1].Value = _medarbejderListe[i].Fornavn + _medarbejderListe[i].Efternavn;
             }
         }

@@ -44,6 +44,7 @@ namespace AbonnementsimuleringKlient
             brugerAdminVindueController.SetControllers(indstillingerVindueController);
 
             Application.Run(loginVindue);
+
         }
     }
 }

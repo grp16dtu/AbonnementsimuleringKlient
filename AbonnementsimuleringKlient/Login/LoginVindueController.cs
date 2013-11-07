@@ -8,14 +8,16 @@ namespace AbonnementsimuleringKlient
 {
     public class LoginVindueController
     {
-        private IEConomicCredentialsDAO eConomicCredentialsDAO;
         private LoginVindue _loginVindue;
         private SimuleringsVindueController _simuleringsVindueController;
+        private IDTO _dto;
+        private ILoginBruger _aktuelBruger;
 
         public LoginVindueController(LoginVindue loginVindue, IEConomicCredentialsDAO eConomicCredentialsDAO)
         {
-            this.eConomicCredentialsDAO = eConomicCredentialsDAO;
             this._loginVindue = loginVindue;
+            this._dto = DTO.Instance;
+            
 
             loginVindue.SetLoginVindueController(this);
         }
@@ -32,9 +34,8 @@ namespace AbonnementsimuleringKlient
 
         public bool LoginVerificering(string brugernavn, string kodeord)
         {
-            eConomicCredentialsDAO.Brugernavn = brugernavn;
-            eConomicCredentialsDAO.Kodeord = kodeord;
-            return eConomicCredentialsDAO.LoginVerificering();
+            _aktuelBruger =_dto.LoginVerificering(brugernavn, kodeord);
+            return (_aktuelBruger != null);
         }
     
         public void OpenVindue()
@@ -45,6 +46,16 @@ namespace AbonnementsimuleringKlient
         public void CloseVindue()
         {
             _loginVindue.CloseVindue();
+        }
+
+        public string KrypterKodeord(string kodeord)
+        {
+
+        }
+        
+        public bool LoginVerificering(ILoginBruger bruger)
+        {
+            bruger = _dto.LoginVerificering(bruger);
         }
     }
 }

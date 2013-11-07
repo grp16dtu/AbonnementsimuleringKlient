@@ -35,15 +35,15 @@ namespace AbonnementsimuleringKlient
                 OnChanged(EventArgs.Empty);
             }
         }
-        public int ID 
+        public int MedarbejderNummer 
         { 
             get
             {
-                return ID;
+                return MedarbejderNummer;
             }
             set
             {
-                ID = value;
+                MedarbejderNummer = value;
                 OnChanged(EventArgs.Empty);
             }
         }
@@ -65,7 +65,7 @@ namespace AbonnementsimuleringKlient
         {
             this.Fornavn = fornavn;
             this.Efternavn = efternavn;
-            this.ID = id;
+            this.MedarbejderNummer = id;
             this.ansvarlig = ansvarlig;
         }
 
