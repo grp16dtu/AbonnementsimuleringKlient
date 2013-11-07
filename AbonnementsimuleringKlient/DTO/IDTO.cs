@@ -30,5 +30,7 @@ namespace AbonnementsimuleringKlient
 
 
         void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel);
+        ILoginBruger LoginVerificering(ILoginBruger bruger);
+        static DTO Instance { get; }
     }
 }

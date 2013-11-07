@@ -11,8 +11,33 @@ namespace AbonnementsimuleringKlient
     public class DTO : IDTO
     {
         private HttpClient httpKlient;
+        private HttpResponseMessage response;
 
         private IDTO iDTO;
+
+        private static DTO instance;
+        private DTO()
+        {
+            httpKlient = new HttpClient();
+            httpKlient.BaseAddress = new Uri("http://grp16dtu-001-site1.smarterasp.net:80/");
+
+            httpKlient.DefaultRequestHeaders.Accept.Add( new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        //singleton
+        public static DTO Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DTO();
+                }
+                return instance;
+            }
+        }
+
+
 
         public List<IBrugerDAO> HentMedarbejderList()
         {
@@ -68,6 +93,21 @@ namespace AbonnementsimuleringKlient
         public void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel)
         {
             throw new NotImplementedException();
+        }
+
+        public ILoginBruger LoginVerificering(ILoginBruger bruger)
+        {
+
+            response = httpKlient.GetAsync("API/validerBruger/" + bruger.Brugernavn + "/" + bruger.Kodeord).Result;
+            if(response.IsSuccessStatusCode)
+            {
+                return response.Content.ReadAsAsync<ILoginBruger>().Result;
+            }
+            else 
+            {
+                return null;
+            }
+            
         }
     }
 }
