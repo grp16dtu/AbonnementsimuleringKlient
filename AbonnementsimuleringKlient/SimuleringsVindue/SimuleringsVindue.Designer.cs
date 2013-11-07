@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.yAkse = new System.Windows.Forms.ComboBox();
             this.xAkse = new System.Windows.Forms.ComboBox();
@@ -45,30 +45,32 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(12, 50);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(423, 300);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // comboBox1
+            // yAkse
             // 
+            this.yAkse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.yAkse.FormattingEnabled = true;
             this.yAkse.Location = new System.Drawing.Point(12, 23);
-            this.yAkse.Name = "comboBox1";
+            this.yAkse.Name = "yAkse";
             this.yAkse.Size = new System.Drawing.Size(50, 21);
             this.yAkse.TabIndex = 1;
             this.yAkse.SelectedIndexChanged += new System.EventHandler(this.xAkse_SelectedIndexChanged);
             // 
-            // comboBox2
+            // xAkse
             // 
+            this.xAkse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.xAkse.Location = new System.Drawing.Point(441, 329);
-            this.xAkse.Name = "comboBox2";
-            this.xAkse.Size = new System.Drawing.Size(50, 21);
+            this.xAkse.Name = "xAkse";
+            this.xAkse.Size = new System.Drawing.Size(69, 21);
             this.xAkse.TabIndex = 2;
             this.xAkse.SelectedIndexChanged += new System.EventHandler(this.yAkse_SelectedIndexChanged);
             // 
@@ -160,6 +162,7 @@
             this.Controls.Add(this.xAkse);
             this.Controls.Add(this.yAkse);
             this.Controls.Add(this.chart1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SimuleringsVindue";
             this.Text = "Simulering";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
