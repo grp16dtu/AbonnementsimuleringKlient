@@ -9,7 +9,6 @@ namespace AbonnementsimuleringKlient
     {
         public event EventHandler Changed;
 
-        private IDTO DTO;
         private string _fornavn;
         private string _efternavn;
         private int _medarbejderNummer;
