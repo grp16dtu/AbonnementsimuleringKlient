@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.yAkse = new System.Windows.Forms.ComboBox();
+            this.xAkse = new System.Windows.Forms.ComboBox();
             this.visBrugshistorikKnap = new System.Windows.Forms.Button();
             this.visBrugerAdminKnap = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -46,35 +45,32 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(12, 50);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(423, 300);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // comboBox1
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Location = new System.Drawing.Point(12, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(50, 21);
-            this.comboBox1.TabIndex = 1;
+            this.yAkse.FormattingEnabled = true;
+            this.yAkse.Location = new System.Drawing.Point(12, 23);
+            this.yAkse.Name = "comboBox1";
+            this.yAkse.Size = new System.Drawing.Size(50, 21);
+            this.yAkse.TabIndex = 1;
+            this.yAkse.SelectedIndexChanged += new System.EventHandler(this.xAkse_SelectedIndexChanged);
             // 
             // comboBox2
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Location = new System.Drawing.Point(441, 329);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(69, 21);
-            this.comboBox2.TabIndex = 2;
+            this.xAkse.Location = new System.Drawing.Point(441, 329);
+            this.xAkse.Name = "comboBox2";
+            this.xAkse.Size = new System.Drawing.Size(50, 21);
+            this.xAkse.TabIndex = 2;
+            this.xAkse.SelectedIndexChanged += new System.EventHandler(this.yAkse_SelectedIndexChanged);
             // 
             // visBrugshistorikKnap
             // 
@@ -131,6 +127,7 @@
             this.KorNy.TabIndex = 7;
             this.KorNy.Text = "Kør ny";
             this.KorNy.UseVisualStyleBackColor = false;
+            this.KorNy.Click += new System.EventHandler(this.KorNy_Click);
             // 
             // textBox1
             // 
@@ -160,11 +157,9 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.visBrugerAdminKnap);
             this.Controls.Add(this.visBrugshistorikKnap);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.xAkse);
+            this.Controls.Add(this.yAkse);
             this.Controls.Add(this.chart1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
             this.Name = "SimuleringsVindue";
             this.Text = "Simulering";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -176,8 +171,8 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox yAkse;
+        private System.Windows.Forms.ComboBox xAkse;
         private System.Windows.Forms.Button visBrugshistorikKnap;
         private System.Windows.Forms.Button visBrugerAdminKnap;
         private System.Windows.Forms.ListBox listBox1;

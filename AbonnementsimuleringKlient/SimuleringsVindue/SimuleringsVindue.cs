@@ -22,10 +22,11 @@ namespace AbonnementsimuleringKlient
         {
             this.simuleringsVindueController = controller;
 
-            comboBox1.Items.AddRange(yAkseKey);
-            comboBox1.SelectedIndex = 0;
-            comboBox2.Items.AddRange(xAkseKey);
-            comboBox2.SelectedIndex = 0;
+            yAkse.Items.AddRange(yAkseKey);
+            yAkse.DisplayMember = yAkseKey[0];
+            xAkse.Items.AddRange(xAkseKey);
+            xAkse.DisplayMember = xAkseKey[0];
+
 
            // OpdaterVindue(xKey, yKey, Tidsstempel);
 
@@ -45,17 +46,10 @@ namespace AbonnementsimuleringKlient
         public void VisValgteSimulering(string xAkseKey, string yAkseKey, List<string> xAkse, List<double> yAkse)
         {
             Series serie = new Series();
-
-            //fjerner den gamle data, hvis der er noget
-            chart1.Titles.Clear();
-
             //serie.Name = xAkseKey + "/" + yAkseKey;
             chart1.Titles.Add(xAkseKey + "/" + yAkseKey);
             for(int i = 0; i< xAkse.Count; i++)
             {
-                //seriens navn (det er står ude ved den lille firkant)
-                //serie.Name = "";
-
                 //Datapunkterne skal laegges her i
                 DataPoint data = new DataPoint();
                 //dataen tilfoejes en af gangen, der skal være lige mange x, som y vaerdien
@@ -70,10 +64,6 @@ namespace AbonnementsimuleringKlient
                 //tilfoejer dataen til serien
                 serie.Points.Add(data);
             }
-
-            //fjerner den gamle data, hvis der er noget
-            chart1.Series.Clear();
-
             //tilfoejer serien til grafen
             chart1.Series.Add(serie);
         }
@@ -143,6 +133,21 @@ namespace AbonnementsimuleringKlient
             List<double> yAkse = new List<double>() { 500, 600, 700, 753, 695, 100, 1250, 864, 789, 351, 789, 654 };
 
             VisValgteSimulering("Hardcodede måneder", "random tal", xAkse, yAkse);
+        }
+
+        private void KorNy_Click(object sender, EventArgs e)
+        {
+            //TODO: implementer!!
+        }
+
+        private void xAkse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void yAkse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
         
 
