@@ -36,11 +36,12 @@ namespace AbonnementsimuleringKlient
             this._brugsHistorikController = brugsHisturikController;
             this._brugerAdminVindueController = brugerAdminVindueController;
         }
-
+        /*
         internal void OpdaterVindue(AbonnementsimuleringKlient.SimuleringsVindue.xAkseKey xKey, AbonnementsimuleringKlient.SimuleringsVindue.yAkseKey yKey, DateTime tidsstempel)
         {
             SimuleringsDAO.HentSimulering(xKey, yKey, tidsstempel);
         }
+         */
         public void OpenBrugerHisturikVindue()
         {
             _brugsHistorikController.OpenVindue();

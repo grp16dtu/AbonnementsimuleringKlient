@@ -36,12 +36,12 @@ namespace AbonnementsimuleringKlient
         {
             throw new NotImplementedException();
         }
-
+        /*
         public void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel)
         {
           //  this.DTO.HentSimulering(xKey, yKey, tidsStempel);
         }
-
+        */
         public List<string> HentXakse()
         {
             throw new NotImplementedException();

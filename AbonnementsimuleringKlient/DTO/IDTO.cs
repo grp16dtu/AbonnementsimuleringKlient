@@ -29,6 +29,6 @@ namespace AbonnementsimuleringKlient
         void OpdaterEConomicsCredentials(string aftalenr, string brugernavn, string kodeord);
 
 
-        void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel);
+       // void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel);
     }
 }

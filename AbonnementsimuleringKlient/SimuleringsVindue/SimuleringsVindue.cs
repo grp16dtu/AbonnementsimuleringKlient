@@ -13,19 +13,21 @@ namespace AbonnementsimuleringKlient
     public partial class SimuleringsVindue : Form, ISimuleringsVindue
     {
         private SimuleringsVindueController simuleringsVindueController;
-        public enum yAkseKey { Stk, Pris };
-        public enum xAkseKey { Tid, Afdeling, Debitor, Vare };
-        public xAkseKey xKey { get; set; }
-        public yAkseKey yKey { get; set; }
+        public string[] yAkseKey = new string[] {"Stk", "Pris"};
+        public string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
+        //public xAkseKey xKey { get; set; }
+        //public yAkseKey yKey { get; set; }
         public DateTime Tidsstempel { get; set; }
         public List<DateTime> SimuleringsListe; 
         public void SetSimuleringsVindueController(SimuleringsVindueController controller)
         {
             this.simuleringsVindueController = controller;
-            this.xKey = xAkseKey.Tid;
-            this.yKey = yAkseKey.Pris;
 
-            OpdaterVindue(xKey, yKey, Tidsstempel);
+            comboBox1.Items.AddRange(yAkseKey);
+            comboBox2.Items.AddRange(xAkseKey);
+
+
+           // OpdaterVindue(xKey, yKey, Tidsstempel);
 
             this.FormClosing += new FormClosingEventHandler(Closing_From);
         }
@@ -57,7 +59,7 @@ namespace AbonnementsimuleringKlient
 
         public void XAkse()
         {
-            OpdaterVindue(xKey, yKey, Tidsstempel);
+           // OpdaterVindue(xKey, yKey, Tidsstempel);
         }
 
         public void YAkse()
@@ -74,7 +76,7 @@ namespace AbonnementsimuleringKlient
         {
             this.Hide();
         }
-
+        /*
         public void OpdaterVindue(xAkseKey xKey, yAkseKey yKey, DateTime tidsstempel)
         {
             if (tidsstempel != null)
@@ -86,7 +88,7 @@ namespace AbonnementsimuleringKlient
                 simuleringsVindueController.OpdaterVindue(xKey, yKey, SimuleringsListe.Last());
             }
         }
-
+        */
 
         private void visBrugshistorikKnap_Click(object sender, EventArgs e)
         {
