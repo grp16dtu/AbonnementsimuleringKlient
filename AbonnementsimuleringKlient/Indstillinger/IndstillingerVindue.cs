@@ -32,6 +32,13 @@ namespace AbonnementsimuleringKlient
         public void SetIndstillingerVindueController(IndstillingerVindueController controller)
         {
             this.controller = controller;
+           this.FormClosing += new FormClosingEventHandler(Closing_From);
+        }
+
+        private void Closing_From(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
 
         public void OpenVindue()

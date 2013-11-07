@@ -16,6 +16,7 @@ namespace AbonnementsimuleringKlient
         {
             this._brugsHistorikVindue = brugsHistorikVindue;
             this._brugsHistorik = brugsHistorik;
+            _brugsHistorikVindue.SetBrugsHistorikVindueController(this);
         }
 
         public List<BrugsHistorik> HentBrugsHistorik()
