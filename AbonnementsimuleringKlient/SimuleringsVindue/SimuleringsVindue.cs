@@ -22,10 +22,10 @@ namespace AbonnementsimuleringKlient
         {
             this.simuleringsVindueController = controller;
 
-            comboBox1.Items.AddRange(yAkseKey);
-            comboBox1.DisplayMember = yAkseKey[0];
-            comboBox2.Items.AddRange(xAkseKey);
-            comboBox2.DisplayMember = xAkseKey[0];
+            yAkse.Items.AddRange(yAkseKey);
+            yAkse.DisplayMember = yAkseKey[0];
+            xAkse.Items.AddRange(xAkseKey);
+            xAkse.DisplayMember = xAkseKey[0];
 
 
            // OpdaterVindue(xKey, yKey, Tidsstempel);
@@ -133,6 +133,21 @@ namespace AbonnementsimuleringKlient
             List<double> yAkse = new List<double>() { 500, 600, 700, 753, 695, 100, 1250, 864, 789, 351, 789, 654 };
 
             VisValgteSimulering("Hardcodede måneder", "random tal", xAkse, yAkse);
+        }
+
+        private void KorNy_Click(object sender, EventArgs e)
+        {
+            //TODO: implementer!!
+        }
+
+        private void xAkse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void yAkse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
         
 
