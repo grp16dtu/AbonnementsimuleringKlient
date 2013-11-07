@@ -45,16 +45,27 @@ namespace AbonnementsimuleringKlient
 
         public void VisValgteSimulering(string xAkseKey, string yAkseKey, List<string> xAkse, List<double> yAkse)
         {
-            //TODO: Kik over om det reelt virker
-            for(int i = 0; i<xAkse.Count;i++)
+            Series serie = new Series();
+            //serie.Name = xAkseKey + "/" + yAkseKey;
+            chart1.Titles.Add(xAkseKey + "/" + yAkseKey);
+            for(int i = 0; i< xAkse.Count; i++)
             {
-                Series serie = new Series("test");
+                //Datapunkterne skal laegges her i
+                DataPoint data = new DataPoint();
+                //dataen tilfoejes en af gangen, der skal være lige mange x, som y vaerdien
+                data.SetValueXY(xAkse[i], yAkse[i]);
 
+                //skriver det reelle tal af kolonnen paa grafen
+                data.Label = yAkse[i].ToString();
+
+                //graftypen
                 serie.ChartType = SeriesChartType.RangeColumn;
-                serie.Points.Add(yAkse[i]);
 
-                chart1.Series.Add(serie);
+                //tilfoejer dataen til serien
+                serie.Points.Add(data);
             }
+            //tilfoejer serien til grafen
+            chart1.Series.Add(serie);
         }
 
         public void GenererNySimulering(int index)
@@ -118,6 +129,10 @@ namespace AbonnementsimuleringKlient
         private void visSimuleringKnap_Click(object sender, EventArgs e)
         {
             //TODO: implement
+            List<string> xAkse = new List<string>() { "Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December" };
+            List<double> yAkse = new List<double>() { 500, 600, 700, 753, 695, 100, 1250, 864, 789, 351, 789, 654 };
+
+            VisValgteSimulering("Hardcodede måneder", "random tal", xAkse, yAkse);
         }
         
 
