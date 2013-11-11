@@ -97,7 +97,7 @@ namespace AbonnementsimuleringKlient
             dao.YakseStkAfdeling = new List<double> { 123, 123 ,0,15,456};
             dao.YakseStkDebitor = new List<double> { 123, 123,658,8,963 };
             dao.YakseStkTid = new List<double> { 123, 123,658,956,1559 };
-            dao.YakseStkVare = new List<double> { 123, 123 ,66689,5588,2352};
+            dao.YakseStkVare = new List<double> { 10000, 50000 ,66689,5588,2352};
 
             _simuleringsDAO = dao;
         }

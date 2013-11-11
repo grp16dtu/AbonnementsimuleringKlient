@@ -51,6 +51,8 @@ namespace AbonnementsimuleringKlient
             //Sletter alle andre titler der er i forvejen
             chart1.Titles.Clear();
 
+            chart1.ResetAutoValues();
+
             //serie.Name = xAkseKey + "/" + yAkseKey;
             chart1.Titles.Add(xAkseKey + "/" + yAkseKey);
             for(int i = 0; i< xAkse.Count; i++)
@@ -68,6 +70,7 @@ namespace AbonnementsimuleringKlient
 
                 //tilfoejer dataen til serien
                 serie.Points.Add(data);
+                serie.IsVisibleInLegend = false;
             }
             //Sletter alle andre titler der er i forvejen
             chart1.Series.Clear();
@@ -160,6 +163,11 @@ namespace AbonnementsimuleringKlient
             //TODO: tjek om det er den valgte simulering vi har i systemet, eller om der skal hentes en ny
             simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
             simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
         
 
