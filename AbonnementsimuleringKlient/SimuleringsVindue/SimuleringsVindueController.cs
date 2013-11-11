@@ -41,7 +41,7 @@ namespace AbonnementsimuleringKlient
             this._brugerAdminVindueController = brugerAdminVindueController;
         }
 
-        internal void OpdaterVindue(string xKey, string yKey, DateTime tidsstempel)
+        internal void OpdaterVindue(string xKey, string yKey)
         {
             switch(yKey)
             {
@@ -81,6 +81,26 @@ namespace AbonnementsimuleringKlient
                     break;
             }
         }
+
+        public void HentSimuleringsDAO(int simuleringsIndex)
+        {
+            //_simuleringsDAO _dto.HentSimuleringsDAO(simuleringsIndex);
+            var dao = _simuleringsDAO;
+            dao.XakseAfdeling = new List<string> { "Afdeling1", "Afdeling2", "Afdeling2", "Afdeling2", "Afdeling2" };
+            dao.XakseDebitor = new List<string> { "Debitor1", "Debitor2", "Afdeling2", "Afdeling2", "Afdeling2" };
+            dao.XakseTid = new List<string> { "Tid1", "Tid2", "Afdeling2", "Afdeling2", "Afdeling2" };
+            dao.XakseVare = new List<string> { "Vare1", "Vare2",  "Afdeling2", "Afdeling2" };
+            dao.YaksePrisAfdeling = new List<double> { 123,123 , 456,846,200};
+            dao.YaksePrisDebitor = new List<double> { 123, 123, 965,986,127 };
+            dao.YaksePrisTid = new List<double> { 123, 123,456,953,356 };
+            dao.YaksePrisVare = new List<double> {  123,846,458,652 };
+            dao.YakseStkAfdeling = new List<double> { 123, 123 ,0,15,456};
+            dao.YakseStkDebitor = new List<double> { 123, 123,658,8,963 };
+            dao.YakseStkTid = new List<double> { 123, 123,658,956,1559 };
+            dao.YakseStkVare = new List<double> { 10000, 50000 ,5588,2352};
+
+            _simuleringsDAO = dao;
+        }
          
         public void OpenBrugerHistorikVindue()
         {
@@ -92,23 +112,12 @@ namespace AbonnementsimuleringKlient
             _brugerAdminVindueController.OpenVindue(_aktuelBruger);
         }
 
-        public void BygNyesteSimuleringsDAO(string xAkse, string yAkse)
+        public void BygNyesteSimuleringsDAO()
         {
             //TODO: OPTIMER!!
-            _simuleringsDAO.XakseAfdeling = _dto.HentNyesteSimulering("Afdeling", "Stk").XakseAfdeling;
-            _simuleringsDAO.XakseDebitor = _dto.HentNyesteSimulering("Debitor", "Stk").XakseDebitor;
-            _simuleringsDAO.XakseTid = _dto.HentNyesteSimulering("Tid", "Stk").XakseTid;
-            _simuleringsDAO.XakseVare = _dto.HentNyesteSimulering("Vare", "Stk").XakseVare;
 
-            _simuleringsDAO.YakseStkAfdeling = _dto.HentNyesteSimulering("Afdeling", "Stk").YakseStkAfdeling;
-            _simuleringsDAO.YakseStkDebitor = _dto.HentNyesteSimulering("Debitor", "Stk").YakseStkDebitor;
-            _simuleringsDAO.YakseStkTid = _dto.HentNyesteSimulering("Tid", "Stk").YakseStkTid;
-            _simuleringsDAO.YakseStkVare = _dto.HentNyesteSimulering("Vare", "Stk").YakseStkVare;
 
-            _simuleringsDAO.YaksePrisAfdeling = _dto.HentNyesteSimulering("Afdeling", "Pris").YaksePrisAfdeling;
-            _simuleringsDAO.YaksePrisDebitor = _dto.HentNyesteSimulering("Debitor", "Pris").YaksePrisDebitor;
-            _simuleringsDAO.YaksePrisTid = _dto.HentNyesteSimulering("Tid", "Pris").YaksePrisTid;
-            _simuleringsDAO.YaksePrisVare = _dto.HentNyesteSimulering("Vare", "Pris").YaksePrisVare;
+            OpdaterVindue("Tid", "Pris");
         }
     }      
 }
