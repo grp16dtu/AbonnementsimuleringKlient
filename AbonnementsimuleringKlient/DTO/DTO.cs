@@ -37,9 +37,6 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-<<<<<<< ours
-=======
->>>>>>> theirs
         public List<IBrugerDAO> HentMedarbejderList()
         {
             throw new NotImplementedException();
@@ -96,24 +93,12 @@ namespace AbonnementsimuleringKlient
         //    throw new NotImplementedException();
         //}
 
-<<<<<<< ours
         public IBrugerDAO LoginVerificering(string brugernavn, string kodeord)
-=======
-        public IBrugerDAO LoginVerificering(string brugernavn, string kodeord)
->>>>>>> theirs
         {
-<<<<<<< ours
             response = httpKlient.GetAsync("API/bruger/hent/?brugernavn=" + brugernavn + "&kodeord=" + kodeord).Result;
-=======
-            response = httpKlient.GetAsync("API/bruger/hent/?brugernavn=" + brugernavn + "&kodeord=" + kodeord).Result;
->>>>>>> theirs
             if(response.IsSuccessStatusCode)
             {
-<<<<<<< ours
                 return response.Content.ReadAsAsync<BrugerDAO>().Result;
-=======
-                return response.Content.ReadAsAsync<BrugerDAO>().Result;
->>>>>>> theirs
             }
             else 
             {

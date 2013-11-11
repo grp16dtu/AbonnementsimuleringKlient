@@ -136,7 +136,7 @@
             this.gemBruger.UseVisualStyleBackColor = true;
             this.gemBruger.Click += new System.EventHandler(this.gemBruger_Click);
             // 
-            // Ansvarlig
+            // ansvarlig
             // 
             this.ansvarlig.AutoSize = true;
             this.ansvarlig.Location = new System.Drawing.Point(286, 186);

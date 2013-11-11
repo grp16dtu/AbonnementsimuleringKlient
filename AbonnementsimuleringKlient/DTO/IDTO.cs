@@ -28,20 +28,11 @@ namespace AbonnementsimuleringKlient
 
         ISimuleringsDAO HentNyesteSimulering(string xAkse, string yAkse);
 
-<<<<<<< ours
         void OpdaterEConomicsCredentials(string aftalenr, string brugernavn, string kodeord);
 
-=======
->>>>>>> theirs
         //void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel);
-<<<<<<< ours
 
         IBrugerDAO LoginVerificering(string brugernavn, string kodeord);
 
-=======
-
-        IBrugerDAO LoginVerificering(string brugernavn, string kodeord);
-
->>>>>>> theirs
     }
 }
