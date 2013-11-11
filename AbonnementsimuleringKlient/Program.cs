@@ -20,8 +20,11 @@ namespace AbonnementsimuleringKlient
 
             EConomicCredentialsDAO eConomicCredentialsDAO = new EConomicCredentialsDAO();
 
+            OpretKontoVindue opretKontoVindue = new OpretKontoVindue();
+            OpretKontoVindueController opretKontoVindueController = new OpretKontoVindueController(opretKontoVindue);
+
             LoginVindue loginVindue = new LoginVindue();
-            LoginVindueController loginVindueController = new LoginVindueController(loginVindue, eConomicCredentialsDAO);
+            LoginVindueController loginVindueController = new LoginVindueController(loginVindue);
 
             SimuleringsDAO simuleringsDAO = new SimuleringsDAO();
             SimuleringsVindue simuleringsVindue = new SimuleringsVindue();
@@ -39,7 +42,7 @@ namespace AbonnementsimuleringKlient
             BrugsHistorikVindue brugsHistorikVindue = new BrugsHistorikVindue();
             BrugsHistorikVindueController brugsHistorikVindueController = new BrugsHistorikVindueController(brugsHistorikVindue, brugsHistorik);
 
-            loginVindueController.SetControllers(simuleringsVindueController);
+            loginVindueController.SetControllers(simuleringsVindueController,opretKontoVindueController);
             simuleringsVindueController.SetControllers(brugsHistorikVindueController, brugerAdminVindueController);
             brugerAdminVindueController.SetControllers(indstillingerVindueController);
             

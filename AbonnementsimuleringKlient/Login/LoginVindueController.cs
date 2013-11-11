@@ -10,10 +10,11 @@ namespace AbonnementsimuleringKlient
     {
         private LoginVindue _loginVindue;
         private SimuleringsVindueController _simuleringsVindueController;
+        private OpretKontoVindueController _opretKontoVindueController;
         private IDTO _dto;
         private IBrugerDAO _aktuelBruger;
 
-        public LoginVindueController(LoginVindue loginVindue, IEConomicCredentialsDAO eConomicCredentialsDAO)
+        public LoginVindueController(LoginVindue loginVindue)
         {
             this._loginVindue = loginVindue;
             this._dto = DTO.Instance;
@@ -22,14 +23,20 @@ namespace AbonnementsimuleringKlient
             loginVindue.SetLoginVindueController(this);
         }
 
-        public void SetControllers(SimuleringsVindueController simuleringsVindueController)
+        public void SetControllers(SimuleringsVindueController simuleringsVindueController, OpretKontoVindueController opretKontoVindueController)
         {
+            this._opretKontoVindueController = opretKontoVindueController;
             this._simuleringsVindueController = simuleringsVindueController;
         }
 
         public void OpenSimuleringsVindue()
         {
             _simuleringsVindueController.OpenVindue(_aktuelBruger);
+        }
+
+        public void OpenOpretKontoVindue()
+        {
+            _opretKontoVindueController.OpenVindue();
         }
 
         public bool LoginVerificering(string brugernavn, string kodeord)
@@ -51,7 +58,6 @@ namespace AbonnementsimuleringKlient
         public string KrypterKodeord(string kodeord)
         {
             return "";
-        }
-        
+        }        
     }
 }
