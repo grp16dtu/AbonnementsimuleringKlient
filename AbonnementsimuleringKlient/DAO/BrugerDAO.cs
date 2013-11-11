@@ -11,7 +11,7 @@ namespace AbonnementsimuleringKlient
 
         private string _fornavn;
         private string _efternavn;
-        private int _medarbejderNummer;
+        private int? _medarbejderNummer;
         private bool _ansvarlig;
         private string _brugernavn;
         private string _kodeord;
@@ -42,7 +42,7 @@ namespace AbonnementsimuleringKlient
                 OnChanged(EventArgs.Empty);
             }
         }
-        public int MedarbejderNummer 
+        public int? MedarbejderNummer 
         { 
             get
             {

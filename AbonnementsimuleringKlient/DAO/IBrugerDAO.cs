@@ -10,7 +10,7 @@ namespace AbonnementsimuleringKlient
     {
         string Fornavn { get; set; }
         string Efternavn { get; set; }
-        int MedarbejderNummer { get; set; }
+        int? MedarbejderNummer { get; set; }
         bool Ansvarlig { get; set; }
         //email bruges som unik identifier for brugernavn
         string Brugernavn { get; set; }
