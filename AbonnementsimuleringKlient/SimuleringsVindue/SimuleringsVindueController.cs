@@ -89,15 +89,15 @@ namespace AbonnementsimuleringKlient
             dao.XakseAfdeling = new List<string> { "Afdeling1", "Afdeling2", "Afdeling2", "Afdeling2", "Afdeling2" };
             dao.XakseDebitor = new List<string> { "Debitor1", "Debitor2", "Afdeling2", "Afdeling2", "Afdeling2" };
             dao.XakseTid = new List<string> { "Tid1", "Tid2", "Afdeling2", "Afdeling2", "Afdeling2" };
-            dao.XakseVare = new List<string> { "Vare1", "Vare2", "Afdeling2", "Afdeling2", "Afdeling2" };
+            dao.XakseVare = new List<string> { "Vare1", "Vare2",  "Afdeling2", "Afdeling2" };
             dao.YaksePrisAfdeling = new List<double> { 123,123 , 456,846,200};
             dao.YaksePrisDebitor = new List<double> { 123, 123, 965,986,127 };
             dao.YaksePrisTid = new List<double> { 123, 123,456,953,356 };
-            dao.YaksePrisVare = new List<double> { 123, 123,846,458,652 };
+            dao.YaksePrisVare = new List<double> {  123,846,458,652 };
             dao.YakseStkAfdeling = new List<double> { 123, 123 ,0,15,456};
             dao.YakseStkDebitor = new List<double> { 123, 123,658,8,963 };
             dao.YakseStkTid = new List<double> { 123, 123,658,956,1559 };
-            dao.YakseStkVare = new List<double> { 10000, 50000 ,66689,5588,2352};
+            dao.YakseStkVare = new List<double> { 10000, 50000 ,5588,2352};
 
             _simuleringsDAO = dao;
         }
