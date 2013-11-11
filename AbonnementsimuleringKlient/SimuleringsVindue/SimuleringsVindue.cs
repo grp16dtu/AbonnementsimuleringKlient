@@ -23,9 +23,10 @@ namespace AbonnementsimuleringKlient
             this.simuleringsVindueController = controller;
 
             yAkse.Items.AddRange(yAkseKey);
-            yAkse.DisplayMember = yAkseKey[0];
+            yAkse.Text = yAkseKey[0];
             xAkse.Items.AddRange(xAkseKey);
-            xAkse.DisplayMember = xAkseKey[0];
+            xAkse.Text = xAkseKey[0];
+            listBox1.SelectedIndex = 0;
 
 
            // OpdaterVindue(xKey, yKey, Tidsstempel);
@@ -135,11 +136,11 @@ namespace AbonnementsimuleringKlient
 
         private void visSimuleringKnap_Click(object sender, EventArgs e)
         {
-            //TODO: implement
-            List<string> xAkse = new List<string>() { "Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December" };
-            List<double> yAkse = new List<double>() { 500, 600, 700, 753, 695, 100, 1250, 864, 789, 351, 789, 654 };
+            //TODO: tjek om det er den valgte simulering vi har i systemet, eller om der skal hentes en ny
+            simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
+            //VisValgteSimulering("Hardcodede måneder", "random tal", simuleringsDao.XakseAfdeling, simuleringsDao.YaksePrisAfdeling);
 
-            VisValgteSimulering("Hardcodede måneder", "random tal", xAkse, yAkse);
+            simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
 
         private void KorNy_Click(object sender, EventArgs e)
@@ -149,12 +150,16 @@ namespace AbonnementsimuleringKlient
 
         private void xAkse_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //TODO: tjek om det er den valgte simulering vi har i systemet, eller om der skal hentes en ny
+            simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
+            simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
 
         private void yAkse_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //TODO: tjek om det er den valgte simulering vi har i systemet, eller om der skal hentes en ny
+            simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
+            simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
         
 
