@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace AbonnementsimuleringKlient
 {
-    public partial class BrugerAdminVindue : Form, IBrugerAdminVindue,IObserver<IBrugerDAO>
+    public partial class BrugerAdminVindue : Form, IBrugerAdminVindue
     {
         private BrugerAdminVindueController _controller;
         private IndstillingerVindueController _indstillingerVindueController;
         private List<IBrugerDAO> _medarbejderListe;
-        private IDisposable _fjernetBruger;
         public BrugerAdminVindue()
         {
             InitializeComponent();
@@ -88,29 +87,24 @@ namespace AbonnementsimuleringKlient
 
         private void gemBruger_Click(object sender, EventArgs e)
         {
-            //_medarbejderListe[]
             int index = medarbejdere.CurrentCellAddress.Y;
             _medarbejderListe[index].Ansvarlig = this.ansvarlig.Checked;
             _medarbejderListe[index].Brugernavn = this.email.Text;
             _medarbejderListe[index].Fornavn = this.fornavn.Text;
             _medarbejderListe[index].Efternavn = this.efternavn.Text;
-            MessageBox.Show(_medarbejderListe[index].Fornavn);
             if(_medarbejderListe[index].MedarbejderNummer != null)
                 _medarbejderListe[index].MedarbejderNummer = Convert.ToInt32(this.medarbejdernummer.Text);
         }
 
         private void OnLoad(object sender, EventArgs e)
         {
+            HentMedarbejderListe();
             OpdaterMedarbejderListe(sender, e);
          
         }
 
         private void OpdaterMedarbejderListe(object sender, EventArgs e)
         {
-            MessageBox.Show("opdatermedarbejderlistemetode");
-            HentMedarbejderListe();
-            putEventOnBrugerDAO(sender, e);
-            //bygMedArbDataTable();
             medarbejdere.DataSource = _medarbejderListe;
             medarbejdere.Update();
             
@@ -119,16 +113,14 @@ namespace AbonnementsimuleringKlient
             medarbejdere.Columns[5].Visible = false;
         }
 
-        private void putEventOnBrugerDAO(object sender, EventArgs e)
+        private void putEventOnBrugerDAO()
         {
-            foreach (BrugerDAO bruger in _medarbejderListe)
+            foreach (IBrugerDAO bruger in _medarbejderListe)
             {
-                MessageBox.Show("putting events");
                 bruger.Changed += this.OpdaterMedarbejderListe;
             }
         }
-
-        
+                
         public void HentIndstillingerVindue()
         {
             throw new NotImplementedException();
@@ -155,65 +147,18 @@ namespace AbonnementsimuleringKlient
 
         public void HentMedarbejderListe()
         {
-            this._medarbejderListe = this._controller.getTempListTEST(); //ONLY FOR TESTING, OVERWRITES _MEDARBEJDERLISTE
+            this._medarbejderListe = this._controller.getTempListTEST(new EventHandler(this.OpdaterMedarbejderListe)); //ONLY FOR TESTING, OVERWRITES _MEDARBEJDERLISTE
+            putEventOnBrugerDAO();
         }
-
-        //private void bygMedArbDataTable()
-        //{
-        //    this.medarbejdere.DataSource = null;
-        //    this._medarbejderTable = new DataTable();
-
-        //        _medarbejderTable.Columns.Add("Nr.");
-        //        _medarbejderTable.Columns.Add("Fornavn");
-        //        _medarbejderTable.Columns.Add("Efternavn");
-        //        _medarbejderTable.Columns.Add("Ansvarlig");
-
-        //    foreach(BrugerDAO bruger in _medarbejderListe)
-        //    {
-        //        _medarbejderTable.Rows.Add(bruger.MedarbejderNummer, bruger.Fornavn, bruger.Efternavn, bruger.Ansvarlig);
-        //    }
-        //    this.medarbejdere.DataSource = _medarbejderTable;
-            
-        //}
-
-
 
         public void OpenVindue()
         {
             this.Show();
-            this.HentMedarbejderListe();
         }
 
         public void CloseVindue()
         {
             this.Hide();
         }
-
-
-        public virtual void Subscribe()
-        {
-            _fjernetBruger = _controller.Subscribe(this);
-        }
-
-        public virtual void Unsubscribe()
-        {
-            _fjernetBruger.Dispose();
-        }
-
-        public void OnCompleted()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnError(Exception error)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnNext(IBrugerDAO bruger)
-        {
-            //OpdaterMedarbejderListe();
-        }
     }
-    
 }

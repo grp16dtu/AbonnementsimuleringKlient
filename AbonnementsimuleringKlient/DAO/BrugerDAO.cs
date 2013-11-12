@@ -5,10 +5,9 @@ using System.Text;
 
 namespace AbonnementsimuleringKlient
 {
-    public class BrugerDAO:IBrugerDAO,IObservable<IBrugerDAO>
+    public class BrugerDAO:IBrugerDAO
     {
         public event EventHandler Changed;
-        //public delegate void DataChanged(BrugerDAO bruger, EventArgs e);
 
         private string _fornavn;
         private string _efternavn;
@@ -28,11 +27,9 @@ namespace AbonnementsimuleringKlient
         }
         protected virtual void OnChanged(EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("hander maybe null");
             EventHandler handler = Changed;
             if (handler != null)
             {
-                System.Windows.Forms.MessageBox.Show("hander not null");
                 handler(this, e);
             }
         }
@@ -87,9 +84,6 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-
-
-
         public string Brugernavn
         {
             get
@@ -114,11 +108,6 @@ namespace AbonnementsimuleringKlient
                 _kodeord = value;
                 OnChanged(EventArgs.Empty);
             }
-        }
-
-        public IDisposable Subscribe(IObserver<IBrugerDAO> observer)
-        {
-            throw new NotImplementedException();
         }
     }
 }

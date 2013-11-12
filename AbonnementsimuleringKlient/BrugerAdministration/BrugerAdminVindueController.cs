@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AbonnementsimuleringKlient
 {
-    public class BrugerAdminVindueController : IObservable<IBrugerDAO>
+    public class BrugerAdminVindueController
     {
         private IBrugerAdminVindue _brugerAdminVindue;
-        private List<IObserver<IBrugerDAO>> _observers;
         private IBrugerDAO _aktuelBruger;
         private IndstillingerVindueController _indstillingerVindueController;
         public List<IBrugerDAO> medarbejderListe { get; set; }
 
-        public List<IBrugerDAO> getTempListTEST()
+        public List<IBrugerDAO> getTempListTEST(EventHandler handler)
         {
             List<IBrugerDAO> tempList = new List<IBrugerDAO>();
 
@@ -33,7 +33,6 @@ namespace AbonnementsimuleringKlient
         {
             this._brugerAdminVindue = brugerAdminVindue;
             brugerAdminVindue.SetBrugerAdminVindueController(this);
-            _observers = new List<IObserver<IBrugerDAO>>();
         }
 
         public void SetControllers(IndstillingerVindueController indstillingerVindueController)
@@ -56,43 +55,5 @@ namespace AbonnementsimuleringKlient
         {
             _brugerAdminVindue.CloseVindue();
         }
-
-        public IDisposable Subscribe(IObserver<IBrugerDAO> observer)
-        {
-            if (!_observers.Contains(observer))
-            {
-                if (medarbejderListe != null)
-                {
-                    foreach (var bruger in medarbejderListe)
-                    {
-                        observer.OnNext(bruger);
-                    }
-
-                }
-            }
-            return new Unsubscriber<IBrugerDAO>(_observers, observer);
-        }
-
-        internal class Unsubscriber<IBrugerDAO> : IDisposable
-        {
-            private List<IObserver<IBrugerDAO>> _observers;
-            private IObserver<IBrugerDAO> _observer;
-
-            internal Unsubscriber(List<IObserver<IBrugerDAO>> observers, IObserver<IBrugerDAO> observer)
-            {
-                this._observers = observers;
-                this._observer = observer;
-            }
-
-            public void Dispose()
-            {
-                if (_observers.Contains(_observer))
-                {
-                    _observers.Remove(_observer);
-                }
-            }
-        }
-
-      
     }
 }
