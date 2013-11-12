@@ -43,8 +43,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
             this.colonWar = new System.Windows.Forms.Label();
-            this.IDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NavnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.medarbejdere)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,9 +150,6 @@
             this.medarbejdere.AllowUserToDeleteRows = false;
             this.medarbejdere.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.medarbejdere.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.medarbejdere.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDColumn,
-            this.NavnColumn});
             this.medarbejdere.Dock = System.Windows.Forms.DockStyle.Left;
             this.medarbejdere.Location = new System.Drawing.Point(0, 0);
             this.medarbejdere.Name = "medarbejdere";
@@ -186,20 +181,6 @@
             this.colonWar.Name = "colonWar";
             this.colonWar.Size = new System.Drawing.Size(0, 13);
             this.colonWar.TabIndex = 15;
-            // 
-            // IDColumn
-            // 
-            this.IDColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.IDColumn.HeaderText = "ID";
-            this.IDColumn.Name = "IDColumn";
-            this.IDColumn.ReadOnly = true;
-            this.IDColumn.Width = 43;
-            // 
-            // NavnColumn
-            // 
-            this.NavnColumn.HeaderText = "Navn";
-            this.NavnColumn.Name = "NavnColumn";
-            this.NavnColumn.ReadOnly = true;
             // 
             // BrugerAdminVindue
             // 
@@ -249,7 +230,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label colonWar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NavnColumn;
     }
 }

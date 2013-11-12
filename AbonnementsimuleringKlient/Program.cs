@@ -31,6 +31,8 @@ namespace AbonnementsimuleringKlient
 
             BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
             BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue);
+            //test af kendskab for observer/observable
+            brugerAdminVindue.Subscribe();
 
             IndstillingerVindue indStillingerVindue = new IndstillingerVindue();
             IndstillingerVindueController indstillingerVindueController = new IndstillingerVindueController(indStillingerVindue, eConomicCredentialsDAO);

@@ -5,9 +5,10 @@ using System.Text;
 
 namespace AbonnementsimuleringKlient
 {
-    public class BrugerDAO:IBrugerDAO
+    public class BrugerDAO:IBrugerDAO,IObservable<IBrugerDAO>
     {
         public event EventHandler Changed;
+        //public delegate void DataChanged(BrugerDAO bruger, EventArgs e);
 
         private string _fornavn;
         private string _efternavn;
@@ -17,6 +18,24 @@ namespace AbonnementsimuleringKlient
         private string _kodeord;
 
 
+        public BrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn)
+        {
+            this.Fornavn = fornavn;
+            this.Efternavn = efternavn;
+            this.MedarbejderNummer = medarbejderNummer;
+            this.Ansvarlig = ansvarlig;
+            this.Brugernavn = brugernavn;
+        }
+        protected virtual void OnChanged(EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("hander maybe null");
+            EventHandler handler = Changed;
+            if (handler != null)
+            {
+                System.Windows.Forms.MessageBox.Show("hander not null");
+                handler(this, e);
+            }
+        }
         public string Fornavn
         {
             get
@@ -68,21 +87,7 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-        public BrugerDAO(string fornavn, string efternavn, int id, bool ansvarlig)
-        {
-            this.Fornavn = fornavn;
-            this.Efternavn = efternavn;
-            this.MedarbejderNummer = id;
-            this.Ansvarlig = ansvarlig;
-        }
 
-        protected virtual void OnChanged(EventArgs e)
-        {
-            if (Changed != null)
-            {
-                Changed(this, e);
-            }
-        }
 
 
         public string Brugernavn
@@ -109,6 +114,11 @@ namespace AbonnementsimuleringKlient
                 _kodeord = value;
                 OnChanged(EventArgs.Empty);
             }
+        }
+
+        public IDisposable Subscribe(IObserver<IBrugerDAO> observer)
+        {
+            throw new NotImplementedException();
         }
     }
 }
