@@ -43,6 +43,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
             this.colonWar = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.kodeord = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.medarbejdere)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,21 +53,21 @@
             this.fornavn.Location = new System.Drawing.Point(286, 62);
             this.fornavn.Name = "fornavn";
             this.fornavn.Size = new System.Drawing.Size(139, 20);
-            this.fornavn.TabIndex = 1;
+            this.fornavn.TabIndex = 2;
             // 
             // efternavn
             // 
             this.efternavn.Location = new System.Drawing.Point(286, 107);
             this.efternavn.Name = "efternavn";
             this.efternavn.Size = new System.Drawing.Size(139, 20);
-            this.efternavn.TabIndex = 2;
+            this.efternavn.TabIndex = 3;
             // 
             // medarbejdernummer
             // 
             this.medarbejdernummer.Location = new System.Drawing.Point(286, 151);
             this.medarbejdernummer.Name = "medarbejdernummer";
             this.medarbejdernummer.Size = new System.Drawing.Size(139, 20);
-            this.medarbejdernummer.TabIndex = 3;
+            this.medarbejdernummer.TabIndex = 4;
             // 
             // label1
             // 
@@ -129,7 +131,7 @@
             this.gemBruger.Location = new System.Drawing.Point(431, 254);
             this.gemBruger.Name = "gemBruger";
             this.gemBruger.Size = new System.Drawing.Size(108, 30);
-            this.gemBruger.TabIndex = 10;
+            this.gemBruger.TabIndex = 7;
             this.gemBruger.Text = "Gem";
             this.gemBruger.UseVisualStyleBackColor = true;
             this.gemBruger.Click += new System.EventHandler(this.gemBruger_Click);
@@ -137,10 +139,10 @@
             // ansvarlig
             // 
             this.ansvarlig.AutoSize = true;
-            this.ansvarlig.Location = new System.Drawing.Point(286, 186);
+            this.ansvarlig.Location = new System.Drawing.Point(286, 222);
             this.ansvarlig.Name = "ansvarlig";
             this.ansvarlig.Size = new System.Drawing.Size(69, 17);
-            this.ansvarlig.TabIndex = 11;
+            this.ansvarlig.TabIndex = 6;
             this.ansvarlig.Text = "Ansvarlig";
             this.ansvarlig.UseVisualStyleBackColor = true;
             // 
@@ -171,22 +173,44 @@
             // 
             this.email.Location = new System.Drawing.Point(286, 21);
             this.email.Name = "email";
+            this.email.ReadOnly = true;
             this.email.Size = new System.Drawing.Size(253, 20);
-            this.email.TabIndex = 13;
+            this.email.TabIndex = 1;
             // 
             // colonWar
             // 
             this.colonWar.AutoSize = true;
-            this.colonWar.Location = new System.Drawing.Point(286, 206);
+            this.colonWar.Location = new System.Drawing.Point(286, 242);
             this.colonWar.Name = "colonWar";
             this.colonWar.Size = new System.Drawing.Size(0, 13);
             this.colonWar.TabIndex = 15;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(283, 180);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Kodeord";
+            // 
+            // kodeord
+            // 
+            this.kodeord.Location = new System.Drawing.Point(286, 196);
+            this.kodeord.Name = "kodeord";
+            this.kodeord.PasswordChar = '*';
+            this.kodeord.ReadOnly = true;
+            this.kodeord.Size = new System.Drawing.Size(139, 20);
+            this.kodeord.TabIndex = 5;
+            // 
             // BrugerAdminVindue
             // 
+            this.AcceptButton = this.gemBruger;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 301);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.kodeord);
             this.Controls.Add(this.colonWar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.email);
@@ -230,5 +254,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label colonWar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox kodeord;
     }
 }

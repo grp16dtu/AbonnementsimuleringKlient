@@ -21,21 +21,6 @@ namespace AbonnementsimuleringKlient
             brugerAdminVindue.SetBrugerAdminVindueController(this);
             _dto = DTO.Instance;
         }
-        public List<IBrugerDAO> getTempListTEST()
-        {
-            List<IBrugerDAO> tempList = new List<IBrugerDAO>();
-
-            IBrugerDAO first = new BrugerDAO("Mads", "Slotsbo", 1, true, "hallo", "");
-            IBrugerDAO second = new BrugerDAO("Bjørn", "Andersen", 2, false, "hallo", "");
-            IBrugerDAO third = new BrugerDAO("Lasse", "Redlaz", 3, false, "hallo", "");
-            IBrugerDAO fourth = new BrugerDAO("Jesper", "Baltzersen", null, false, "hallo", "");
-            tempList.Add(first);
-            tempList.Add(second);
-            tempList.Add(third);
-            tempList.Add(fourth);
-          
-            return tempList;
-        }
 
         private void putEventOnBrugerDAO()
         {
@@ -67,16 +52,44 @@ namespace AbonnementsimuleringKlient
             _brugerAdminVindue.CloseVindue();
         }
 
-        internal void GemBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, int index)
+        internal bool GemBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, int index)
         {
             this.MedarbejderListe[index].OpdaterBrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email);
-            //this._dto.GemBruger(fornavn, efternavn, medarbejderNummer, ansvarlig, email);
+            bool opdateringLykkedes = this._dto.RedigerMedarbejder(this.MedarbejderListe[index]);
+            _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
+            return opdateringLykkedes;
+            
         }
 
-        internal void HentMedarbejderListe()
+        internal async void HentMedarbejderListe()
         {
-            MedarbejderListe = getTempListTEST(); //TODO TEST WARNING
+            List<BrugerDAO> tempListe = await _dto.HentMedarbejderList();;
+            MedarbejderListe = tempListe.ConvertAll(o => (IBrugerDAO)o);//Den laver en foreachløkke som kopierer de enkelte objekter, og konverterer dem til den anden liste
+
             putEventOnBrugerDAO();
+
+        }
+
+        internal bool OpretBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, string kodeord)
+        {
+            IBrugerDAO bruger = new BrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email, kodeord);
+            bool brugerOprettet;
+            brugerOprettet = _dto.OpretMedarbejder(bruger);
+            if (brugerOprettet)
+            {
+                bruger.Changed += _brugerAdminVindue.OpdaterMedarbejderListe;
+                MedarbejderListe.Add(bruger);
+            }
+            HentMedarbejderListe();
+            return brugerOprettet;
+        }
+        internal bool SletBruger(IBrugerDAO bruger)
+        {
+            bool success = this._dto.SletMedarbejder(bruger.Brugernavn);
+            HentMedarbejderListe();
+            _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
+
+            return success;
         }
     }
 }

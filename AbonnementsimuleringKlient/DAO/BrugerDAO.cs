@@ -35,7 +35,7 @@ namespace AbonnementsimuleringKlient
             _medarbejderNummer = medarbejderNummer;
             _ansvarlig = ansvarlig;
             _brugernavn = brugernavn;
-            OnChanged(EventArgs.Empty);
+            //OnChanged(EventArgs.Empty);
         }
         protected virtual void OnChanged(EventArgs e)
         {
