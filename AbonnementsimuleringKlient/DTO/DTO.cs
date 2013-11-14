@@ -38,26 +38,58 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-        public List<IBrugerDAO> HentMedarbejderList()
+        public async Task<List<BrugerDAO>> HentMedarbejderList()
         {
-            throw new NotImplementedException();
+
+            response = httpKlient.GetAsync("API/Bruger/Hentalle/").Result;
+          
+            //MessageBox.Show(response.ToString());
+
+            var liste = await response.Content.ReadAsAsync<List<BrugerDAO>>();
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                return liste;
+            }
+            else
+            {
+                //MessageBox.Show(response.ToString());
+                return null;
+            }
         }
 
-        public void SletMedarbejder()
+        public bool SletMedarbejder(string brugernavn)
         {
-            throw new NotImplementedException();
+            response = httpKlient.DeleteAsync("API/Bruger/Slet/?brugernavn=" + brugernavn).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool OpretMedarbejder(IBrugerDAO bruger)
         {
             response = httpKlient.PostAsJsonAsync<IBrugerDAO>("API/Bruger/Opret/", bruger).Result;
-            MessageBox.Show(response.ToString());
+            //MessageBox.Show(response.ToString());
             return response.IsSuccessStatusCode;
         }
 
-        public void RedigerMedarbejder()
+        public bool RedigerMedarbejder(IBrugerDAO bruger)
         {
-            throw new NotImplementedException();
+            response = httpKlient.PutAsJsonAsync<IBrugerDAO>("API/Bruger/Rediger/", bruger).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<string[]> HentBrugsHistorik()

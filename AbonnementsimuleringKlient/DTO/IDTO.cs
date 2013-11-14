@@ -8,13 +8,14 @@ namespace AbonnementsimuleringKlient
 {
     public interface IDTO
     {
-        List<IBrugerDAO> HentMedarbejderList();
+        //List<IBrugerDAO> HentMedarbejderList();
+        Task<List<BrugerDAO>> HentMedarbejderList();
 
-        void SletMedarbejder();
+        bool SletMedarbejder(string brugernavn);
 
         bool OpretMedarbejder(IBrugerDAO bruger);
 
-        void RedigerMedarbejder();
+        bool RedigerMedarbejder(IBrugerDAO bruger);
 
         List<string[]> HentBrugsHistorik();
 

@@ -23,11 +23,14 @@ namespace AbonnementsimuleringKlient
 
     void medarbejdere_SelectionChanged(object sender, EventArgs e)
     {
+        this.email.ReadOnly = true;
+        this.kodeord.ReadOnly = true;
         int index = medarbejdere.CurrentCellAddress.Y;
 
-        if (index > -1)
+        if (index > -1 && index < this._controller.MedarbejderListe.Count)
         {
             fillInfoInWindow(this._controller.MedarbejderListe[index]);
+            _igangMedBrugerOprettelse = false;
         }
     }
 
@@ -59,9 +62,9 @@ namespace AbonnementsimuleringKlient
 
         private void opretBruger_Click(object sender, EventArgs e)
         {
-            _igangMedBrugerOprettelse = true;
-
+            medarbejdere.ClearSelection();
             ClearInfoWindow();
+            _igangMedBrugerOprettelse = true;
         }
 
         private void ClearInfoWindow()
@@ -73,20 +76,32 @@ namespace AbonnementsimuleringKlient
             this.medarbejdernummer.Text = null;
             this.kodeord.Text = "";
             this.kodeord.ReadOnly = false;
+            this.email.ReadOnly = false;
         }
 
         
         private void sletBruger_Click(object sender, EventArgs e)
         {
-            //TODO: slet bruger metode
+            int index = medarbejdere.CurrentCellAddress.Y;
+            bool succes = this._controller.SletBruger(this._controller.MedarbejderListe[index]);
+            if (succes)
+            {
+                this.colonWar.ForeColor = Color.Green;
+                this.colonWar.Text = "Sletning succesfuld.";
+            }
+            else
+            {
+                this.colonWar.ForeColor = Color.Red;
+                this.colonWar.Text = "Sletning mislykket.";
+            }
         }
 
         private void gemBruger_Click(object sender, EventArgs e)
         { 
-            //Check email
+            //Check name in email
             if (email.Text.Contains(":"))
             {
-                this.colonWar.BackColor = Color.Red;
+                this.colonWar.ForeColor = Color.Red;
                 this.colonWar.Text = "Der må ikke være kolon i Email adressen";
             }
             else
@@ -96,19 +111,47 @@ namespace AbonnementsimuleringKlient
                 //_controller.OpretBruger();
             }
 
+            int valgt = medarbejdere.CurrentCellAddress.Y;
             int? tempMedarbejdernummer = null;
-            
+
+            //gets medarbejdernummer safely
+            if (valgt != -1)
+            {
+                tempMedarbejdernummer = this._controller.MedarbejderListe[valgt].MedarbejderNummer;
+            }
+
             if (this.medarbejdernummer.Text != "")
-                tempMedarbejdernummer = Convert.ToInt32(this.medarbejdernummer.Text);
-            
-            if (!_igangMedBrugerOprettelse)
+            {
+                try
+                {
+                    tempMedarbejdernummer = Convert.ToInt32(this.medarbejdernummer.Text);
+                }
+                catch(Exception ex)
+                {
+                    this.colonWar.ForeColor = Color.Red;
+                    this.colonWar.Text = "Medarbejdernummer skal være tomt eller et heltal.";
+                    //MessageBox.Show("FEJL!!!!");
+                    return;
+                }
+            }
+
+            //Gem opdatering else opret
+            if (_igangMedBrugerOprettelse == false)
             {
                 int index = medarbejdere.CurrentCellAddress.Y;
-
-                
-
-                this._controller.GemBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, tempMedarbejdernummer, index);
+                bool succes = this._controller.GemBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, tempMedarbejdernummer, index);
+                if (succes)
+                {
+                    this.colonWar.ForeColor = Color.Green;
+                    this.colonWar.Text = "Opdatering succesfuld.";
+                }
+                else
+                {
+                    this.colonWar.ForeColor = Color.Red;
+                    this.colonWar.Text = "Opdatering mislykket.";
+                }
             }
+            //opret
             else
             {
                 if (this._controller.OpretBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, tempMedarbejdernummer, this.kodeord.Text))
@@ -127,17 +170,16 @@ namespace AbonnementsimuleringKlient
         private void OnLoad(object sender, EventArgs e)
         {
             this._controller.HentMedarbejderListe();
-            BindingSource bs = new BindingSource();
-            bs.DataSource = this._controller.MedarbejderListe;
-            medarbejdere.DataSource = bs;
+            //BindingSource bs = new BindingSource();
+            //bs.DataSource = this._controller.MedarbejderListe;
+            //medarbejdere.DataSource = bs;
             OpdaterMedarbejderListe(sender, e);
         }
 
         public void OpdaterMedarbejderListe(object sender, EventArgs e)
         {
-            //medarbejdere.DataSource = this._controller.MedarbejderListe;
-            MessageBox.Show(this._controller.MedarbejderListe.ToString());
-            medarbejdere.Update(); //det virker ik??
+            medarbejdere.DataSource = null;
+            medarbejdere.DataSource = this._controller.MedarbejderListe;
             
             medarbejdere.Columns[3].ReadOnly = true;
             medarbejdere.Columns[4].Visible = false;
