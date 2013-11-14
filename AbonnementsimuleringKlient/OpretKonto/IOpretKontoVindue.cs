@@ -13,5 +13,16 @@ namespace AbonnementsimuleringKlient
         void SetOpretKontoVindueController(OpretKontoVindueController controller);
         void AftalenummerfejlShow();
         void AftalenummerfejlHide();
+        void FeltIkkeUdfyldtShow();
+        void FeltIkkeUdfyldtHide();
+        void IntFejlShow();
+        void IntFejlHide();
+
+        void MedarbejderIntFejlShow();
+
+        void MedarbejderIntFejlHide();
+
+        void EmailIkkeValidShow();
+        void EmailIkkeValidHide();
     }
 }

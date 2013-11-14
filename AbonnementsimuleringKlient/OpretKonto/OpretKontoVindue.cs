@@ -61,5 +61,45 @@ namespace AbonnementsimuleringKlient
             this.aftalenummerfejl.Hide();
         }
 
+        public void FeltIkkeUdfyldtShow()
+        {
+           feltikkeudfyldt.Show();
+        }
+
+        public void FeltIkkeUdfyldtHide()
+        {
+            feltikkeudfyldt.Hide();
+        }
+
+        public void IntFejlShow()
+        {
+           intfejl.Show();
+        }
+
+        public void IntFejlHide()
+        {
+            intfejl.Hide();
+        }
+
+        public void MedarbejderIntFejlShow()
+        {
+            medarbejderintfejl.Show();
+        }
+
+        public void MedarbejderIntFejlHide()
+        {
+            medarbejderintfejl.Hide();
+        }
+
+
+        public void EmailIkkeValidShow()
+        {
+            emailfejl.Show();
+        }
+
+        public void EmailIkkeValidHide()
+        {
+            emailfejl.Hide();
+        }
     }
 }

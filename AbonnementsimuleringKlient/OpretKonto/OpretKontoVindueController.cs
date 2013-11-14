@@ -8,6 +8,8 @@ namespace AbonnementsimuleringKlient
 {
     public class OpretKontoVindueController
     {
+        private RegexUtilities _util;
+
         private IOpretKontoVindue _opretKontoVindue;
         private Konto _konto;
         private IBrugerDAO _BrugerDAO;
@@ -17,6 +19,7 @@ namespace AbonnementsimuleringKlient
         public OpretKontoVindueController(IOpretKontoVindue opretKontoVindue)
         {
             this._opretKontoVindue = opretKontoVindue;
+            _util = new RegexUtilities();
             _konto = new Konto();
             _dto = DTO.Instance;
             opretKontoVindue.SetOpretKontoVindueController(this);
@@ -27,23 +30,61 @@ namespace AbonnementsimuleringKlient
             _opretKontoVindue.OpenVindue();
         }
 
-        public bool OpretKonto(string economicAftalenummer,string economicBrugernavn,string economicKodeord,string 
-                fornavn,string efternavn,string medarbjederNummer,string brugernavn,string kodeord)
+        public bool OpretKonto(string economicAftalenummer, string economicBrugernavn, string economicKodeord, string
+                fornavn, string efternavn, string medarbjederNummer, string brugernavn, string kodeord)
         {
-            if(economicAftalenummer.Length > 6 || economicAftalenummer.Length == 0)
+            if (economicAftalenummer == "" || economicBrugernavn == "" || economicKodeord == "" || fornavn == ""
+                || efternavn == "" || medarbjederNummer == "" || brugernavn == "" || kodeord == "")
             {
-                _opretKontoVindue.AftalenummerfejlShow();
+                _opretKontoVindue.FeltIkkeUdfyldtShow();
                 return false;
             }
             else
             {
-                _konto.EconomicAftalenummer = Convert.ToInt32(economicAftalenummer);
-                _opretKontoVindue.AftalenummerfejlHide();
-                _konto.EconomicBrugernavn = economicBrugernavn;
-                _konto.EconomicKodeord = economicKodeord;
-                _BrugerDAO = new BrugerDAO(fornavn,efternavn,Convert.ToInt32(medarbjederNummer),true,brugernavn,kodeord);
-                _konto.AbosimBruger = _BrugerDAO;
-                return _dto.OpretKonto(_konto);
+                _opretKontoVindue.MedarbejderIntFejlHide();
+                _opretKontoVindue.FeltIkkeUdfyldtHide();
+                _opretKontoVindue.EmailIkkeValidHide();
+                if (economicAftalenummer.Length > 6)
+                {
+                    _opretKontoVindue.AftalenummerfejlShow();
+                    return false;
+                }
+                else
+                {
+                    try
+                    {
+                        _konto.EconomicAftalenummer = Convert.ToInt32(economicAftalenummer);
+                    }
+                    catch (Exception)
+                    {
+                        _opretKontoVindue.IntFejlShow();
+                        return false;
+                    }
+                    _opretKontoVindue.IntFejlHide();
+                    _opretKontoVindue.AftalenummerfejlHide();
+                    _konto.EconomicBrugernavn = economicBrugernavn;
+                    _konto.EconomicKodeord = economicKodeord;
+                    if (_util.IsValidEmail(brugernavn))
+                    {
+                        try
+                        {
+                            _BrugerDAO = new BrugerDAO(fornavn, efternavn, Convert.ToInt32(medarbjederNummer), true, brugernavn, kodeord);
+                        }
+                        catch (Exception)
+                        {
+                            _opretKontoVindue.MedarbejderIntFejlShow();
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        _opretKontoVindue.EmailIkkeValidShow();
+                        return false;
+                    }
+
+                    _konto.AbosimBruger = _BrugerDAO;
+                    return _dto.OpretKonto(_konto);
+                }
             }
         }
 
