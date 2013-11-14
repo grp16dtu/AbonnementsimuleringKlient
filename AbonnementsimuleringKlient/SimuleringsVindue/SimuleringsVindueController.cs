@@ -84,8 +84,14 @@ namespace AbonnementsimuleringKlient
 
         public void HentSimuleringsDAO(int simuleringsIndex)
         {
-            //_simuleringsDAO _dto.HentSimuleringsDAO(simuleringsIndex);
+            //_simuleringsDAO 
+            //_dto.HentSimuleringsDAO(simuleringsIndex);
+
+            //_simuleringsDAO = _dto.KoerNySimulering();
+
+            
             var dao = _simuleringsDAO;
+
             dao.XakseAfdeling = new List<string> { "Afdeling1", "Afdeling2", "Afdeling2", "Afdeling2", "Afdeling2" };
             dao.XakseDebitor = new List<string> { "Debitor1", "Debitor2", "Afdeling2", "Afdeling2", "Afdeling2" };
             dao.XakseTid = new List<string> { "Tid1", "Tid2", "Afdeling2", "Afdeling2", "Afdeling2" };
@@ -100,6 +106,7 @@ namespace AbonnementsimuleringKlient
             dao.YakseStkVare = new List<double> { 10000, 50000 ,5588,2352};
 
             _simuleringsDAO = dao;
+            
         }
          
         public void OpenBrugerHistorikVindue()
@@ -116,8 +123,15 @@ namespace AbonnementsimuleringKlient
         {
             //TODO: OPTIMER!!
 
+            _dto.KoerNySimulering();
 
             OpdaterVindue("Tid", "Pris");
         }
+
+        public List<SimuleringsDAO> HentSimuleringsList()
+        {
+            return _dto.HentSimuleringsListe();
+        }
+
     }      
 }

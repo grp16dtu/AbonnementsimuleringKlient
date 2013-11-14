@@ -68,19 +68,24 @@ namespace AbonnementsimuleringKlient
             throw new NotImplementedException();
         }
 
+        //TODO: Skal laves færdig
         public void KoerNySimulering()
         {
-            throw new NotImplementedException();
+            response = httpKlient.GetAsync("Api/Simulering/Ny/1/").Result;
         }
-
+        //TODO: Skal laves færdig
         public List<SimuleringsDAO> HentSimuleringsListe()
         {
-            throw new NotImplementedException();
-        }
+            response = httpKlient.GetAsync("Api/Datapunkter/Hentoversigt/").Result;
 
+            MessageBox.Show(response.Content.ReadAsAsync<List<SimuleringsDAO>>().Result.ToString());
+
+            return response.Content.ReadAsAsync<List<SimuleringsDAO>>().Result;
+        }
+        //TODO: Skal laves færdig
         public void HentEnkeltSimulering()
         {
-            throw new NotImplementedException();
+            response = httpKlient.GetAsync("Api/Datapunkter/Hentalle/6").Result;
         }
 
         public void OpdaterEConomicsCredentials(string aftalenr, string brugernavn, string kodeord)

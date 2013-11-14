@@ -18,6 +18,7 @@ namespace AbonnementsimuleringKlient
         public string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
         public DateTime Tidsstempel { get; set; }
         public List<DateTime> SimuleringsListe; 
+
         public void SetSimuleringsVindueController(SimuleringsVindueController controller)
         {
             this.simuleringsVindueController = controller;
@@ -27,7 +28,6 @@ namespace AbonnementsimuleringKlient
             xAkse.Items.AddRange(xAkseKey);
             xAkse.Text = xAkseKey[0];
             listBox1.SelectedIndex = 0;
-
 
            // OpdaterVindue(xKey, yKey, Tidsstempel);
 
@@ -41,6 +41,8 @@ namespace AbonnementsimuleringKlient
 
         public List<DateTime> VisSimuleringsListe()
         {
+
+            //TODO: skal laves
             throw new NotImplementedException();
         }
 
@@ -140,6 +142,10 @@ namespace AbonnementsimuleringKlient
         private void visSimuleringKnap_Click(object sender, EventArgs e)
         {
             //TODO: tjek om det er den valgte simulering vi har i systemet, eller om der skal hentes en ny
+
+
+
+
             simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
             //VisValgteSimulering("Hardcodede måneder", "random tal", simuleringsDao.XakseAfdeling, simuleringsDao.YaksePrisAfdeling);
 
@@ -149,6 +155,10 @@ namespace AbonnementsimuleringKlient
         private void KorNy_Click(object sender, EventArgs e)
         {
             //TODO: implementer!!
+
+            simuleringsVindueController.BygNyesteSimuleringsDAO();
+
+
         }
 
         private void xAkse_SelectedIndexChanged(object sender, EventArgs e)
