@@ -34,8 +34,11 @@ namespace AbonnementsimuleringKlient
 
         private void opretKonto_Klikket(object sender, EventArgs e)
         {
-            _controller.OpretKonto(economicAftalenummer.ToString(),economicBrugernavn.ToString(),economicKodeord.ToString(),
-                fornavn.ToString(),efternavn.ToString(),medarbjederNummer.ToString(),brugernavn.ToString(),kodeord.ToString());
+            if(_controller.OpretKonto(economicAftalenummer.Text,economicBrugernavn.Text,economicKodeord.Text,
+                fornavn.Text,efternavn.Text,medarbjederNummer.Text,brugernavn.Text,kodeord.Text))
+            {
+                CloseVindue();
+            }
         }
 
         public void OpenVindue()
@@ -47,5 +50,16 @@ namespace AbonnementsimuleringKlient
         {
             this.Hide();
         }
+
+        public void AftalenummerfejlShow()
+        {
+            this.aftalenummerfejl.Show();
+        }
+
+        public void AftalenummerfejlHide()
+        {
+            this.aftalenummerfejl.Hide();
+        }
+
     }
 }

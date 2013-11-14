@@ -68,12 +68,14 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-        public BrugerDAO(string fornavn, string efternavn, int id, bool ansvarlig)
+        public BrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn, string kodeord)
         {
             this.Fornavn = fornavn;
             this.Efternavn = efternavn;
-            this.MedarbejderNummer = id;
+            this.MedarbejderNummer = medarbejderNummer;
             this.Ansvarlig = ansvarlig;
+            this.Brugernavn = brugernavn;
+            this.Kodeord = kodeord;
         }
 
         protected virtual void OnChanged(EventArgs e)

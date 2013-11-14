@@ -11,12 +11,14 @@ namespace AbonnementsimuleringKlient
         private IOpretKontoVindue _opretKontoVindue;
         private Konto _konto;
         private IBrugerDAO _BrugerDAO;
+        private IDTO _dto;
+
 
         public OpretKontoVindueController(IOpretKontoVindue opretKontoVindue)
         {
             this._opretKontoVindue = opretKontoVindue;
             _konto = new Konto();
-
+            _dto = DTO.Instance;
             opretKontoVindue.SetOpretKontoVindueController(this);
         }
 
@@ -28,14 +30,21 @@ namespace AbonnementsimuleringKlient
         public bool OpretKonto(string economicAftalenummer,string economicBrugernavn,string economicKodeord,string 
                 fornavn,string efternavn,string medarbjederNummer,string brugernavn,string kodeord)
         {
-
-            _konto.EconomicAftalenummer = int.Parse(economicAftalenummer);
-            _konto.EconomicBrugernavn = economicBrugernavn;
-            _konto.EconomicKodeord = economicKodeord;
-            _BrugerDAO = new BrugerDAO(fornavn,efternavn,int.Parse(medarbjederNummer),true,brugernavn,kodeord);  
-            // brugernavn og kodeord skal tilføjes i BrugerDAO construkter 
-
-            return true;
+            if(economicAftalenummer.Length > 6 || economicAftalenummer.Length == 0)
+            {
+                _opretKontoVindue.AftalenummerfejlShow();
+                return false;
+            }
+            else
+            {
+                _konto.EconomicAftalenummer = Convert.ToInt32(economicAftalenummer);
+                _opretKontoVindue.AftalenummerfejlHide();
+                _konto.EconomicBrugernavn = economicBrugernavn;
+                _konto.EconomicKodeord = economicKodeord;
+                _BrugerDAO = new BrugerDAO(fornavn,efternavn,Convert.ToInt32(medarbjederNummer),true,brugernavn,kodeord);
+                _konto.AbosimBruger = _BrugerDAO;
+                return _dto.OpretKonto(_konto);
+            }
         }
 
     }

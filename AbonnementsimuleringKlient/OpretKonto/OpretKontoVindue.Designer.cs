@@ -45,6 +45,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.opretKonto = new System.Windows.Forms.Button();
+            this.aftalenummerfejl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // economicAftalenummer
@@ -53,6 +54,7 @@
             this.economicAftalenummer.Name = "economicAftalenummer";
             this.economicAftalenummer.Size = new System.Drawing.Size(316, 20);
             this.economicAftalenummer.TabIndex = 0;
+            this.economicAftalenummer.Text = "123456";
             // 
             // economicBrugernavn
             // 
@@ -60,6 +62,7 @@
             this.economicBrugernavn.Name = "economicBrugernavn";
             this.economicBrugernavn.Size = new System.Drawing.Size(316, 20);
             this.economicBrugernavn.TabIndex = 1;
+            this.economicBrugernavn.Text = "Anders";
             // 
             // economicKodeord
             // 
@@ -67,6 +70,7 @@
             this.economicKodeord.Name = "economicKodeord";
             this.economicKodeord.Size = new System.Drawing.Size(316, 20);
             this.economicKodeord.TabIndex = 2;
+            this.economicKodeord.Text = "kode1234";
             // 
             // fornavn
             // 
@@ -74,6 +78,7 @@
             this.fornavn.Name = "fornavn";
             this.fornavn.Size = new System.Drawing.Size(316, 20);
             this.fornavn.TabIndex = 3;
+            this.fornavn.Text = "Henning";
             // 
             // efternavn
             // 
@@ -81,6 +86,7 @@
             this.efternavn.Name = "efternavn";
             this.efternavn.Size = new System.Drawing.Size(316, 20);
             this.efternavn.TabIndex = 4;
+            this.efternavn.Text = "Stærk";
             // 
             // medarbjederNummer
             // 
@@ -88,6 +94,7 @@
             this.medarbjederNummer.Name = "medarbjederNummer";
             this.medarbjederNummer.Size = new System.Drawing.Size(316, 20);
             this.medarbjederNummer.TabIndex = 5;
+            this.medarbjederNummer.Text = "424242";
             // 
             // kodeord
             // 
@@ -95,6 +102,7 @@
             this.kodeord.Name = "kodeord";
             this.kodeord.Size = new System.Drawing.Size(316, 20);
             this.kodeord.TabIndex = 7;
+            this.kodeord.Text = "1234";
             // 
             // brugernavn
             // 
@@ -102,6 +110,7 @@
             this.brugernavn.Name = "brugernavn";
             this.brugernavn.Size = new System.Drawing.Size(316, 20);
             this.brugernavn.TabIndex = 6;
+            this.brugernavn.Text = "Bearminator";
             // 
             // label1
             // 
@@ -185,11 +194,23 @@
             this.opretKonto.UseVisualStyleBackColor = true;
             this.opretKonto.Click += new System.EventHandler(this.opretKonto_Klikket);
             // 
+            // aftalenummerfejl
+            // 
+            this.aftalenummerfejl.AutoSize = true;
+            this.aftalenummerfejl.ForeColor = System.Drawing.Color.Red;
+            this.aftalenummerfejl.Location = new System.Drawing.Point(335, 32);
+            this.aftalenummerfejl.Name = "aftalenummerfejl";
+            this.aftalenummerfejl.Size = new System.Drawing.Size(94, 13);
+            this.aftalenummerfejl.TabIndex = 18;
+            this.aftalenummerfejl.Text = "Fejl i aftalenummer";
+            this.aftalenummerfejl.Visible = false;
+            // 
             // OpretKontoVindue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 383);
+            this.Controls.Add(this.aftalenummerfejl);
             this.Controls.Add(this.opretKonto);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -235,5 +256,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button opretKonto;
+        private System.Windows.Forms.Label aftalenummerfejl;
     }
 }

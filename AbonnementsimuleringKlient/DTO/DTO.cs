@@ -140,5 +140,23 @@ namespace AbonnementsimuleringKlient
                 return null;
             }
         }
+
+        public bool OpretKonto(Konto konto)
+        {
+            response = httpKlient.PostAsJsonAsync("API/konto/opret/", konto).Result;
+            var statuskode = response.StatusCode.ToString();
+            var svar = response.Content.ReadAsStringAsync().Result;
+
+            if(statuskode == "OK")
+            {
+                MessageBox.Show(svar);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(svar);
+                return false;
+            }
+        }
     }
 }

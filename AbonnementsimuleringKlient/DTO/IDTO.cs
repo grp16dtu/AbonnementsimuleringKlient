@@ -34,5 +34,6 @@ namespace AbonnementsimuleringKlient
 
         IBrugerDAO LoginVerificering(string brugernavn, string kodeord);
 
+        bool OpretKonto(Konto konto);
     }
 }

@@ -11,5 +11,7 @@ namespace AbonnementsimuleringKlient
         void OpenVindue();
         void CloseVindue();
         void SetOpretKontoVindueController(OpretKontoVindueController controller);
+        void AftalenummerfejlShow();
+        void AftalenummerfejlHide();
     }
 }
