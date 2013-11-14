@@ -61,7 +61,7 @@ namespace AbonnementsimuleringKlient
 
         public bool SletMedarbejder(string brugernavn)
         {
-            response = httpKlient.DeleteAsync("API/Bruger/Slet/?brugernavn=" + brugernavn).Result;
+            response = httpKlient.DeleteAsync("API/Bruger/Slet/" + brugernavn).Result;
             if (response.IsSuccessStatusCode)
             {
                 return true;
