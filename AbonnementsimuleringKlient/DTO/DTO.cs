@@ -48,9 +48,11 @@ namespace AbonnementsimuleringKlient
             throw new NotImplementedException();
         }
 
-        public void OpretMedarbejder()
+        public bool OpretMedarbejder(IBrugerDAO bruger)
         {
-            throw new NotImplementedException();
+            response = httpKlient.PostAsJsonAsync<IBrugerDAO>("API/Bruger/Opret/", bruger).Result;
+            MessageBox.Show(response.ToString());
+            return response.IsSuccessStatusCode;
         }
 
         public void RedigerMedarbejder()

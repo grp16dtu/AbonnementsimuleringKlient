@@ -78,5 +78,20 @@ namespace AbonnementsimuleringKlient
             MedarbejderListe = getTempListTEST(); //TODO TEST WARNING
             putEventOnBrugerDAO();
         }
+
+        internal bool OpretBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, string kodeord)
+        {
+            IBrugerDAO bruger = new BrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email, kodeord);
+            bool brugerOprettet;
+            brugerOprettet = _dto.OpretMedarbejder(bruger);
+            if (brugerOprettet)
+            {
+                MessageBox.Show("brugerOprettet: " + brugerOprettet);
+                bruger.Changed += _brugerAdminVindue.OpdaterMedarbejderListe;
+                MedarbejderListe.Add(bruger);
+                 
+            }
+            return brugerOprettet;
+        }
     }
 }

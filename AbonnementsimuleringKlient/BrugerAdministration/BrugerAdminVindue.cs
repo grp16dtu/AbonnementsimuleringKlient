@@ -13,10 +13,12 @@ namespace AbonnementsimuleringKlient
     public partial class BrugerAdminVindue : Form, IBrugerAdminVindue
     {
         private BrugerAdminVindueController _controller;
+        private bool _igangMedBrugerOprettelse;
         public BrugerAdminVindue()
         {
             InitializeComponent();
             this.medarbejdere.SelectionChanged += medarbejdere_SelectionChanged;
+            _igangMedBrugerOprettelse = false;
         }
 
     void medarbejdere_SelectionChanged(object sender, EventArgs e)
@@ -57,6 +59,31 @@ namespace AbonnementsimuleringKlient
 
         private void opretBruger_Click(object sender, EventArgs e)
         {
+            _igangMedBrugerOprettelse = true;
+
+            ClearInfoWindow();
+        }
+
+        private void ClearInfoWindow()
+        {
+            this.email.Text = "";
+            this.efternavn.Text = "";
+            this.fornavn.Text = "";
+            this.ansvarlig.Checked = false;
+            this.medarbejdernummer.Text = null;
+            this.kodeord.Text = "";
+            this.kodeord.ReadOnly = false;
+        }
+
+        
+        private void sletBruger_Click(object sender, EventArgs e)
+        {
+            //TODO: slet bruger metode
+        }
+
+        private void gemBruger_Click(object sender, EventArgs e)
+        { 
+            //Check email
             if (email.Text.Contains(":"))
             {
                 this.colonWar.BackColor = Color.Red;
@@ -66,36 +93,51 @@ namespace AbonnementsimuleringKlient
             {
                 this.colonWar.Text = "";
                 //TODO: opretbruger Skal laves færdig 
+                //_controller.OpretBruger();
             }
-            
-        }
-        
-        private void sletBruger_Click(object sender, EventArgs e)
-        {
-            //TODO: slet bruger metode
-        }
 
-        private void gemBruger_Click(object sender, EventArgs e)
-        {
-            int index = medarbejdere.CurrentCellAddress.Y;
-            int? medarbejderNummer = null;
- 
-            if (this._controller.MedarbejderListe[index].MedarbejderNummer != null)
-                this._controller.MedarbejderListe[index].MedarbejderNummer = Convert.ToInt32(this.medarbejdernummer.Text);
-           
-            this._controller.GemBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, medarbejderNummer, index);
+            int? tempMedarbejdernummer = null;
+            
+            if (this.medarbejdernummer.Text != "")
+                tempMedarbejdernummer = Convert.ToInt32(this.medarbejdernummer.Text);
+            
+            if (!_igangMedBrugerOprettelse)
+            {
+                int index = medarbejdere.CurrentCellAddress.Y;
+
+                
+
+                this._controller.GemBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, tempMedarbejdernummer, index);
+            }
+            else
+            {
+                if (this._controller.OpretBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, tempMedarbejdernummer, this.kodeord.Text))
+                {
+                    OpdaterMedarbejderListe(null, EventArgs.Empty);
+                    this.colonWar.Text = "Bruger oprettet succesfuldt.";     
+                }
+                else
+                {
+                    this.colonWar.Text = "FEJL i oprettelse af bruger";
+                }
+                _igangMedBrugerOprettelse = false;
+            }
         }
 
         private void OnLoad(object sender, EventArgs e)
         {
             this._controller.HentMedarbejderListe();
+            BindingSource bs = new BindingSource();
+            bs.DataSource = this._controller.MedarbejderListe;
+            medarbejdere.DataSource = bs;
             OpdaterMedarbejderListe(sender, e);
         }
 
         public void OpdaterMedarbejderListe(object sender, EventArgs e)
         {
-            medarbejdere.DataSource = this._controller.MedarbejderListe;
-            medarbejdere.Update();
+            //medarbejdere.DataSource = this._controller.MedarbejderListe;
+            MessageBox.Show(this._controller.MedarbejderListe.ToString());
+            medarbejdere.Update(); //det virker ik??
             
             medarbejdere.Columns[3].ReadOnly = true;
             medarbejdere.Columns[4].Visible = false;

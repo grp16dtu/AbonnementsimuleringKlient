@@ -12,7 +12,7 @@ namespace AbonnementsimuleringKlient
 
         void SletMedarbejder();
 
-        void OpretMedarbejder();
+        bool OpretMedarbejder(IBrugerDAO bruger);
 
         void RedigerMedarbejder();
 

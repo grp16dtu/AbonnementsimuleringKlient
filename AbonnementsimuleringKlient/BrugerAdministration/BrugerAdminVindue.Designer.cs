@@ -43,6 +43,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
             this.colonWar = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.kodeord = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.medarbejdere)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,7 +139,7 @@
             // ansvarlig
             // 
             this.ansvarlig.AutoSize = true;
-            this.ansvarlig.Location = new System.Drawing.Point(286, 186);
+            this.ansvarlig.Location = new System.Drawing.Point(286, 222);
             this.ansvarlig.Name = "ansvarlig";
             this.ansvarlig.Size = new System.Drawing.Size(69, 17);
             this.ansvarlig.TabIndex = 11;
@@ -177,16 +179,36 @@
             // colonWar
             // 
             this.colonWar.AutoSize = true;
-            this.colonWar.Location = new System.Drawing.Point(286, 206);
+            this.colonWar.Location = new System.Drawing.Point(286, 242);
             this.colonWar.Name = "colonWar";
             this.colonWar.Size = new System.Drawing.Size(0, 13);
             this.colonWar.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(283, 180);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Kodeord";
+            // 
+            // kodeord
+            // 
+            this.kodeord.Location = new System.Drawing.Point(286, 196);
+            this.kodeord.Name = "kodeord";
+            this.kodeord.PasswordChar = '*';
+            this.kodeord.ReadOnly = true;
+            this.kodeord.Size = new System.Drawing.Size(139, 20);
+            this.kodeord.TabIndex = 16;
             // 
             // BrugerAdminVindue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 301);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.kodeord);
             this.Controls.Add(this.colonWar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.email);
@@ -230,5 +252,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label colonWar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox kodeord;
     }
 }
