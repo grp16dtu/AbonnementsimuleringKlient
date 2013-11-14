@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace AbonnementsimuleringKlient
 {
@@ -24,6 +25,16 @@ namespace AbonnementsimuleringKlient
             this.MedarbejderNummer = medarbejderNummer;
             this.Ansvarlig = ansvarlig;
             this.Brugernavn = brugernavn;
+        }
+
+        public void OpdaterBrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn)
+        {
+            _fornavn = fornavn;
+            _efternavn = efternavn;
+            _medarbejderNummer = medarbejderNummer;
+            _ansvarlig = ansvarlig;
+            _brugernavn = brugernavn;
+            OnChanged(EventArgs.Empty);
         }
         protected virtual void OnChanged(EventArgs e)
         {

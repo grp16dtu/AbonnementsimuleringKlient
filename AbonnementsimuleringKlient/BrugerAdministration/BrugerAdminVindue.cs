@@ -13,8 +13,6 @@ namespace AbonnementsimuleringKlient
     public partial class BrugerAdminVindue : Form, IBrugerAdminVindue
     {
         private BrugerAdminVindueController _controller;
-        private IndstillingerVindueController _indstillingerVindueController;
-        private List<IBrugerDAO> _medarbejderListe;
         public BrugerAdminVindue()
         {
             InitializeComponent();
@@ -27,7 +25,7 @@ namespace AbonnementsimuleringKlient
 
         if (index > -1)
         {
-            fillInfoInWindow(_medarbejderListe[index]);
+            fillInfoInWindow(this._controller.MedarbejderListe[index]);
         }
     }
 
@@ -38,27 +36,19 @@ namespace AbonnementsimuleringKlient
             this.fornavn.Text = brugerDAO.Fornavn;
             this.ansvarlig.Checked = brugerDAO.Ansvarlig;
             this.medarbejdernummer.Text = brugerDAO.MedarbejderNummer.ToString();
-
         }
 
-
-
-        
         public void SetBrugerAdminVindueController(BrugerAdminVindueController controller)
         {
             this._controller = controller;
-            this.FormClosing += new FormClosingEventHandler(Closing_From);
-            this._medarbejderListe = new List<IBrugerDAO>();
-            
+            this.FormClosing += new FormClosingEventHandler(Closing_From);            
         }
 
         private void Closing_From(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
+            e.Cancel = true;    //sørger for at object ikke destrueres når vindue lukkes
             this.Hide();
         }
-
-
 
         private void instillinger_Click(object sender, EventArgs e)
         {
@@ -75,80 +65,41 @@ namespace AbonnementsimuleringKlient
             else
             {
                 this.colonWar.Text = "";
-                //TODO: Skal laves færdig 
+                //TODO: opretbruger Skal laves færdig 
             }
             
         }
         
         private void sletBruger_Click(object sender, EventArgs e)
         {
-
+            //TODO: slet bruger metode
         }
 
         private void gemBruger_Click(object sender, EventArgs e)
         {
             int index = medarbejdere.CurrentCellAddress.Y;
-            _medarbejderListe[index].Ansvarlig = this.ansvarlig.Checked;
-            _medarbejderListe[index].Brugernavn = this.email.Text;
-            _medarbejderListe[index].Fornavn = this.fornavn.Text;
-            _medarbejderListe[index].Efternavn = this.efternavn.Text;
-            if(_medarbejderListe[index].MedarbejderNummer != null)
-                _medarbejderListe[index].MedarbejderNummer = Convert.ToInt32(this.medarbejdernummer.Text);
+            int? medarbejderNummer = null;
+ 
+            if (this._controller.MedarbejderListe[index].MedarbejderNummer != null)
+                this._controller.MedarbejderListe[index].MedarbejderNummer = Convert.ToInt32(this.medarbejdernummer.Text);
+           
+            this._controller.GemBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, medarbejderNummer, index);
         }
 
         private void OnLoad(object sender, EventArgs e)
         {
-            HentMedarbejderListe();
+            this._controller.HentMedarbejderListe();
             OpdaterMedarbejderListe(sender, e);
-         
         }
 
-        private void OpdaterMedarbejderListe(object sender, EventArgs e)
+        public void OpdaterMedarbejderListe(object sender, EventArgs e)
         {
-            medarbejdere.DataSource = _medarbejderListe;
+            medarbejdere.DataSource = this._controller.MedarbejderListe;
             medarbejdere.Update();
             
             medarbejdere.Columns[3].ReadOnly = true;
             medarbejdere.Columns[4].Visible = false;
             medarbejdere.Columns[5].Visible = false;
-        }
-
-        private void putEventOnBrugerDAO()
-        {
-            foreach (IBrugerDAO bruger in _medarbejderListe)
-            {
-                bruger.Changed += this.OpdaterMedarbejderListe;
-            }
-        }
-                
-        public void HentIndstillingerVindue()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OpretBruger()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SletBruger()
-        {
-            throw new NotImplementedException();
-        }
-        
-        public void GemBruger()
-        {
-        }
-
-        public void MedarbejderFraListe()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void HentMedarbejderListe()
-        {
-            this._medarbejderListe = this._controller.getTempListTEST(new EventHandler(this.OpdaterMedarbejderListe)); //ONLY FOR TESTING, OVERWRITES _MEDARBEJDERLISTE
-            putEventOnBrugerDAO();
         }
 
         public void OpenVindue()

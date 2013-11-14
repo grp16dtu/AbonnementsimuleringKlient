@@ -12,9 +12,16 @@ namespace AbonnementsimuleringKlient
         private IBrugerAdminVindue _brugerAdminVindue;
         private IBrugerDAO _aktuelBruger;
         private IndstillingerVindueController _indstillingerVindueController;
-        public List<IBrugerDAO> medarbejderListe { get; set; }
+        private IDTO _dto;
+        public List<IBrugerDAO> MedarbejderListe { get; set; }
 
-        public List<IBrugerDAO> getTempListTEST(EventHandler handler)
+        public BrugerAdminVindueController(IBrugerAdminVindue brugerAdminVindue)
+        {
+            this._brugerAdminVindue = brugerAdminVindue;
+            brugerAdminVindue.SetBrugerAdminVindueController(this);
+            _dto = DTO.Instance;
+        }
+        public List<IBrugerDAO> getTempListTEST()
         {
             List<IBrugerDAO> tempList = new List<IBrugerDAO>();
 
@@ -26,14 +33,18 @@ namespace AbonnementsimuleringKlient
             tempList.Add(second);
             tempList.Add(third);
             tempList.Add(fourth);
+          
             return tempList;
         }
 
-        public BrugerAdminVindueController(IBrugerAdminVindue brugerAdminVindue)
+        private void putEventOnBrugerDAO()
         {
-            this._brugerAdminVindue = brugerAdminVindue;
-            brugerAdminVindue.SetBrugerAdminVindueController(this);
+            foreach (IBrugerDAO bruger in this.MedarbejderListe)
+            {
+                bruger.Changed += _brugerAdminVindue.OpdaterMedarbejderListe;
+            }
         }
+
 
         public void SetControllers(IndstillingerVindueController indstillingerVindueController)
         {
@@ -54,6 +65,18 @@ namespace AbonnementsimuleringKlient
         public void CloseVindue()
         {
             _brugerAdminVindue.CloseVindue();
+        }
+
+        internal void GemBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, int index)
+        {
+            this.MedarbejderListe[index].OpdaterBrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email);
+            //this._dto.GemBruger(fornavn, efternavn, medarbejderNummer, ansvarlig, email);
+        }
+
+        internal void HentMedarbejderListe()
+        {
+            MedarbejderListe = getTempListTEST(); //TODO TEST WARNING
+            putEventOnBrugerDAO();
         }
     }
 }
