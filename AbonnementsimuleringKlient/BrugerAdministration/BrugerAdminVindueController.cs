@@ -25,10 +25,10 @@ namespace AbonnementsimuleringKlient
         {
             List<IBrugerDAO> tempList = new List<IBrugerDAO>();
 
-            IBrugerDAO first = new BrugerDAO("Mads", "Slotsbo", 1, true, "hallo");
-            IBrugerDAO second = new BrugerDAO("Bjørn", "Andersen", 2, false, "hallo");
-            IBrugerDAO third = new BrugerDAO("Lasse", "Redlaz", 3, false, "hallo");
-            IBrugerDAO fourth = new BrugerDAO("Jesper", "Baltzersen", null, false, "hallo");
+            IBrugerDAO first = new BrugerDAO("Mads", "Slotsbo", 1, true, "hallo", "");
+            IBrugerDAO second = new BrugerDAO("Bjørn", "Andersen", 2, false, "hallo", "");
+            IBrugerDAO third = new BrugerDAO("Lasse", "Redlaz", 3, false, "hallo", "");
+            IBrugerDAO fourth = new BrugerDAO("Jesper", "Baltzersen", null, false, "hallo", "");
             tempList.Add(first);
             tempList.Add(second);
             tempList.Add(third);

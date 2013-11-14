@@ -18,13 +18,14 @@ namespace AbonnementsimuleringKlient
         private string _kodeord;
 
 
-        public BrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn)
+        public BrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn, string kodeord)
         {
             this.Fornavn = fornavn;
             this.Efternavn = efternavn;
             this.MedarbejderNummer = medarbejderNummer;
             this.Ansvarlig = ansvarlig;
             this.Brugernavn = brugernavn;
+            this.Kodeord = kodeord;
         }
 
         public void OpdaterBrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn)
