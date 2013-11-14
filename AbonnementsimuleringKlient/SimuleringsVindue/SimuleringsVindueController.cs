@@ -12,7 +12,7 @@ namespace AbonnementsimuleringKlient
         private ISimuleringsDAO _simuleringsDAO;
         private BrugsHistorikVindueController _brugsHistorikController; 
         private BrugerAdminVindueController _brugerAdminVindueController;
-        private IBrugerDAO _aktuelBruger;
+        public IBrugerDAO _aktuelBruger;
         private IDTO _dto;
 
         public SimuleringsVindueController(ISimuleringsVindue simuleringsVindue, ISimuleringsDAO simuleringsDAO)
@@ -108,8 +108,10 @@ namespace AbonnementsimuleringKlient
         }
 
         public void OpenBrugerAdminVindue()
-        {
-            _brugerAdminVindueController.OpenVindue(_aktuelBruger);
+        {   
+            if(this._aktuelBruger.Ansvarlig)
+                _brugerAdminVindueController.OpenVindue(_aktuelBruger);
+            //TODO: tilføj fejl tekst ved tryk på knap uden at være ansvarlig
         }
 
         public void BygNyesteSimuleringsDAO()
