@@ -45,6 +45,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.opretKonto = new System.Windows.Forms.Button();
+            this.aftalenummerfejl = new System.Windows.Forms.Label();
+            this.feltikkeudfyldt = new System.Windows.Forms.Label();
+            this.intfejl = new System.Windows.Forms.Label();
+            this.medarbejderintfejl = new System.Windows.Forms.Label();
+            this.emailfejl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // economicAftalenummer
@@ -67,6 +72,7 @@
             this.economicKodeord.Name = "economicKodeord";
             this.economicKodeord.Size = new System.Drawing.Size(316, 20);
             this.economicKodeord.TabIndex = 2;
+            this.economicKodeord.UseSystemPasswordChar = true;
             // 
             // fornavn
             // 
@@ -95,6 +101,7 @@
             this.kodeord.Name = "kodeord";
             this.kodeord.Size = new System.Drawing.Size(316, 20);
             this.kodeord.TabIndex = 7;
+            this.kodeord.UseSystemPasswordChar = true;
             // 
             // brugernavn
             // 
@@ -162,9 +169,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(10, 292);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 13);
+            this.label7.Size = new System.Drawing.Size(119, 13);
             this.label7.TabIndex = 14;
-            this.label7.Text = "Brugernavn";
+            this.label7.Text = "Brugernavn ( din Email )";
             // 
             // label8
             // 
@@ -185,11 +192,72 @@
             this.opretKonto.UseVisualStyleBackColor = true;
             this.opretKonto.Click += new System.EventHandler(this.opretKonto_Klikket);
             // 
+            // aftalenummerfejl
+            // 
+            this.aftalenummerfejl.AutoSize = true;
+            this.aftalenummerfejl.ForeColor = System.Drawing.Color.Red;
+            this.aftalenummerfejl.Location = new System.Drawing.Point(330, 26);
+            this.aftalenummerfejl.Name = "aftalenummerfejl";
+            this.aftalenummerfejl.Size = new System.Drawing.Size(94, 13);
+            this.aftalenummerfejl.TabIndex = 18;
+            this.aftalenummerfejl.Text = "Fejl i aftalenummer";
+            this.aftalenummerfejl.Visible = false;
+            // 
+            // feltikkeudfyldt
+            // 
+            this.feltikkeudfyldt.AutoSize = true;
+            this.feltikkeudfyldt.ForeColor = System.Drawing.Color.Red;
+            this.feltikkeudfyldt.Location = new System.Drawing.Point(330, 170);
+            this.feltikkeudfyldt.Name = "feltikkeudfyldt";
+            this.feltikkeudfyldt.Size = new System.Drawing.Size(163, 13);
+            this.feltikkeudfyldt.TabIndex = 19;
+            this.feltikkeudfyldt.Text = "En eller flere felter er ikke udfyldt!";
+            this.feltikkeudfyldt.Visible = false;
+            // 
+            // intfejl
+            // 
+            this.intfejl.AutoSize = true;
+            this.intfejl.ForeColor = System.Drawing.Color.Red;
+            this.intfejl.Location = new System.Drawing.Point(330, 39);
+            this.intfejl.Name = "intfejl";
+            this.intfejl.Size = new System.Drawing.Size(169, 13);
+            this.intfejl.TabIndex = 20;
+            this.intfejl.Text = "Aftalenummer må kun indehole tal!";
+            this.intfejl.Visible = false;
+            // 
+            // medarbejderintfejl
+            // 
+            this.medarbejderintfejl.AutoSize = true;
+            this.medarbejderintfejl.ForeColor = System.Drawing.Color.Red;
+            this.medarbejderintfejl.Location = new System.Drawing.Point(330, 264);
+            this.medarbejderintfejl.Name = "medarbejderintfejl";
+            this.medarbejderintfejl.Size = new System.Drawing.Size(201, 13);
+            this.medarbejderintfejl.TabIndex = 21;
+            this.medarbejderintfejl.Text = "Medarbejdernummer må kun indehole tal!";
+            this.medarbejderintfejl.Visible = false;
+            // 
+            // emailfejl
+            // 
+            this.emailfejl.AutoSize = true;
+            this.emailfejl.ForeColor = System.Drawing.Color.Red;
+            this.emailfejl.Location = new System.Drawing.Point(330, 311);
+            this.emailfejl.Name = "emailfejl";
+            this.emailfejl.Size = new System.Drawing.Size(197, 13);
+            this.emailfejl.TabIndex = 22;
+            this.emailfejl.Text = "Dit brugernavn skal være en valid email!";
+            this.emailfejl.Visible = false;
+            // 
             // OpretKontoVindue
             // 
+            this.AcceptButton = this.opretKonto;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 383);
+            this.Controls.Add(this.emailfejl);
+            this.Controls.Add(this.medarbejderintfejl);
+            this.Controls.Add(this.intfejl);
+            this.Controls.Add(this.feltikkeudfyldt);
+            this.Controls.Add(this.aftalenummerfejl);
             this.Controls.Add(this.opretKonto);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -235,5 +303,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button opretKonto;
+        private System.Windows.Forms.Label aftalenummerfejl;
+        private System.Windows.Forms.Label feltikkeudfyldt;
+        private System.Windows.Forms.Label intfejl;
+        private System.Windows.Forms.Label medarbejderintfejl;
+        private System.Windows.Forms.Label emailfejl;
     }
 }
