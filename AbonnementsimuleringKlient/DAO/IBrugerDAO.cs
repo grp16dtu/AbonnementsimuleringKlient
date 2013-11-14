@@ -15,6 +15,7 @@ namespace AbonnementsimuleringKlient
         //email bruges som unik identifier for brugernavn
         string Brugernavn { get; set; }
         string Kodeord { get; set; }
+        void OpdaterBrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn);
 
         event EventHandler Changed;
 
