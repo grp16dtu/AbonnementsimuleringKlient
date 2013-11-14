@@ -27,6 +27,7 @@ namespace AbonnementsimuleringKlient
             xAkse.Items.AddRange(xAkseKey);
             xAkse.Text = xAkseKey[0];
             listBox1.SelectedIndex = 0;
+            
 
 
            // OpdaterVindue(xKey, yKey, Tidsstempel);
