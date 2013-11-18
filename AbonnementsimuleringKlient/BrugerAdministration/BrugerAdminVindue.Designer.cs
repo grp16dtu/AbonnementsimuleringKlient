@@ -95,16 +95,7 @@
             this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Medarbejdernummer";
-            // 
-            // instillinger
-            // 
-            this.instillinger.Location = new System.Drawing.Point(431, 62);
-            this.instillinger.Name = "instillinger";
-            this.instillinger.Size = new System.Drawing.Size(108, 23);
-            this.instillinger.TabIndex = 7;
-            this.instillinger.Text = "Instillinger";
-            this.instillinger.UseVisualStyleBackColor = true;
-            this.instillinger.Click += new System.EventHandler(this.instillinger_Click);
+
             // 
             // opretBruger
             // 

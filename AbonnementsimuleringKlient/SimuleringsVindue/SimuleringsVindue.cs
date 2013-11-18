@@ -125,10 +125,7 @@ namespace AbonnementsimuleringKlient
         }
         */
 
-        private void visBrugshistorikKnap_Click(object sender, EventArgs e)
-        {
-            simuleringsVindueController.OpenBrugerHistorikVindue();
-        }
+
 
         private void visBrugerAdminKnap_Click(object sender, EventArgs e)
         {

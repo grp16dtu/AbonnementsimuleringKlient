@@ -55,10 +55,7 @@ namespace AbonnementsimuleringKlient
             this.Hide();
         }
 
-        private void instillinger_Click(object sender, EventArgs e)
-        {
-            _controller.OpenIndstilleringVindue();
-        }
+
 
         private void opretBruger_Click(object sender, EventArgs e)
         {

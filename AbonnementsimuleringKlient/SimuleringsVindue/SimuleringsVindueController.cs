@@ -10,7 +10,6 @@ namespace AbonnementsimuleringKlient
     {
         private ISimuleringsVindue _simuleringsVindue;
         private ISimuleringsDAO _simuleringsDAO;
-        private BrugsHistorikVindueController _brugsHistorikController; 
         private BrugerAdminVindueController _brugerAdminVindueController;
         public IBrugerDAO _aktuelBruger;
         private IDTO _dto;
@@ -35,9 +34,8 @@ namespace AbonnementsimuleringKlient
             _simuleringsVindue.CloseVindue();
         }
 
-        public void SetControllers(BrugsHistorikVindueController brugsHisturikController, BrugerAdminVindueController brugerAdminVindueController)
+        public void SetControllers(BrugerAdminVindueController brugerAdminVindueController)
         {
-            this._brugsHistorikController = brugsHisturikController;
             this._brugerAdminVindueController = brugerAdminVindueController;
         }
 
@@ -102,10 +100,7 @@ namespace AbonnementsimuleringKlient
             _simuleringsDAO = dao;
         }
          
-        public void OpenBrugerHistorikVindue()
-        {
-            _brugsHistorikController.OpenVindue(_aktuelBruger);
-        }
+      
 
         public void OpenBrugerAdminVindue()
         {   

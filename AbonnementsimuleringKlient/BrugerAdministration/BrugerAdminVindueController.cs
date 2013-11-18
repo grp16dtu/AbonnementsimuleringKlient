@@ -11,7 +11,6 @@ namespace AbonnementsimuleringKlient
     {
         private IBrugerAdminVindue _brugerAdminVindue;
         private IBrugerDAO _aktuelBruger;
-        private IndstillingerVindueController _indstillingerVindueController;
         private IDTO _dto;
         public List<IBrugerDAO> MedarbejderListe { get; set; }
 
@@ -31,15 +30,9 @@ namespace AbonnementsimuleringKlient
         }
 
 
-        public void SetControllers(IndstillingerVindueController indstillingerVindueController)
-        {
-            this._indstillingerVindueController = indstillingerVindueController;
-        }
 
-        public void OpenIndstilleringVindue()
-        {
-            _indstillingerVindueController.OpenVindue();
-        }
+
+   
 
         public void OpenVindue(IBrugerDAO bruger)
         {
