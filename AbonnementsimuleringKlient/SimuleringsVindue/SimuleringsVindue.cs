@@ -14,10 +14,10 @@ namespace AbonnementsimuleringKlient
     public partial class SimuleringsVindue : Form, ISimuleringsVindue
     {
         private SimuleringsVindueController simuleringsVindueController;
-        public string[] yAkseKey = new string[] {"Stk", "Pris"};
-        public string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
-        public DateTime Tidsstempel { get; set; }
-        public List<DateTime> SimuleringsListe; 
+        private string[] yAkseKey = new string[] {"Stk", "Pris"};
+        private string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
+        private DateTime Tidsstempel { get; set; }
+        private List<DateTime> SimuleringsListe; 
 
         public void SetSimuleringsVindueController(SimuleringsVindueController controller)
         {
@@ -81,6 +81,8 @@ namespace AbonnementsimuleringKlient
 
         public void OpenVindue()
         {
+            this.visBrugerAdminKnap.Enabled = this.simuleringsVindueController._aktuelBruger.Ansvarlig;
+            this.KorNy.Enabled = this.simuleringsVindueController._aktuelBruger.Ansvarlig;
             simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
             yAkse.Items.AddRange(yAkseKey);
             yAkse.Text = yAkseKey[0];
@@ -92,11 +94,6 @@ namespace AbonnementsimuleringKlient
         public void CloseVindue()
         {
             this.Hide();
-        }
-
-        private void visBrugshistorikKnap_Click(object sender, EventArgs e)
-        {
-            simuleringsVindueController.OpenBrugerHistorikVindue();
         }
 
         private void visBrugerAdminKnap_Click(object sender, EventArgs e)
@@ -134,9 +131,5 @@ namespace AbonnementsimuleringKlient
         {
 
         }
-        
-
-
-     
     }
 }
