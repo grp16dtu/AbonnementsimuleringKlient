@@ -90,6 +90,7 @@ namespace AbonnementsimuleringKlient
             {
                 this.colonWar.ForeColor = Color.Red;
                 this.colonWar.Text = "Sletning mislykket.";
+
             }
         }
 

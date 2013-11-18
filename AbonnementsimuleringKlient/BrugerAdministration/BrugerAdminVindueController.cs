@@ -49,7 +49,7 @@ namespace AbonnementsimuleringKlient
         {
             this.MedarbejderListe[index].OpdaterBrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email);
             bool opdateringLykkedes = this._dto.RedigerMedarbejder(this.MedarbejderListe[index]);
-            _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
+            HentMedarbejderListe(); 
             return opdateringLykkedes;
             
         }
@@ -60,6 +60,7 @@ namespace AbonnementsimuleringKlient
             MedarbejderListe = tempListe.ConvertAll(o => (IBrugerDAO)o);//Den laver en foreachløkke som kopierer de enkelte objekter, og konverterer dem til den anden liste
 
             putEventOnBrugerDAO();
+            _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
 
         }
 
@@ -80,9 +81,9 @@ namespace AbonnementsimuleringKlient
         {
             bool success = this._dto.SletMedarbejder(bruger.Brugernavn);
             HentMedarbejderListe();
-            _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
 
             return success;
+
         }
     }
 }

@@ -82,12 +82,15 @@ namespace AbonnementsimuleringKlient
         public bool RedigerMedarbejder(IBrugerDAO bruger)
         {
             response = httpKlient.PutAsJsonAsync<IBrugerDAO>("API/Bruger/Rediger/", bruger).Result;
+            //MessageBox.Show(response.ToString());
             if (response.IsSuccessStatusCode)
             {
                 return true;
             }
             else
             {
+                MessageBox.Show(response.StatusCode.ToString());
+
                 return false;
             }
         }
