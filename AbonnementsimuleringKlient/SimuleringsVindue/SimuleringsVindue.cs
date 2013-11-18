@@ -19,6 +19,7 @@ namespace AbonnementsimuleringKlient
         private string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
         private DateTime Tidsstempel { get; set; }
         private List<DateTime> SimuleringsListe; 
+        
 
         public void SetSimuleringsVindueController(SimuleringsVindueController controller)
         {
@@ -103,13 +104,14 @@ namespace AbonnementsimuleringKlient
         {
             InitializeComponent();
             _arbejder = new BackgroundWorker();
+            _arbejder.WorkerReportsProgress = true;
             _arbejder.DoWork += new DoWorkEventHandler(arbejder_doWork);
             _arbejder.RunWorkerCompleted += new RunWorkerCompletedEventHandler(arbejder_done);
         }
 
         private void arbejder_doWork(object sender, DoWorkEventArgs e)
         {
-            KorNy.Enabled = false;
+            pictureBox1.Image = Properties.Resources.loading;
             int index = Convert.ToInt32(e.Argument);
             simuleringsVindueController.BygNyesteSimuleringsDAO(index);
         }
@@ -117,6 +119,7 @@ namespace AbonnementsimuleringKlient
         private void arbejder_done(object sender, RunWorkerCompletedEventArgs e)
         {
             KorNy.Enabled = true;
+            pictureBox1.Image = null;
             simuleringsVindueController.HentSimuleringsList();
             simuleringsVindueController.OpdaterVindue("Str", "Tid");
         }
@@ -131,6 +134,10 @@ namespace AbonnementsimuleringKlient
         {
             try
             {
+                if (!this._arbejder.IsBusy)
+                {
+                    KorNy.Enabled = false;
+                }
                 label2.Hide();
                 var index = Convert.ToInt32(textBox1.Text);
                 _arbejder.RunWorkerAsync(index);

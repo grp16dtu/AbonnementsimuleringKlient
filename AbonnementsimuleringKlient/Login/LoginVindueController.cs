@@ -53,11 +53,6 @@ namespace AbonnementsimuleringKlient
         public void CloseVindue()
         {
             _loginVindue.CloseVindue();
-        }
-        //TODO: Skal inplementeres
-        public string KrypterKodeord(string kodeord)
-        {
-            return "";
-        }        
+        }     
     }
 }
