@@ -22,9 +22,9 @@ namespace AbonnementsimuleringKlient
 
         void KoerNySimulering();
 
-        List<SimuleringsDAO> HentSimuleringsListe();
+        List<Datapunktsgruppering> HentSimuleringsListe();
 
-        void HentEnkeltSimulering();
+        DatapunktLister HentEnkeltSimulering(int index);
 
         ISimuleringsDAO HentNyesteSimulering(string xAkse, string yAkse);
 

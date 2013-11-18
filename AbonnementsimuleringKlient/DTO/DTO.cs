@@ -73,19 +73,23 @@ namespace AbonnementsimuleringKlient
         {
             response = httpKlient.GetAsync("Api/Simulering/Ny/1/").Result;
         }
+
         //TODO: Skal laves færdig
-        public List<SimuleringsDAO> HentSimuleringsListe()
+        public List<Datapunktsgruppering> HentSimuleringsListe()
         {
             response = httpKlient.GetAsync("Api/Datapunkter/Hentoversigt/").Result;
 
-            MessageBox.Show(response.Content.ReadAsAsync<List<SimuleringsDAO>>().Result.ToString());
+            MessageBox.Show(response.ToString()+"\nhente oversigt");
 
-            return response.Content.ReadAsAsync<List<SimuleringsDAO>>().Result;
+            return response.Content.ReadAsAsync<List<Datapunktsgruppering>>().Result;
         }
+
         //TODO: Skal laves færdig
-        public void HentEnkeltSimulering()
+        public DatapunktLister HentEnkeltSimulering(int index)
         {
-            response = httpKlient.GetAsync("Api/Datapunkter/Hentalle/6").Result;
+            response = httpKlient.GetAsync("Api/Datapunkter/Hentalle/"+index).Result;
+            MessageBox.Show(response.ToString()+"\n hent alle");
+            return response.Content.ReadAsAsync<DatapunktLister>().Result;
         }
 
         public void OpdaterEConomicsCredentials(string aftalenr, string brugernavn, string kodeord)

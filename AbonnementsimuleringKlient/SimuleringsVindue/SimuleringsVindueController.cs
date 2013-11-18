@@ -14,6 +14,8 @@ namespace AbonnementsimuleringKlient
         private BrugerAdminVindueController _brugerAdminVindueController;
         private IBrugerDAO _aktuelBruger;
         private IDTO _dto;
+        private List<Datapunktsgruppering> _datapunktsgrupperings; 
+
 
         public SimuleringsVindueController(ISimuleringsVindue simuleringsVindue, ISimuleringsDAO simuleringsDAO)
         {
@@ -25,9 +27,11 @@ namespace AbonnementsimuleringKlient
         }
 
         public void OpenVindue(IBrugerDAO bruger) 
-        {
-            this._simuleringsVindue.OpenVindue();
+        {          
             this._aktuelBruger = bruger;
+            _datapunktsgrupperings = this._dto.HentSimuleringsListe(); 
+            _simuleringsVindue.VisSimuleringsListe(_datapunktsgrupperings);
+            this._simuleringsVindue.OpenVindue();
         }
 
         public void CloseVindue()
@@ -82,14 +86,18 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-        public void HentSimuleringsDAO(int simuleringsIndex)
+        public void HentSimuleringsDAO(int valgteindex)
         {
             //_simuleringsDAO 
-            //_dto.HentSimuleringsDAO(simuleringsIndex);
+            if (valgteindex >= 0)
+            {
+                GenererSimuleringsDAO(_dto.HentEnkeltSimulering(_datapunktsgrupperings[valgteindex].Id));
+            }
+
 
             //_simuleringsDAO = _dto.KoerNySimulering();
 
-            
+            /*
             var dao = _simuleringsDAO;
 
             dao.XakseAfdeling = new List<string> { "Afdeling1", "Afdeling2", "Afdeling2", "Afdeling2", "Afdeling2" };
@@ -106,7 +114,7 @@ namespace AbonnementsimuleringKlient
             dao.YakseStkVare = new List<double> { 10000, 50000 ,5588,2352};
 
             _simuleringsDAO = dao;
-            
+            */
         }
          
         public void OpenBrugerHistorikVindue()
@@ -128,10 +136,57 @@ namespace AbonnementsimuleringKlient
             OpdaterVindue("Tid", "Pris");
         }
 
-        public List<SimuleringsDAO> HentSimuleringsList()
+        public List<Datapunktsgruppering> HentSimuleringsList()
         {
             return _dto.HentSimuleringsListe();
         }
 
+
+        public void GenererSimuleringsDAO(DatapunktLister data)
+        {
+            foreach (var afdeling in data.AfdelingAntal)
+            {
+                _simuleringsDAO.XakseAfdeling.Add(afdeling.Afdelingsnavn);
+                _simuleringsDAO.YakseStkAfdeling.Add((double)afdeling.Antal);
+            }
+
+            foreach (var afdeling in data.AfdelingDKK)
+            {
+                _simuleringsDAO.YaksePrisAfdeling.Add((double)afdeling.DKK);
+            }
+
+            foreach (var afdeling in data.DebitorAntal)
+            {
+                _simuleringsDAO.XakseDebitor.Add(afdeling.Debitornavn);
+                _simuleringsDAO.YakseStkDebitor.Add((double)afdeling.Antal);
+            }
+
+            foreach (var afdeling in data.DebitorDKK)
+            {
+                _simuleringsDAO.YakseStkAfdeling.Add((double)afdeling.DKK);
+            }
+
+            foreach (var afdeling in data.TidAntal)
+            {
+                _simuleringsDAO.XakseTid.Add(afdeling.Tid.ToString());
+                _simuleringsDAO.YakseStkTid.Add((double)afdeling.Antal);
+            }
+            foreach (var afdeling in data.TidDKK)
+            {
+                _simuleringsDAO.YaksePrisTid.Add((double)afdeling.DKK);
+            }
+
+            foreach (var afdeling in data.VareAntal)
+            {
+                _simuleringsDAO.XakseVare.Add(afdeling.Varenavn);
+                _simuleringsDAO.YakseStkVare.Add((double)afdeling.Antal);
+            }
+
+            foreach (var afdeling in data.VareDKK)
+            {
+                _simuleringsDAO.YaksePrisVare.Add((double)afdeling.DKK);
+            }
+
+        }
     }      
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AbonnementsimuleringServer.Models
+namespace AbonnementsimuleringKlient
 {
     public class DatapunktLister
     {
+
         public List<Datapunkt> TidAntal { get; set; }
         public List<Datapunkt> TidDKK { get; set; }
         public List<Datapunkt> VareAntal { get; set; }
@@ -16,8 +17,5 @@ namespace AbonnementsimuleringServer.Models
         public List<Datapunkt> DebitorAntal { get; set; }
         public List<Datapunkt> DebitorDKK { get; set; }
 
-        public DatapunktLister()
-        {
-        }
     }
 }

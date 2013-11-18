@@ -77,7 +77,9 @@
     <Compile Include="DAO\IBrugsHistorik.cs" />
     <Compile Include="DAO\IEConomicCredentialsDAO.cs" />
     <Compile Include="DAO\ILoginBruger.cs" />
+    <Compile Include="Datapunkt.cs" />
     <Compile Include="DatapunktLister.cs" />
+    <Compile Include="Datapunktsgruppering.cs" />
     <Compile Include="DTO\DTO.cs" />
     <Compile Include="DTO\IDTO.cs" />
     <Compile Include="Indstillinger\IIndstillingerVindue.cs" />

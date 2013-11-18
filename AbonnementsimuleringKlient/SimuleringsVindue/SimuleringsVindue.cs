@@ -23,11 +23,8 @@ namespace AbonnementsimuleringKlient
         {
             this.simuleringsVindueController = controller;
 
-            yAkse.Items.AddRange(yAkseKey);
-            yAkse.Text = yAkseKey[0];
-            xAkse.Items.AddRange(xAkseKey);
-            xAkse.Text = xAkseKey[0];
-            listBox1.SelectedIndex = 0;
+
+            //listBox1.SelectedIndex = 0;
 
            // OpdaterVindue(xKey, yKey, Tidsstempel);
 
@@ -39,11 +36,13 @@ namespace AbonnementsimuleringKlient
             Application.OpenForms["LoginVindue"].Close();
         }
 
-        public List<DateTime> VisSimuleringsListe()
+        public void VisSimuleringsListe(List<Datapunktsgruppering> liste)
         {
-
-            //TODO: skal laves
-            throw new NotImplementedException();
+            foreach (var datapunktsgruppering in liste)
+            {
+                this.listBox1.Items.Add(datapunktsgruppering.Dato.AddHours(9));
+            }
+            this.listBox1.SelectedIndex = 0;
         }
 
         public void VisValgteSimulering(string xAkseKey, string yAkseKey, List<string> xAkse, List<double> yAkse)
@@ -103,6 +102,10 @@ namespace AbonnementsimuleringKlient
 
         public void OpenVindue()
         {
+            yAkse.Items.AddRange(yAkseKey);
+            yAkse.Text = yAkseKey[0];
+            xAkse.Items.AddRange(xAkseKey);
+            xAkse.Text = xAkseKey[0];
             this.Show();
         }
 
@@ -143,10 +146,8 @@ namespace AbonnementsimuleringKlient
         {
             //TODO: tjek om det er den valgte simulering vi har i systemet, eller om der skal hentes en ny
 
-
-
-
             simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
+
             //VisValgteSimulering("Hardcodede måneder", "random tal", simuleringsDao.XakseAfdeling, simuleringsDao.YaksePrisAfdeling);
 
             simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
