@@ -15,7 +15,7 @@ namespace AbonnementsimuleringKlient
     {
         private BackgroundWorker _arbejder;
         private SimuleringsVindueController simuleringsVindueController;
-        private string[] yAkseKey = new string[] {"Stk", "Pris"};
+        private string[] yAkseKey = new string[] {"Stk", "DKK"};
         private string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
         private DateTime Tidsstempel { get; set; }
         private List<DateTime> SimuleringsListe; 

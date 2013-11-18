@@ -64,7 +64,7 @@ namespace AbonnementsimuleringKlient
                             break;
                     }
                     break;
-                case "Pris":
+                case "DKK":
                     switch (xKey)
                     {
                         case "Tid":
