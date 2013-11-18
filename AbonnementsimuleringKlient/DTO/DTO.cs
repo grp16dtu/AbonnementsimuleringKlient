@@ -103,13 +103,13 @@ namespace AbonnementsimuleringKlient
         }
 
 
-        public void KoerNySimulering()
+        public void KoerNySimulering(int index)
         {
-            response = httpKlient.GetAsync("Api/Simulering/Ny/1/").Result;
+            response = httpKlient.GetAsync("Api/Simulering/Ny/"+index+"/").Result;
         }
 
 
-        public List<Datapunktsgruppering> HentSimuleringsListe()
+        public async Task <List<Datapunktsgruppering>> HentSimuleringsListe()
         {
             response = httpKlient.GetAsync("Api/Datapunkter/Hentoversigt/").Result;
             return response.Content.ReadAsAsync<List<Datapunktsgruppering>>().Result;

@@ -13,6 +13,7 @@ namespace AbonnementsimuleringKlient
 {
     public partial class SimuleringsVindue : Form, ISimuleringsVindue
     {
+        private BackgroundWorker _arbejder;
         private SimuleringsVindueController simuleringsVindueController;
         private string[] yAkseKey = new string[] {"Stk", "Pris"};
         private string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
@@ -22,11 +23,6 @@ namespace AbonnementsimuleringKlient
         public void SetSimuleringsVindueController(SimuleringsVindueController controller)
         {
             this.simuleringsVindueController = controller;
-
-
-            //listBox1.SelectedIndex = 0;
-
-           // OpdaterVindue(xKey, yKey, Tidsstempel);
 
             this.FormClosing += new FormClosingEventHandler(Closing_From);
         }
@@ -38,6 +34,7 @@ namespace AbonnementsimuleringKlient
 
         public void VisSimuleringsListe(List<Datapunktsgruppering> liste)
         {
+            this.listBox1.Items.Clear();
             foreach (var datapunktsgruppering in liste)
             {
                 this.listBox1.Items.Add(datapunktsgruppering.Dato.AddHours(9));
@@ -64,6 +61,7 @@ namespace AbonnementsimuleringKlient
 
                 //skriver det reelle tal af kolonnen paa grafen
                 data.Label = yAkse[i].ToString();
+                data.LabelAngle = -90;
 
                 //graftypen
                 serie.ChartType = SeriesChartType.RangeColumn;
@@ -104,6 +102,23 @@ namespace AbonnementsimuleringKlient
         public SimuleringsVindue()
         {
             InitializeComponent();
+            _arbejder = new BackgroundWorker();
+            _arbejder.DoWork += new DoWorkEventHandler(arbejder_doWork);
+            _arbejder.RunWorkerCompleted += new RunWorkerCompletedEventHandler(arbejder_done);
+        }
+
+        private void arbejder_doWork(object sender, DoWorkEventArgs e)
+        {
+            KorNy.Enabled = false;
+            int index = Convert.ToInt32(e.Argument);
+            simuleringsVindueController.BygNyesteSimuleringsDAO(index);
+        }
+
+        private void arbejder_done(object sender, RunWorkerCompletedEventArgs e)
+        {
+            KorNy.Enabled = true;
+            simuleringsVindueController.HentSimuleringsList();
+            simuleringsVindueController.OpdaterVindue("Str", "Tid");
         }
 
         private void visSimuleringKnap_Click(object sender, EventArgs e)
@@ -114,7 +129,18 @@ namespace AbonnementsimuleringKlient
 
         private void KorNy_Click(object sender, EventArgs e)
         {
-            simuleringsVindueController.BygNyesteSimuleringsDAO();
+            try
+            {
+                label2.Hide();
+                var index = Convert.ToInt32(textBox1.Text);
+                _arbejder.RunWorkerAsync(index);
+                listBox1.SelectedIndex = 0;
+            }
+            catch (Exception)
+            {
+                label2.Show();
+            }
+
         }
 
         private void xAkse_SelectedIndexChanged(object sender, EventArgs e)

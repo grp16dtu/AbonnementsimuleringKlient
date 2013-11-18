@@ -56,7 +56,7 @@ namespace AbonnementsimuleringKlient
 
         internal async void HentMedarbejderListe()
         {
-            List<BrugerDAO> tempListe = await _dto.HentMedarbejderList();;
+            List<BrugerDAO> tempListe = await _dto.HentMedarbejderList();
             MedarbejderListe = tempListe.ConvertAll(o => (IBrugerDAO)o);//Den laver en foreachløkke som kopierer de enkelte objekter, og konverterer dem til den anden liste
 
             putEventOnBrugerDAO();

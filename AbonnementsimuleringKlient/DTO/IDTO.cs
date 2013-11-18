@@ -21,9 +21,9 @@ namespace AbonnementsimuleringKlient
 
         List<string> HentGrafDataDropdown();
 
-        void KoerNySimulering();
+        void KoerNySimulering(int index);
 
-        List<Datapunktsgruppering> HentSimuleringsListe();
+        Task<List<Datapunktsgruppering>> HentSimuleringsListe();
 
         DatapunktLister HentEnkeltSimulering(int index);
 

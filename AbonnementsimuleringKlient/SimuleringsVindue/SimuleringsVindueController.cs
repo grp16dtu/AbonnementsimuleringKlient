@@ -25,10 +25,10 @@ namespace AbonnementsimuleringKlient
             _simuleringsVindue.SetSimuleringsVindueController(this);
         }
 
-        public void OpenVindue(IBrugerDAO bruger) 
+        public async void OpenVindue(IBrugerDAO bruger) 
         {          
             this._aktuelBruger = bruger;
-            _datapunktsgrupperings = this._dto.HentSimuleringsListe(); 
+            _datapunktsgrupperings = await this._dto.HentSimuleringsListe(); 
             _simuleringsVindue.VisSimuleringsListe(_datapunktsgrupperings);
             this._simuleringsVindue.OpenVindue();
         }
@@ -97,19 +97,15 @@ namespace AbonnementsimuleringKlient
             _brugerAdminVindueController.OpenVindue(_aktuelBruger);
         }
 
-        public void BygNyesteSimuleringsDAO()
+        public void BygNyesteSimuleringsDAO(int index)
         {
-            _dto.KoerNySimulering();
-
-            _datapunktsgrupperings = this._dto.HentSimuleringsListe();
-            _simuleringsVindue.VisSimuleringsListe(_datapunktsgrupperings);
-
-            OpdaterVindue("Tid", "Pris");
+            _dto.KoerNySimulering(index);
         }
 
-        public List<Datapunktsgruppering> HentSimuleringsList()
+        public async void HentSimuleringsList()
         {
-            return _dto.HentSimuleringsListe();
+            _datapunktsgrupperings = await this._dto.HentSimuleringsListe();
+            _simuleringsVindue.VisSimuleringsListe(_datapunktsgrupperings);
         }
 
 
