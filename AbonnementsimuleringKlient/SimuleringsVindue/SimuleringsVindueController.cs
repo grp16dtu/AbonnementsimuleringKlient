@@ -26,8 +26,8 @@ namespace AbonnementsimuleringKlient
 
         public void OpenVindue(IBrugerDAO bruger) 
         {
-            this._simuleringsVindue.OpenVindue();
             this._aktuelBruger = bruger;
+            this._simuleringsVindue.OpenVindue();
         }
 
         public void CloseVindue()
@@ -109,7 +109,7 @@ namespace AbonnementsimuleringKlient
 
         public void OpenBrugerAdminVindue()
         {   
-            if(this._aktuelBruger.Ansvarlig)
+            //if(this._aktuelBruger.Ansvarlig)
                 _brugerAdminVindueController.OpenVindue(_aktuelBruger);
             //TODO: tilføj fejl tekst ved tryk på knap uden at være ansvarlig
         }

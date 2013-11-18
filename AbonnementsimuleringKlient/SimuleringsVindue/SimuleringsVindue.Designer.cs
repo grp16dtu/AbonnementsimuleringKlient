@@ -121,15 +121,13 @@
             // 
             // KorNy
             // 
-            this.KorNy.BackColor = System.Drawing.Color.Red;
-            this.KorNy.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.KorNy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.KorNy.BackColor = System.Drawing.SystemColors.Control;
             this.KorNy.Location = new System.Drawing.Point(441, 193);
             this.KorNy.Name = "KorNy";
             this.KorNy.Size = new System.Drawing.Size(135, 23);
             this.KorNy.TabIndex = 7;
             this.KorNy.Text = "Kør ny";
-            this.KorNy.UseVisualStyleBackColor = false;
+            this.KorNy.UseVisualStyleBackColor = true;
             this.KorNy.Click += new System.EventHandler(this.KorNy_Click);
             // 
             // textBox1

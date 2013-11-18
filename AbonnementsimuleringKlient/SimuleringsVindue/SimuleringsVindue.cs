@@ -102,6 +102,8 @@ namespace AbonnementsimuleringKlient
 
         public void OpenVindue()
         {
+            this.visBrugerAdminKnap.Enabled = this.simuleringsVindueController._aktuelBruger.Ansvarlig;
+            this.KorNy.Enabled = this.simuleringsVindueController._aktuelBruger.Ansvarlig;
             this.Show();
         }
 
