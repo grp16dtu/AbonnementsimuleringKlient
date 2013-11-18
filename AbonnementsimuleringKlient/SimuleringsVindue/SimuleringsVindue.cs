@@ -54,8 +54,7 @@ namespace AbonnementsimuleringKlient
 
             chart1.ResetAutoValues();
 
-            //serie.Name = xAkseKey + "/" + yAkseKey;
-            chart1.Titles.Add(xAkseKey + "/" + yAkseKey);
+            chart1.Titles.Add(yAkseKey + "/" + xAkseKey);
             for(int i = 0; i< xAkse.Count; i++)
             {
                 //Datapunkterne skal laegges her i
@@ -80,28 +79,9 @@ namespace AbonnementsimuleringKlient
             chart1.Series.Add(serie);
         }
 
-        public void GenererNySimulering(int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BrugerAdministration()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void XAkse()
-        {
-           // OpdaterVindue(xKey, yKey, Tidsstempel);
-        }
-
-        public void YAkse()
-        {
-            throw new NotImplementedException();
-        }
-
         public void OpenVindue()
         {
+            simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
             yAkse.Items.AddRange(yAkseKey);
             yAkse.Text = yAkseKey[0];
             xAkse.Items.AddRange(xAkseKey);
@@ -113,19 +93,6 @@ namespace AbonnementsimuleringKlient
         {
             this.Hide();
         }
-        /*
-        public void OpdaterVindue(xAkseKey xKey, yAkseKey yKey, DateTime tidsstempel)
-        {
-            if (tidsstempel != null)
-            {
-                simuleringsVindueController.OpdaterVindue(xKey, yKey, tidsstempel);
-            }else
-            {
-                SimuleringsListe = VisSimuleringsListe();
-                simuleringsVindueController.OpdaterVindue(xKey, yKey, SimuleringsListe.Last());
-            }
-        }
-        */
 
         private void visBrugshistorikKnap_Click(object sender, EventArgs e)
         {
@@ -144,35 +111,22 @@ namespace AbonnementsimuleringKlient
 
         private void visSimuleringKnap_Click(object sender, EventArgs e)
         {
-            //TODO: tjek om det er den valgte simulering vi har i systemet, eller om der skal hentes en ny
-
             simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
-
-            //VisValgteSimulering("Hardcodede måneder", "random tal", simuleringsDao.XakseAfdeling, simuleringsDao.YaksePrisAfdeling);
-
             simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
 
         private void KorNy_Click(object sender, EventArgs e)
         {
-            //TODO: implementer!!
-
             simuleringsVindueController.BygNyesteSimuleringsDAO();
-
-
         }
 
         private void xAkse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TODO: tjek om det er den valgte simulering vi har i systemet, eller om der skal hentes en ny
-            simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
             simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
 
         private void yAkse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TODO: tjek om det er den valgte simulering vi har i systemet, eller om der skal hentes en ny
-            simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
             simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
 

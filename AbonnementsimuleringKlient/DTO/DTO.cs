@@ -68,27 +68,22 @@ namespace AbonnementsimuleringKlient
             throw new NotImplementedException();
         }
 
-        //TODO: Skal laves færdig
+
         public void KoerNySimulering()
         {
             response = httpKlient.GetAsync("Api/Simulering/Ny/1/").Result;
         }
 
-        //TODO: Skal laves færdig
+
         public List<Datapunktsgruppering> HentSimuleringsListe()
         {
             response = httpKlient.GetAsync("Api/Datapunkter/Hentoversigt/").Result;
-
-            MessageBox.Show(response.ToString()+"\nhente oversigt");
-
             return response.Content.ReadAsAsync<List<Datapunktsgruppering>>().Result;
         }
 
-        //TODO: Skal laves færdig
         public DatapunktLister HentEnkeltSimulering(int index)
         {
             response = httpKlient.GetAsync("Api/Datapunkter/Hentalle/"+index).Result;
-            MessageBox.Show(response.ToString()+"\n hent alle");
             return response.Content.ReadAsAsync<DatapunktLister>().Result;
         }
 
@@ -96,12 +91,6 @@ namespace AbonnementsimuleringKlient
         {
             throw new NotImplementedException();
         }
-
-
-        //public void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public IBrugerDAO LoginVerificering(string brugernavn, string kodeord)
         {
