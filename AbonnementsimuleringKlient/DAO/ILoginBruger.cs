@@ -11,8 +11,5 @@ namespace AbonnementsimuleringKlient
         string Brugernavn { get; set; }
         string Kodeord { get; set; }
         bool Ansvarlig { get; set; }
-        
-
-      
     }
 }

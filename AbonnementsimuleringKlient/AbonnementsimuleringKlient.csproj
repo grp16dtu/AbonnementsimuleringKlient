@@ -62,12 +62,8 @@
     <Compile Include="BrugerAdministration\BrugerAdminVindueController.cs" />
     <Compile Include="BrugerAdministration\IBrugerAdminVindue.cs" />
     <Compile Include="DAO\BrugerDAO.cs" />
-    <Compile Include="DAO\BrugsHistorik.cs" />
     <Compile Include="DAO\LoginBruger.cs" />
-    <Compile Include="DAO\EConomicCredentialsDAO.cs" />
     <Compile Include="DAO\IBrugerDAO.cs" />
-    <Compile Include="DAO\IBrugsHistorik.cs" />
-    <Compile Include="DAO\IEConomicCredentialsDAO.cs" />
     <Compile Include="DAO\ILoginBruger.cs" />
     <Compile Include="Datapunkt.cs" />
     <Compile Include="DatapunktLister.cs" />
