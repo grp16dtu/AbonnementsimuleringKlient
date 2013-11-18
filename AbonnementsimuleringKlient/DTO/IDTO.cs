@@ -21,11 +21,11 @@ namespace AbonnementsimuleringKlient
 
         List<string> HentGrafDataDropdown();
 
-        void KoerNySimulering();
+        void KoerNySimulering(int index);
 
-        List<SimuleringsDAO> HentSimuleringsListe();
+        Task<List<Datapunktsgruppering>> HentSimuleringsListe();
 
-        void HentEnkeltSimulering();
+        DatapunktLister HentEnkeltSimulering(int index);
 
         ISimuleringsDAO HentNyesteSimulering(string xAkse, string yAkse);
 

@@ -8,7 +8,6 @@ namespace AbonnementsimuleringKlient
 {
     public interface ISimuleringsDAO
     {
-        List<DateTime> SimuleringsListe { get; set; }
         List<string> XakseTid { get; set; }
         List<string> XakseAfdeling { get; set; }
         List<string> XakseDebitor { get; set; }
