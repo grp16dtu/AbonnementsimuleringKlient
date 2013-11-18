@@ -102,31 +102,29 @@ namespace AbonnementsimuleringKlient
             throw new NotImplementedException();
         }
 
+
         public void KoerNySimulering()
         {
-            throw new NotImplementedException();
+            response = httpKlient.GetAsync("Api/Simulering/Ny/1/").Result;
         }
 
-        public List<SimuleringsDAO> HentSimuleringsListe()
+
+        public List<Datapunktsgruppering> HentSimuleringsListe()
         {
-            throw new NotImplementedException();
+            response = httpKlient.GetAsync("Api/Datapunkter/Hentoversigt/").Result;
+            return response.Content.ReadAsAsync<List<Datapunktsgruppering>>().Result;
         }
 
-        public void HentEnkeltSimulering()
+        public DatapunktLister HentEnkeltSimulering(int index)
         {
-            throw new NotImplementedException();
+            response = httpKlient.GetAsync("Api/Datapunkter/Hentalle/"+index).Result;
+            return response.Content.ReadAsAsync<DatapunktLister>().Result;
         }
 
         public void OpdaterEConomicsCredentials(string aftalenr, string brugernavn, string kodeord)
         {
             throw new NotImplementedException();
         }
-
-
-        //public void HentSimulering(SimuleringsVindue.xAkseKey xKey, SimuleringsVindue.yAkseKey yKey, DateTime tidsStempel)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public IBrugerDAO LoginVerificering(string brugernavn, string kodeord)
         {

@@ -86,12 +86,6 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "Simuleringsliste 1",
-            "Simuleringsliste 2",
-            "Simuleringsliste 3",
-            "Simuleringsliste 4",
-            "Simuleringsliste 5"});
             this.listBox1.Location = new System.Drawing.Point(441, 50);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(135, 69);
