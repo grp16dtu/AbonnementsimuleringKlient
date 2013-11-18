@@ -134,12 +134,11 @@ namespace AbonnementsimuleringKlient
         {
             try
             {
-                if (!this._arbejder.IsBusy)
+                label2.Hide();
+                var index = Convert.ToInt32(textBox1.Text);if (!this._arbejder.IsBusy)
                 {
                     KorNy.Enabled = false;
                 }
-                label2.Hide();
-                var index = Convert.ToInt32(textBox1.Text);
                 _arbejder.RunWorkerAsync(index);
                 listBox1.SelectedIndex = 0;
             }
