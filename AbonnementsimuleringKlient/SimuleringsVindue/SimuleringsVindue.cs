@@ -93,7 +93,7 @@ namespace AbonnementsimuleringKlient
         {
             this.visBrugerAdminKnap.Enabled = this.simuleringsVindueController._aktuelBruger.Ansvarlig;
             this.KorNy.Enabled = this.simuleringsVindueController._aktuelBruger.Ansvarlig;
-            simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
+            simuleringsVindueController.HentSimuleringsDTO(this.listBox1.SelectedIndex);
             yAkse.Items.AddRange(yAkseKey);
             yAkse.Text = yAkseKey[0];
             xAkse.Items.AddRange(xAkseKey);
@@ -124,7 +124,7 @@ namespace AbonnementsimuleringKlient
         {
             pictureBox1.Image = Properties.Resources.loading;
             int index = Convert.ToInt32(e.Argument);
-            simuleringsVindueController.BygNyesteSimuleringsDAO(index);
+            simuleringsVindueController.BygNyesteSimuleringsDTO(index);
         }
 
         private void arbejder_done(object sender, RunWorkerCompletedEventArgs e)
@@ -138,7 +138,7 @@ namespace AbonnementsimuleringKlient
 
         private void visSimuleringKnap_Click(object sender, EventArgs e)
         {
-            simuleringsVindueController.HentSimuleringsDAO(this.listBox1.SelectedIndex);
+            simuleringsVindueController.HentSimuleringsDTO(this.listBox1.SelectedIndex);
             simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
 
