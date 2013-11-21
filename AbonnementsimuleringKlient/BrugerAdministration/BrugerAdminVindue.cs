@@ -136,7 +136,7 @@ namespace AbonnementsimuleringKlient
                 {
                     tempMedarbejdernummer = Convert.ToInt32(this.medarbejdernummer.Text);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     this.colonWar.ForeColor = Color.Red;
                     this.colonWar.Text = "Medarbejdernummer skal være tomt eller et heltal.";
