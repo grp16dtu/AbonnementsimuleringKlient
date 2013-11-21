@@ -10,20 +10,20 @@ namespace AbonnementsimuleringKlient
     public class BrugerAdminVindueController
     {
         private IBrugerAdminVindue _brugerAdminVindue;
-        private IBrugerDAO _aktuelBruger;
-        private IDTO _dto;
-        public List<IBrugerDAO> MedarbejderListe { get; set; }
+        private IBrugerDTO _aktuelBruger;
+        private IDAO _iDAO;
+        public List<IBrugerDTO> MedarbejderListe { get; set; }
 
         public BrugerAdminVindueController(IBrugerAdminVindue brugerAdminVindue)
         {
             this._brugerAdminVindue = brugerAdminVindue;
             brugerAdminVindue.SetBrugerAdminVindueController(this);
-            _dto = DTO.Instance;
+            _iDAO = DAO.Instance;
         }
 
         private void putEventOnBrugerDAO()
         {
-            foreach (IBrugerDAO bruger in this.MedarbejderListe)
+            foreach (IBrugerDTO bruger in this.MedarbejderListe)
             {
                 bruger.Changed += _brugerAdminVindue.OpdaterMedarbejderListe;
             }
@@ -34,7 +34,7 @@ namespace AbonnementsimuleringKlient
 
    
 
-        public void OpenVindue(IBrugerDAO bruger)
+        public void OpenVindue(IBrugerDTO bruger)
         {
             this._brugerAdminVindue.OpenVindue();
             this._aktuelBruger = bruger;
@@ -48,27 +48,26 @@ namespace AbonnementsimuleringKlient
         internal bool GemBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, int index)
         {
             this.MedarbejderListe[index].OpdaterBrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email);
-            bool opdateringLykkedes = this._dto.RedigerMedarbejder(this.MedarbejderListe[index]);
-            HentMedarbejderListe(); 
+            bool opdateringLykkedes = this._iDAO.RedigerMedarbejder(this.MedarbejderListe[index]);
+            _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
             return opdateringLykkedes;
             
         }
 
         internal async void HentMedarbejderListe()
         {
-            List<BrugerDAO> tempListe = await _dto.HentMedarbejderList();
-            MedarbejderListe = tempListe.ConvertAll(o => (IBrugerDAO)o);//Den laver en foreachløkke som kopierer de enkelte objekter, og konverterer dem til den anden liste
+            List<BrugerDTO> tempListe = await _iDAO.HentMedarbejderList();
+            MedarbejderListe = tempListe.ConvertAll(o => (IBrugerDTO)o);//Den laver en foreachløkke som kopierer de enkelte objekter, og konverterer dem til den anden liste
 
             putEventOnBrugerDAO();
-            _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
 
         }
 
         internal bool OpretBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, string kodeord)
         {
-            IBrugerDAO bruger = new BrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email, kodeord);
+            IBrugerDTO bruger = new BrugerDTO(fornavn, efternavn, medarbejderNummer, ansvarlig, email, kodeord);
             bool brugerOprettet;
-            brugerOprettet = _dto.OpretMedarbejder(bruger);
+            brugerOprettet = _iDAO.OpretMedarbejder(bruger);
             if (brugerOprettet)
             {
                 bruger.Changed += _brugerAdminVindue.OpdaterMedarbejderListe;
@@ -77,13 +76,13 @@ namespace AbonnementsimuleringKlient
             HentMedarbejderListe();
             return brugerOprettet;
         }
-        internal bool SletBruger(IBrugerDAO bruger)
+        internal bool SletBruger(IBrugerDTO bruger)
         {
-            bool success = this._dto.SletMedarbejder(bruger.Brugernavn);
+            bool success = this._iDAO.SletMedarbejder(bruger.Brugernavn);
             HentMedarbejderListe();
+            _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
 
             return success;
-
         }
     }
 }

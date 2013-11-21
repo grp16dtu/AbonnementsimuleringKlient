@@ -10,7 +10,6 @@ namespace AbonnementsimuleringKlient
     {
         /// <summary>
         /// The main entry point for the application.
-        /// lsieudzjfhdfs,djfskuc
         /// </summary>
         [STAThread]
         static void Main()
@@ -18,23 +17,18 @@ namespace AbonnementsimuleringKlient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            EConomicCredentialsDAO eConomicCredentialsDAO = new EConomicCredentialsDAO();
-
             OpretKontoVindue opretKontoVindue = new OpretKontoVindue();
             OpretKontoVindueController opretKontoVindueController = new OpretKontoVindueController(opretKontoVindue);
 
             LoginVindue loginVindue = new LoginVindue();
             LoginVindueController loginVindueController = new LoginVindueController(loginVindue);
 
-            SimuleringsDAO simuleringsDAO = new SimuleringsDAO();
+            SimuleringsDTO simuleringsDTO = new SimuleringsDTO();
             SimuleringsVindue simuleringsVindue = new SimuleringsVindue();
-            SimuleringsVindueController simuleringsVindueController = new SimuleringsVindueController(simuleringsVindue, simuleringsDAO);
-
-            //BrugerDAO brugerDAO = new BrugerDAO();           den skal nok laves lidt anderledes
+            SimuleringsVindueController simuleringsVindueController = new SimuleringsVindueController(simuleringsVindue, simuleringsDTO);
 
             BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
             BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue);
-
 
             loginVindueController.SetControllers(simuleringsVindueController,opretKontoVindueController);
             simuleringsVindueController.SetControllers(brugerAdminVindueController);

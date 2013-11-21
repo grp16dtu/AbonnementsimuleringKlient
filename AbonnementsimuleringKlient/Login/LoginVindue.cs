@@ -32,12 +32,6 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-        //TODO Ikke færdig
-        private bool Ansvarlig()
-        {
-            return false; 
-        }
-
         public void OpenVindue()
         {
             this.Show();

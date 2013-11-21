@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace AbonnementsimuleringKlient
 {
-    public class BrugerDAO:IBrugerDAO
+    public class BrugerDTO:IBrugerDTO
     {
         public event EventHandler Changed;
 
@@ -18,7 +18,7 @@ namespace AbonnementsimuleringKlient
         private string _kodeord;
 
 
-        public BrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn, string kodeord)
+        public BrugerDTO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn, string kodeord)
         {
             this.Fornavn = fornavn;
             this.Efternavn = efternavn;
@@ -35,7 +35,6 @@ namespace AbonnementsimuleringKlient
             _medarbejderNummer = medarbejderNummer;
             _ansvarlig = ansvarlig;
             _brugernavn = brugernavn;
-            //OnChanged(EventArgs.Empty);
         }
         protected virtual void OnChanged(EventArgs e)
         {

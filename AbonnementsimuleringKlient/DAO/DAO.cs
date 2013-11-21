@@ -10,15 +10,13 @@ using System.Windows.Forms;
 
 namespace AbonnementsimuleringKlient
 {
-    public class DTO : IDTO
+    public class DAO : IDAO
     {
         private HttpClient httpKlient;
         private HttpResponseMessage response;
+        private static DAO instance;
 
-        private IDTO iDTO;
-
-        private static DTO instance;
-        private DTO()
+        private DAO()
         {
             httpKlient = new HttpClient();
             httpKlient.BaseAddress = new Uri("http://grp16dtu-001-site1.smarterasp.net:80/");
@@ -26,35 +24,28 @@ namespace AbonnementsimuleringKlient
         }
 
         //singleton
-        public static DTO Instance
+        public static DAO Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new DTO();
+                    instance = new DAO();
                 }
                 return instance;
             }
         }
 
-        public async Task<List<BrugerDAO>> HentMedarbejderList()
+        public async Task<List<BrugerDTO>> HentMedarbejderList()
         {
-
             response = httpKlient.GetAsync("API/Bruger/Hentalle/").Result;
-          
-            //MessageBox.Show(response.ToString());
-
-            var liste = await response.Content.ReadAsAsync<List<BrugerDAO>>();
-
-
+            var liste = await response.Content.ReadAsAsync<List<BrugerDTO>>();
             if (response.IsSuccessStatusCode)
             {
                 return liste;
             }
             else
             {
-                //MessageBox.Show(response.ToString());
                 return null;
             }
         }
@@ -72,39 +63,24 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-        public bool OpretMedarbejder(IBrugerDAO bruger)
+        public bool OpretMedarbejder(IBrugerDTO bruger)
         {
-            response = httpKlient.PostAsJsonAsync<IBrugerDAO>("API/Bruger/Opret/", bruger).Result;
-            //MessageBox.Show(response.ToString());
+            response = httpKlient.PostAsJsonAsync<IBrugerDTO>("API/Bruger/Opret/", bruger).Result;
             return response.IsSuccessStatusCode;
         }
 
-        public bool RedigerMedarbejder(IBrugerDAO bruger)
+        public bool RedigerMedarbejder(IBrugerDTO bruger)
         {
-            response = httpKlient.PutAsJsonAsync<IBrugerDAO>("API/Bruger/Rediger/", bruger).Result;
-            //MessageBox.Show(response.ToString());
+            response = httpKlient.PutAsJsonAsync<IBrugerDTO>("API/Bruger/Rediger/", bruger).Result;
             if (response.IsSuccessStatusCode)
             {
                 return true;
             }
             else
             {
-                MessageBox.Show(response.StatusCode.ToString());
-
                 return false;
             }
         }
-
-        public List<string[]> HentBrugsHistorik()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> HentGrafDataDropdown()
-        {
-            throw new NotImplementedException();
-        }
-
 
         public void KoerNySimulering(int index)
         {
@@ -124,24 +100,17 @@ namespace AbonnementsimuleringKlient
             return response.Content.ReadAsAsync<DatapunktLister>().Result;
         }
 
-        public void OpdaterEConomicsCredentials(string aftalenr, string brugernavn, string kodeord)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IBrugerDAO LoginVerificering(string brugernavn, string kodeord)
+        public IBrugerDTO LoginVerificering(string brugernavn, string kodeord)
         {
             httpKlient.DefaultRequestHeaders.Authorization = CreateBasicHeader(brugernavn, kodeord);
 
             response = httpKlient.GetAsync("API/Bruger/Hent/?brugernavn=" + brugernavn + "&kodeord=" + kodeord).Result;
             if(response.IsSuccessStatusCode)
             {
-                //MessageBox.Show(response.Content.ReadAsStringAsync().Result);
-                return response.Content.ReadAsAsync<BrugerDAO>().Result;
+                return response.Content.ReadAsAsync<BrugerDTO>().Result;
             }
             else 
             {
-                //MessageBox.Show(response.ToString());
                 return null;
             }
             
@@ -154,7 +123,7 @@ namespace AbonnementsimuleringKlient
         }
 
 
-        public ISimuleringsDAO HentNyesteSimulering(string xAkse, string yAkse)
+        public ISimuleringsDTO HentNyesteSimulering(string xAkse, string yAkse)
         {
             var getString = "API/Datapunkter/";
 
@@ -164,11 +133,10 @@ namespace AbonnementsimuleringKlient
                     getString += "/Datapunkter/TidDkk/";
                     break;
             }
-            //TODO: TEST og ret
             response = httpKlient.GetAsync(getString).Result;
             if (response.IsSuccessStatusCode)
             {
-                return response.Content.ReadAsAsync<ISimuleringsDAO>().Result;
+                return response.Content.ReadAsAsync<ISimuleringsDTO>().Result;
             }
             else
             {
