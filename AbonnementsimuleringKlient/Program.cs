@@ -10,14 +10,31 @@ namespace AbonnementsimuleringKlient
     {
         /// <summary>
         /// The main entry point for the application.
-        /// lsieudzjfhdfs,djfskuc
         /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            OpretKontoVindue opretKontoVindue = new OpretKontoVindue();
+            OpretKontoVindueController opretKontoVindueController = new OpretKontoVindueController(opretKontoVindue);
+
+            LoginVindue loginVindue = new LoginVindue();
+            LoginVindueController loginVindueController = new LoginVindueController(loginVindue);
+
+            SimuleringsDTO simuleringsDTO = new SimuleringsDTO();
+            SimuleringsVindue simuleringsVindue = new SimuleringsVindue();
+            SimuleringsVindueController simuleringsVindueController = new SimuleringsVindueController(simuleringsVindue, simuleringsDTO);
+
+            BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
+            BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue);
+
+            loginVindueController.SetControllers(simuleringsVindueController,opretKontoVindueController);
+            simuleringsVindueController.SetControllers(brugerAdminVindueController);
+            
+            Application.Run(loginVindue);
+
         }
     }
 }
