@@ -27,7 +27,6 @@ namespace AbonnementsimuleringKlient
     void medarbejdere_SelectionChanged(object sender, EventArgs e)
     {
         this.email.ReadOnly = true;
-        this.kodeord.ReadOnly = true;
         int index = medarbejdere.CurrentCellAddress.Y;
 
         if (index > -1 && index < this._controller.MedarbejderListe.Count)
@@ -75,7 +74,6 @@ namespace AbonnementsimuleringKlient
             this.ansvarlig.Checked = false;
             this.medarbejdernummer.Text = null;
             this.kodeord.Text = "";
-            this.kodeord.ReadOnly = false;
             this.email.ReadOnly = false;
         }
 
@@ -151,7 +149,7 @@ namespace AbonnementsimuleringKlient
             if (_igangMedBrugerOprettelse == false)
             {
                 int index = medarbejdere.CurrentCellAddress.Y;
-                bool succes = this._controller.GemBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, tempMedarbejdernummer, index);
+                bool succes = this._controller.GemBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, tempMedarbejdernummer, index, this.kodeord.Text);
                 if (succes)
                 {
                     this.colonWar.ForeColor = Color.Green;

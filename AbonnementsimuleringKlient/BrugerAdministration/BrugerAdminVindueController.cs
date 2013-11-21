@@ -45,9 +45,9 @@ namespace AbonnementsimuleringKlient
             _brugerAdminVindue.CloseVindue();
         }
 
-        internal bool GemBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, int index)
+        internal bool GemBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, int index, string kodeord)
         {
-            this.MedarbejderListe[index].OpdaterBrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email);
+            this.MedarbejderListe[index].OpdaterBrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email, kodeord);
             bool opdateringLykkedes = this._iDAO.RedigerMedarbejder(this.MedarbejderListe[index]);
             _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
             return opdateringLykkedes;

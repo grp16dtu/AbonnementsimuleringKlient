@@ -28,13 +28,14 @@ namespace AbonnementsimuleringKlient
             this.Kodeord = kodeord;
         }
 
-        public void OpdaterBrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn)
+        public void OpdaterBrugerDAO(string fornavn, string efternavn, int? medarbejderNummer, bool ansvarlig, string brugernavn, string kodeord)
         {
             _fornavn = fornavn;
             _efternavn = efternavn;
             _medarbejderNummer = medarbejderNummer;
             _ansvarlig = ansvarlig;
             _brugernavn = brugernavn;
+            _kodeord = kodeord;
         }
         protected virtual void OnChanged(EventArgs e)
         {

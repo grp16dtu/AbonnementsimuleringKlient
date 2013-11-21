@@ -95,7 +95,13 @@
             this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Medarbejdernummer";
-
+            // 
+            // instillinger
+            // 
+            this.instillinger.Location = new System.Drawing.Point(0, 0);
+            this.instillinger.Name = "instillinger";
+            this.instillinger.Size = new System.Drawing.Size(75, 23);
+            this.instillinger.TabIndex = 18;
             // 
             // opretBruger
             // 
@@ -190,7 +196,6 @@
             this.kodeord.Location = new System.Drawing.Point(286, 196);
             this.kodeord.Name = "kodeord";
             this.kodeord.PasswordChar = '*';
-            this.kodeord.ReadOnly = true;
             this.kodeord.Size = new System.Drawing.Size(139, 20);
             this.kodeord.TabIndex = 5;
             // 
