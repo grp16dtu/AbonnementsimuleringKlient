@@ -61,15 +61,13 @@
     </Compile>
     <Compile Include="BrugerAdministration\BrugerAdminVindueController.cs" />
     <Compile Include="BrugerAdministration\IBrugerAdminVindue.cs" />
-    <Compile Include="DAO\BrugerDAO.cs" />
-    <Compile Include="DAO\LoginBruger.cs" />
-    <Compile Include="DAO\IBrugerDAO.cs" />
-    <Compile Include="DAO\ILoginBruger.cs" />
+    <Compile Include="DTO\BrugerDTO.cs" />
+    <Compile Include="DTO\IBrugerDTO.cs" />
     <Compile Include="Datapunkt.cs" />
     <Compile Include="DatapunktLister.cs" />
     <Compile Include="Datapunktsgruppering.cs" />
-    <Compile Include="DTO\DTO.cs" />
-    <Compile Include="DTO\IDTO.cs" />
+    <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\IDAO.cs" />
     <Compile Include="OpretKonto\IOpretKontoVindue.cs" />
     <Compile Include="OpretKonto\Konto.cs" />
     <Compile Include="Login\ILoginVindue.cs" />
@@ -90,8 +88,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexUtilities.cs" />
-    <Compile Include="SimuleringsVindue\ISimuleringsDAO.cs" />
-    <Compile Include="SimuleringsVindue\SimuleringsDAO.cs" />
+    <Compile Include="SimuleringsVindue\ISimuleringsDTO.cs" />
+    <Compile Include="SimuleringsVindue\SimuleringsDTO.cs" />
     <Compile Include="SimuleringsVindue\SimuleringsVindueController.cs" />
     <Compile Include="SimuleringsVindue\SimuleringsVindue.cs">
       <SubType>Form</SubType>

@@ -14,6 +14,9 @@ namespace AbonnementsimuleringKlient
     {
         private BrugerAdminVindueController _controller;
         private bool _igangMedBrugerOprettelse;
+
+        private RegexUtilities _util;
+
         public BrugerAdminVindue()
         {
             InitializeComponent();
@@ -34,13 +37,13 @@ namespace AbonnementsimuleringKlient
         }
     }
 
-        private void fillInfoInWindow(IBrugerDAO brugerDAO)
+        private void fillInfoInWindow(IBrugerDTO brugerDTO)
         {
-            this.email.Text = brugerDAO.Brugernavn;
-            this.efternavn.Text = brugerDAO.Efternavn;
-            this.fornavn.Text = brugerDAO.Fornavn;
-            this.ansvarlig.Checked = brugerDAO.Ansvarlig;
-            this.medarbejdernummer.Text = brugerDAO.MedarbejderNummer.ToString();
+            this.email.Text = brugerDTO.Brugernavn;
+            this.efternavn.Text = brugerDTO.Efternavn;
+            this.fornavn.Text = brugerDTO.Fornavn;
+            this.ansvarlig.Checked = brugerDTO.Ansvarlig;
+            this.medarbejdernummer.Text = brugerDTO.MedarbejderNummer.ToString();
         }
 
         public void SetBrugerAdminVindueController(BrugerAdminVindueController controller)
@@ -95,17 +98,28 @@ namespace AbonnementsimuleringKlient
 
         private void gemBruger_Click(object sender, EventArgs e)
         { 
+            _util = new RegexUtilities();
             //Check name in email
             if (email.Text.Contains(":"))
             {
                 this.colonWar.ForeColor = Color.Red;
                 this.colonWar.Text = "Der må ikke være kolon i Email adressen";
+                return;
             }
             else
             {
                 this.colonWar.Text = "";
-                //TODO: opretbruger Skal laves færdig 
-                //_controller.OpretBruger();
+            }
+            //Tjekker om email er gyldig
+            if (!_util.IsValidEmail(email.Text))
+            {
+                this.colonWar.ForeColor = Color.Red;
+                this.colonWar.Text = "Den intastede email er ikke gyldig";
+                return;
+            }
+            else
+            {
+                this.colonWar.Text = "";
             }
 
             int valgt = medarbejdere.CurrentCellAddress.Y;
@@ -154,6 +168,7 @@ namespace AbonnementsimuleringKlient
                 if (this._controller.OpretBruger(this.ansvarlig.Checked, this.email.Text, this.fornavn.Text, this.efternavn.Text, tempMedarbejdernummer, this.kodeord.Text))
                 {
                     OpdaterMedarbejderListe(null, EventArgs.Empty);
+                    this.colonWar.ForeColor = Color.Green;
                     this.colonWar.Text = "Bruger oprettet succesfuldt.";     
                 }
                 else
@@ -167,9 +182,6 @@ namespace AbonnementsimuleringKlient
         private void OnLoad(object sender, EventArgs e)
         {
             this._controller.HentMedarbejderListe();
-            //BindingSource bs = new BindingSource();
-            //bs.DataSource = this._controller.MedarbejderListe;
-            //medarbejdere.DataSource = bs;
             OpdaterMedarbejderListe(sender, e);
         }
 

@@ -17,9 +17,6 @@ namespace AbonnementsimuleringKlient
         private SimuleringsVindueController simuleringsVindueController;
         private string[] yAkseKey = new string[] {"Stk", "DKK"};
         private string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
-        private DateTime Tidsstempel { get; set; }
-        private List<DateTime> SimuleringsListe; 
-        
 
         public void SetSimuleringsVindueController(SimuleringsVindueController controller)
         {
@@ -76,6 +73,20 @@ namespace AbonnementsimuleringKlient
 
             //tilfoejer serien til grafen
             chart1.Series.Add(serie);
+
+            //Sætter labels på alle xakse værdier
+            chart1.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
+
+            //Sætter labels på højkant ved Tid
+            if (xAkseKey == "Tid")
+            {
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -90;
+            }
+            else
+            {
+                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
+            }
+
         }
 
         public void OpenVindue()
@@ -120,8 +131,9 @@ namespace AbonnementsimuleringKlient
         {
             KorNy.Enabled = true;
             pictureBox1.Image = null;
+            listBox1.SelectedIndex = 0;
             simuleringsVindueController.HentSimuleringsList();
-            simuleringsVindueController.OpdaterVindue("Str", "Tid");
+            visSimuleringKnap_Click(null, EventArgs.Empty);
         }
 
         private void visSimuleringKnap_Click(object sender, EventArgs e)
@@ -141,7 +153,6 @@ namespace AbonnementsimuleringKlient
                     KorNy.Enabled = false;
                 }
                 _arbejder.RunWorkerAsync(index);
-                listBox1.SelectedIndex = 0;
             }
             catch (Exception)
             {

@@ -12,8 +12,8 @@ namespace AbonnementsimuleringKlient
 
         private IOpretKontoVindue _opretKontoVindue;
         private Konto _konto;
-        private IBrugerDAO _BrugerDAO;
-        private IDTO _dto;
+        private IBrugerDTO _brugerDTO;
+        private IDAO _iDAO;
 
 
         public OpretKontoVindueController(IOpretKontoVindue opretKontoVindue)
@@ -21,7 +21,7 @@ namespace AbonnementsimuleringKlient
             this._opretKontoVindue = opretKontoVindue;
             _util = new RegexUtilities();
             _konto = new Konto();
-            _dto = DTO.Instance;
+            _iDAO = DAO.Instance;
             opretKontoVindue.SetOpretKontoVindueController(this);
         }
 
@@ -68,7 +68,7 @@ namespace AbonnementsimuleringKlient
                     {
                         try
                         {
-                            _BrugerDAO = new BrugerDAO(fornavn, efternavn, Convert.ToInt32(medarbjederNummer), true, brugernavn, kodeord);
+                            _brugerDTO = new BrugerDTO(fornavn, efternavn, Convert.ToInt32(medarbjederNummer), true, brugernavn, kodeord);
                         }
                         catch (Exception)
                         {
@@ -82,8 +82,8 @@ namespace AbonnementsimuleringKlient
                         return false;
                     }
 
-                    _konto.AbosimBruger = _BrugerDAO;
-                    return _dto.OpretKonto(_konto);
+                    _konto.AbosimBruger = _brugerDTO;
+                    return _iDAO.OpretKonto(_konto);
                 }
             }
         }

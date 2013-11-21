@@ -9,26 +9,25 @@ namespace AbonnementsimuleringKlient
     public class SimuleringsVindueController
     {
         private ISimuleringsVindue _simuleringsVindue;
-        private ISimuleringsDAO _simuleringsDAO;
+        private ISimuleringsDTO _simuleringsDTO;
         private BrugerAdminVindueController _brugerAdminVindueController;
-        public IBrugerDAO _aktuelBruger { get; private set; }
-        private IDTO _dto;
+        public IBrugerDTO _aktuelBruger { get; private set; }
+        private IDAO _iDAO;
         private List<Datapunktsgruppering> _datapunktsgrupperings; 
 
-
-        public SimuleringsVindueController(ISimuleringsVindue simuleringsVindue, ISimuleringsDAO simuleringsDAO)
+        public SimuleringsVindueController(ISimuleringsVindue simuleringsVindue, ISimuleringsDTO simuleringsDTO)
         {
             this._simuleringsVindue = simuleringsVindue;
-            this._simuleringsDAO = simuleringsDAO;
-            this._dto = DTO.Instance;
+            this._simuleringsDTO = simuleringsDTO;
+            this._iDAO = DAO.Instance;
 
             _simuleringsVindue.SetSimuleringsVindueController(this);
         }
 
-        public async void OpenVindue(IBrugerDAO bruger) 
+        public async void OpenVindue(IBrugerDTO bruger) 
         {          
             this._aktuelBruger = bruger;
-            _datapunktsgrupperings = await this._dto.HentSimuleringsListe(); 
+            _datapunktsgrupperings = await this._iDAO.HentSimuleringsListe(); 
             _simuleringsVindue.VisSimuleringsListe(_datapunktsgrupperings);
             this._simuleringsVindue.OpenVindue();
         }
@@ -51,16 +50,16 @@ namespace AbonnementsimuleringKlient
                     switch(xKey)
                     {
                         case "Tid":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseTid, _simuleringsDAO.YakseStkTid);
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseTid, _simuleringsDTO.YakseStkTid);
                             break;
                         case "Vare":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseVare, _simuleringsDAO.YakseStkVare);
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseVare, _simuleringsDTO.YakseStkVare);
                             break;
                         case "Debitor":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseDebitor, _simuleringsDAO.YakseStkDebitor);
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseDebitor, _simuleringsDTO.YakseStkDebitor);
                             break;
                         case "Afdeling":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseAfdeling, _simuleringsDAO.YakseStkAfdeling);
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseAfdeling, _simuleringsDTO.YakseStkAfdeling);
                             break;
                     }
                     break;
@@ -68,16 +67,16 @@ namespace AbonnementsimuleringKlient
                     switch (xKey)
                     {
                         case "Tid":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseTid, _simuleringsDAO.YaksePrisTid);
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseTid, _simuleringsDTO.YaksePrisTid);
                             break;
                         case "Vare":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseVare, _simuleringsDAO.YaksePrisVare);
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseVare, _simuleringsDTO.YaksePrisVare);
                             break;
                         case "Debitor":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseDebitor, _simuleringsDAO.YaksePrisDebitor);
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseDebitor, _simuleringsDTO.YaksePrisDebitor);
                             break;
                         case "Afdeling":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDAO.XakseAfdeling, _simuleringsDAO.YaksePrisAfdeling);
+                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseAfdeling, _simuleringsDTO.YaksePrisAfdeling);
                             break;
                     }
                     break;
@@ -88,7 +87,7 @@ namespace AbonnementsimuleringKlient
         {
             if (valgteindex >= 0)
             {
-                GenererSimuleringsDAO(_dto.HentEnkeltSimulering(_datapunktsgrupperings[valgteindex].Id));
+                GenererSimuleringsDTO(_iDAO.HentEnkeltSimulering(_datapunktsgrupperings[valgteindex].Id));
             }
         }
          
@@ -99,80 +98,80 @@ namespace AbonnementsimuleringKlient
 
         public void BygNyesteSimuleringsDAO(int index)
         {
-            _dto.KoerNySimulering(index);
+            _iDAO.KoerNySimulering(index);
         }
 
         public async void HentSimuleringsList()
         {
-            _datapunktsgrupperings = await this._dto.HentSimuleringsListe();
+            _datapunktsgrupperings = await this._iDAO.HentSimuleringsListe();
             _simuleringsVindue.VisSimuleringsListe(_datapunktsgrupperings);
         }
 
 
-        public void GenererSimuleringsDAO(DatapunktLister data)
+        public void GenererSimuleringsDTO(DatapunktLister data)
         {
-            _simuleringsDAO.XakseAfdeling = new List<string>();
-            _simuleringsDAO.YakseStkAfdeling = new List<double>();
-            _simuleringsDAO.YaksePrisAfdeling = new List<double>();
-            _simuleringsDAO.XakseDebitor = new List<string>();
-            _simuleringsDAO.YakseStkDebitor = new List<double>();
-            _simuleringsDAO.YaksePrisDebitor = new List<double>();
-            _simuleringsDAO.XakseTid = new List<string>();
-            _simuleringsDAO.YakseStkTid = new List<double>();
-            _simuleringsDAO.YaksePrisTid = new List<double>();
-            _simuleringsDAO.XakseVare = new List<string>();
-            _simuleringsDAO.YakseStkVare = new List<double>();
-            _simuleringsDAO.YaksePrisVare = new List<double>();
+            _simuleringsDTO.XakseAfdeling = new List<string>();
+            _simuleringsDTO.YakseStkAfdeling = new List<double>();
+            _simuleringsDTO.YaksePrisAfdeling = new List<double>();
+            _simuleringsDTO.XakseDebitor = new List<string>();
+            _simuleringsDTO.YakseStkDebitor = new List<double>();
+            _simuleringsDTO.YaksePrisDebitor = new List<double>();
+            _simuleringsDTO.XakseTid = new List<string>();
+            _simuleringsDTO.YakseStkTid = new List<double>();
+            _simuleringsDTO.YaksePrisTid = new List<double>();
+            _simuleringsDTO.XakseVare = new List<string>();
+            _simuleringsDTO.YakseStkVare = new List<double>();
+            _simuleringsDTO.YaksePrisVare = new List<double>();
 
             foreach (var afdeling in data.AfdelingAntal)
             {
                 if (afdeling.Afdelingsnavn == null)
                 {
                     string fejl = "Uden Afdeling";
-                    _simuleringsDAO.XakseAfdeling.Add(fejl);
+                    _simuleringsDTO.XakseAfdeling.Add(fejl);
                 }
                 else
                 {
-                    _simuleringsDAO.XakseAfdeling.Add(afdeling.Afdelingsnavn);
+                    _simuleringsDTO.XakseAfdeling.Add(afdeling.Afdelingsnavn);
                 }
-                _simuleringsDAO.YakseStkAfdeling.Add((double)afdeling.Antal);
+                _simuleringsDTO.YakseStkAfdeling.Add((double)afdeling.Antal);
             }
 
             foreach (var afdeling in data.AfdelingDKK)
             {
-                _simuleringsDAO.YaksePrisAfdeling.Add((double)afdeling.DKK);
+                _simuleringsDTO.YaksePrisAfdeling.Add((double)afdeling.DKK);
             }
 
             foreach (var debitor in data.DebitorAntal)
             {
-                _simuleringsDAO.XakseDebitor.Add(debitor.Debitornavn);
-                _simuleringsDAO.YakseStkDebitor.Add((double)debitor.Antal);
+                _simuleringsDTO.XakseDebitor.Add(debitor.Debitornavn);
+                _simuleringsDTO.YakseStkDebitor.Add((double)debitor.Antal);
             }
 
             foreach (var debitor in data.DebitorDKK)
             {
-                _simuleringsDAO.YaksePrisDebitor.Add((double)debitor.DKK);
+                _simuleringsDTO.YaksePrisDebitor.Add((double)debitor.DKK);
             }
 
             foreach (var tid in data.TidAntal)
             {
-                _simuleringsDAO.XakseTid.Add(tid.Tid.ToString());
-                _simuleringsDAO.YakseStkTid.Add((double)tid.Antal);
+                _simuleringsDTO.XakseTid.Add(tid.Tid.Value.ToShortDateString());
+                _simuleringsDTO.YakseStkTid.Add((double)tid.Antal);
             }
             foreach (var tid in data.TidDKK)
             {
-                _simuleringsDAO.YaksePrisTid.Add((double)tid.DKK);
+                _simuleringsDTO.YaksePrisTid.Add((double)tid.DKK);
             }
 
             foreach (var vare in data.VareAntal)
             {
-                _simuleringsDAO.XakseVare.Add(vare.Varenavn);
-                _simuleringsDAO.YakseStkVare.Add((double)vare.Antal);
+                _simuleringsDTO.XakseVare.Add(vare.Varenavn);
+                _simuleringsDTO.YakseStkVare.Add((double)vare.Antal);
             }
 
             foreach (var vare in data.VareDKK)
             {
-                _simuleringsDAO.YaksePrisVare.Add((double)vare.DKK);
+                _simuleringsDTO.YaksePrisVare.Add((double)vare.DKK);
             }
 
         }

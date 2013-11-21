@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbonnementsimuleringKlient
 {
-    public interface ISimuleringsDAO
+    public interface ISimuleringsDTO
     {
         List<string> XakseTid { get; set; }
         List<string> XakseAfdeling { get; set; }

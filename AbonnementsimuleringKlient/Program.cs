@@ -23,9 +23,9 @@ namespace AbonnementsimuleringKlient
             LoginVindue loginVindue = new LoginVindue();
             LoginVindueController loginVindueController = new LoginVindueController(loginVindue);
 
-            SimuleringsDAO simuleringsDAO = new SimuleringsDAO();
+            SimuleringsDTO simuleringsDTO = new SimuleringsDTO();
             SimuleringsVindue simuleringsVindue = new SimuleringsVindue();
-            SimuleringsVindueController simuleringsVindueController = new SimuleringsVindueController(simuleringsVindue, simuleringsDAO);
+            SimuleringsVindueController simuleringsVindueController = new SimuleringsVindueController(simuleringsVindue, simuleringsDTO);
 
             BrugerAdminVindue brugerAdminVindue = new BrugerAdminVindue();
             BrugerAdminVindueController brugerAdminVindueController = new BrugerAdminVindueController(brugerAdminVindue);

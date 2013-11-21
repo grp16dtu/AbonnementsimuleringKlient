@@ -11,13 +11,13 @@ namespace AbonnementsimuleringKlient
         private LoginVindue _loginVindue;
         private SimuleringsVindueController _simuleringsVindueController;
         private OpretKontoVindueController _opretKontoVindueController;
-        private IDTO _dto;
-        private IBrugerDAO _aktuelBruger;
+        private IDAO _iDAO;
+        private IBrugerDTO _aktuelBruger;
 
         public LoginVindueController(LoginVindue loginVindue)
         {
             this._loginVindue = loginVindue;
-            this._dto = DTO.Instance;
+            this._iDAO = DAO.Instance;
             
 
             loginVindue.SetLoginVindueController(this);
@@ -41,7 +41,7 @@ namespace AbonnementsimuleringKlient
 
         public bool LoginVerificering(string brugernavn, string kodeord)
         {
-            _aktuelBruger =_dto.LoginVerificering(brugernavn, kodeord);
+            _aktuelBruger =_iDAO.LoginVerificering(brugernavn, kodeord);
             return (_aktuelBruger != null);
         }
     
