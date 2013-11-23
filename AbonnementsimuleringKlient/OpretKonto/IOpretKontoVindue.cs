@@ -17,11 +17,8 @@ namespace AbonnementsimuleringKlient
         void FeltIkkeUdfyldtHide();
         void IntFejlShow();
         void IntFejlHide();
-
         void MedarbejderIntFejlShow();
-
         void MedarbejderIntFejlHide();
-
         void EmailIkkeValidShow();
         void EmailIkkeValidHide();
     }

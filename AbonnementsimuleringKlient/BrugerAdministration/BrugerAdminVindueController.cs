@@ -45,7 +45,7 @@ namespace AbonnementsimuleringKlient
             _brugerAdminVindue.CloseVindue();
         }
 
-        internal bool GemBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, int index, string kodeord)
+        public bool GemBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, int index, string kodeord)
         {
             this.MedarbejderListe[index].OpdaterBrugerDAO(fornavn, efternavn, medarbejderNummer, ansvarlig, email, kodeord);
             bool opdateringLykkedes = this._iDAO.RedigerMedarbejder(this.MedarbejderListe[index]);
@@ -54,7 +54,7 @@ namespace AbonnementsimuleringKlient
             
         }
 
-        internal async void HentMedarbejderListe()
+        public async void HentMedarbejderListe()
         {
             List<BrugerDTO> tempListe = await _iDAO.HentMedarbejderList();
             MedarbejderListe = tempListe.ConvertAll(o => (IBrugerDTO)o);//Den laver en foreachløkke som kopierer de enkelte objekter, og konverterer dem til den anden liste
@@ -63,7 +63,7 @@ namespace AbonnementsimuleringKlient
 
         }
 
-        internal bool OpretBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, string kodeord)
+        public bool OpretBruger(bool ansvarlig, string email, string fornavn, string efternavn, int? medarbejderNummer, string kodeord)
         {
             IBrugerDTO bruger = new BrugerDTO(fornavn, efternavn, medarbejderNummer, ansvarlig, email, kodeord);
             bool brugerOprettet;
@@ -76,7 +76,8 @@ namespace AbonnementsimuleringKlient
             HentMedarbejderListe();
             return brugerOprettet;
         }
-        internal bool SletBruger(IBrugerDTO bruger)
+
+        public bool SletBruger(IBrugerDTO bruger)
         {
             bool success = this._iDAO.SletMedarbejder(bruger.Brugernavn);
             HentMedarbejderListe();

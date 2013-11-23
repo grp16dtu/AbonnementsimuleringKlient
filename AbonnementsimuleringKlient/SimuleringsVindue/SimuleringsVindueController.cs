@@ -42,7 +42,7 @@ namespace AbonnementsimuleringKlient
             this._brugerAdminVindueController = brugerAdminVindueController;
         }
 
-        internal void OpdaterVindue(string xKey, string yKey)
+        public void OpdaterVindue(string xKey, string yKey)
         {
             switch(yKey)
             {
@@ -83,7 +83,7 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-        public void HentSimuleringsDAO(int valgteindex)
+        public void HentSimuleringsDTO(int valgteindex)
         {
             if (valgteindex >= 0)
             {
@@ -96,7 +96,7 @@ namespace AbonnementsimuleringKlient
             _brugerAdminVindueController.OpenVindue(_aktuelBruger);
         }
 
-        public void BygNyesteSimuleringsDAO(int index)
+        public void BygNyesteSimuleringsDTO(int index)
         {
             _iDAO.KoerNySimulering(index);
         }

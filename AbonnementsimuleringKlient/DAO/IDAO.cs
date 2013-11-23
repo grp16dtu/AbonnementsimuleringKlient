@@ -22,8 +22,6 @@ namespace AbonnementsimuleringKlient
 
         DatapunktLister HentEnkeltSimulering(int index);
 
-        ISimuleringsDTO HentNyesteSimulering(string xAkse, string yAkse);
-
         IBrugerDTO LoginVerificering(string brugernavn, string kodeord);
 
         bool OpretKonto(Konto konto);
