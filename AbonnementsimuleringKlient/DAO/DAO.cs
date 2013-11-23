@@ -122,28 +122,6 @@ namespace AbonnementsimuleringKlient
             return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
         }
 
-
-        public ISimuleringsDTO HentNyesteSimulering(string xAkse, string yAkse)
-        {
-            var getString = "API/Datapunkter/";
-
-            switch (xAkse)
-            {
-                case "Tid":
-                    getString += "/Datapunkter/TidDkk/";
-                    break;
-            }
-            response = httpKlient.GetAsync(getString).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                return response.Content.ReadAsAsync<ISimuleringsDTO>().Result;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         public bool OpretKonto(Konto konto)
         {
             response = httpKlient.PostAsJsonAsync("API/konto/opret/", konto).Result;

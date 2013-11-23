@@ -10,7 +10,7 @@ namespace AbonnementsimuleringKlient
 {
     class RegexUtilities
     {
-        bool invalid = false;
+        private bool invalid = false;
 
         public bool IsValidEmail(string strIn)
         {
