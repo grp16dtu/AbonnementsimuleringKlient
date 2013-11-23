@@ -116,7 +116,7 @@ namespace AbonnementsimuleringKlient
             
         }
 
-        public AuthenticationHeaderValue CreateBasicHeader(string username, string password)
+        private AuthenticationHeaderValue CreateBasicHeader(string username, string password)
         {
             byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
             return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
