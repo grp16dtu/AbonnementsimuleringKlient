@@ -91,8 +91,8 @@ namespace AbonnementsimuleringKlient
 
         public void OpenVindue()
         {
-            this.visBrugerAdminKnap.Enabled = this.simuleringsVindueController._aktuelBruger.Ansvarlig;
-            this.KorNy.Enabled = this.simuleringsVindueController._aktuelBruger.Ansvarlig;
+            this.visBrugerAdminKnap.Enabled = this.simuleringsVindueController.aktuelBruger.Ansvarlig;
+            this.KorNy.Enabled = this.simuleringsVindueController.aktuelBruger.Ansvarlig;
             simuleringsVindueController.HentSimuleringsDTO(this.listBox1.SelectedIndex);
             yAkse.Items.AddRange(yAkseKey);
             yAkse.Text = yAkseKey[0];
@@ -139,7 +139,62 @@ namespace AbonnementsimuleringKlient
         private void visSimuleringKnap_Click(object sender, EventArgs e)
         {
             simuleringsVindueController.HentSimuleringsDTO(this.listBox1.SelectedIndex);
-            simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
+            OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
+        }
+
+        public void OpdaterVindue(string xKey, string yKey)
+        {
+            var simuleringsDTO = this.simuleringsVindueController.getSimuleringsDTO();
+
+            switch (yKey)
+            {
+                case "Stk":
+                    getXAxisValueToDisplayWithYAxisStk(xKey, yKey, simuleringsDTO);
+                    break;
+
+                case "DKK":
+                    getXAxisValueToDisplayWithYAxisDKK(xKey, yKey, simuleringsDTO);
+                    break;
+            }
+        }
+
+
+        private void getXAxisValueToDisplayWithYAxisStk(string xKey, string yKey, ISimuleringsDTO simuleringsDTO)
+        {
+            switch (xKey)
+            {
+                case "Tid":
+                    VisValgteSimulering(xKey, yKey, simuleringsDTO.XakseTid, simuleringsDTO.YakseStkTid);
+                    break;
+                case "Vare":
+                    VisValgteSimulering(xKey, yKey, simuleringsDTO.XakseVare, simuleringsDTO.YakseStkVare);
+                    break;
+                case "Debitor":
+                    VisValgteSimulering(xKey, yKey, simuleringsDTO.XakseDebitor, simuleringsDTO.YakseStkDebitor);
+                    break;
+                case "Afdeling":
+                    VisValgteSimulering(xKey, yKey, simuleringsDTO.XakseAfdeling, simuleringsDTO.YakseStkAfdeling);
+                    break;
+            }
+        }
+
+        private void getXAxisValueToDisplayWithYAxisDKK(string xKey, string yKey, ISimuleringsDTO simuleringsDTO)
+        {
+            switch (xKey)
+            {
+                case "Tid":
+                    VisValgteSimulering(xKey, yKey, simuleringsDTO.XakseTid, simuleringsDTO.YaksePrisTid);
+                    break;
+                case "Vare":
+                    VisValgteSimulering(xKey, yKey, simuleringsDTO.XakseVare, simuleringsDTO.YaksePrisVare);
+                    break;
+                case "Debitor":
+                    VisValgteSimulering(xKey, yKey, simuleringsDTO.XakseDebitor, simuleringsDTO.YaksePrisDebitor);
+                    break;
+                case "Afdeling":
+                    VisValgteSimulering(xKey, yKey, simuleringsDTO.XakseAfdeling, simuleringsDTO.YaksePrisAfdeling);
+                    break;
+            }
         }
 
         private void KorNy_Click(object sender, EventArgs e)
@@ -163,12 +218,12 @@ namespace AbonnementsimuleringKlient
 
         private void xAkse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
+            OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
 
         private void yAkse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
+            OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

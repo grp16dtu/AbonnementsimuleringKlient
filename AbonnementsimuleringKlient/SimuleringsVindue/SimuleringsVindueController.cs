@@ -11,7 +11,7 @@ namespace AbonnementsimuleringKlient
         private ISimuleringsVindue _simuleringsVindue;
         private ISimuleringsDTO _simuleringsDTO;
         private BrugerAdminVindueController _brugerAdminVindueController;
-        public IBrugerDTO _aktuelBruger { get; private set; }
+        public IBrugerDTO aktuelBruger { get; private set; }
         private IDAO _iDAO;
         private List<Datapunktsgruppering> _datapunktsgrupperings; 
 
@@ -24,9 +24,14 @@ namespace AbonnementsimuleringKlient
             _simuleringsVindue.SetSimuleringsVindueController(this);
         }
 
+        public ISimuleringsDTO getSimuleringsDTO()
+        {
+            return this._simuleringsDTO;
+        }
+
         public async void OpenVindue(IBrugerDTO bruger) 
         {          
-            this._aktuelBruger = bruger;
+            this.aktuelBruger = bruger;
             _datapunktsgrupperings = await this._iDAO.HentSimuleringsListe(); 
             _simuleringsVindue.VisSimuleringsListe(_datapunktsgrupperings);
             this._simuleringsVindue.OpenVindue();
@@ -40,48 +45,7 @@ namespace AbonnementsimuleringKlient
         public void SetControllers(BrugerAdminVindueController brugerAdminVindueController)
         {
             this._brugerAdminVindueController = brugerAdminVindueController;
-        }
-
-        public void OpdaterVindue(string xKey, string yKey)
-        {
-            switch(yKey)
-            {
-                case "Stk":
-                    switch(xKey)
-                    {
-                        case "Tid":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseTid, _simuleringsDTO.YakseStkTid);
-                            break;
-                        case "Vare":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseVare, _simuleringsDTO.YakseStkVare);
-                            break;
-                        case "Debitor":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseDebitor, _simuleringsDTO.YakseStkDebitor);
-                            break;
-                        case "Afdeling":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseAfdeling, _simuleringsDTO.YakseStkAfdeling);
-                            break;
-                    }
-                    break;
-                case "DKK":
-                    switch (xKey)
-                    {
-                        case "Tid":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseTid, _simuleringsDTO.YaksePrisTid);
-                            break;
-                        case "Vare":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseVare, _simuleringsDTO.YaksePrisVare);
-                            break;
-                        case "Debitor":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseDebitor, _simuleringsDTO.YaksePrisDebitor);
-                            break;
-                        case "Afdeling":
-                            _simuleringsVindue.VisValgteSimulering(xKey, yKey, _simuleringsDTO.XakseAfdeling, _simuleringsDTO.YaksePrisAfdeling);
-                            break;
-                    }
-                    break;
-            }
-        }
+        }   
 
         public void HentSimuleringsDTO(int valgteindex)
         {
@@ -93,7 +57,7 @@ namespace AbonnementsimuleringKlient
          
         public void OpenBrugerAdminVindue()
         {
-            _brugerAdminVindueController.OpenVindue(_aktuelBruger);
+            _brugerAdminVindueController.OpenVindue(aktuelBruger);
         }
 
         public void BygNyesteSimuleringsDTO(int index)
