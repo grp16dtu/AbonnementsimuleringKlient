@@ -13,7 +13,7 @@ namespace AbonnementsimuleringKlient
 {
     public partial class SimuleringsVindue : Form, ISimuleringsVindue
     {
-        private BackgroundWorker _arbejder;
+        private BackgroundWorker _traadVentNySimFraServer;
         private SimuleringsVindueController simuleringsVindueController;
         private string[] yAkseKey = new string[] {"Stk", "DKK"};
         private string[] xAkseKey = new string[] {"Tid", "Afdeling", "Debitor", "Vare"};
@@ -32,25 +32,38 @@ namespace AbonnementsimuleringKlient
 
         public void VisSimuleringsListe(List<Datapunktsgruppering> liste)
         {
-            this.listBox1.Items.Clear();
+            this.simuleringslisteBox.Items.Clear();
             foreach (var datapunktsgruppering in liste)
             {
-                this.listBox1.Items.Add(datapunktsgruppering.Dato.AddHours(9));
+                this.simuleringslisteBox.Items.Add(datapunktsgruppering.Dato.AddHours(9));
             }
-            this.listBox1.SelectedIndex = 0;
+            this.simuleringslisteBox.SelectedIndex = 0;
         }
 
         public void VisValgteSimulering(string xAkseKey, string yAkseKey, List<string> xAkse, List<double> yAkse)
         {
+            SletGamleValuesPaaGraf();
+            SetNyeNavnePaaAkser(xAkseKey, yAkseKey);
+            BygNyGraf(xAkse, yAkse);
+            SetLabelPaaAlleXAkseValues();
+            DrejLabelVedTidPaaXAkse(xAkseKey);
+        }
+
+        private void SletGamleValuesPaaGraf()
+        {
+            simuleringsGraf.Titles.Clear();
+            simuleringsGraf.ResetAutoValues();
+        }
+        
+        private void SetNyeNavnePaaAkser(string xAkseKey, string yAkseKey)
+        {
+            simuleringsGraf.Titles.Add(yAkseKey + "/" + xAkseKey);
+        }
+
+        private void BygNyGraf(List<string> xAkse, List<double> yAkse)
+        {
             Series serie = new Series();
-
-            //Sletter alle andre titler der er i forvejen
-            chart1.Titles.Clear();
-
-            chart1.ResetAutoValues();
-
-            chart1.Titles.Add(yAkseKey + "/" + xAkseKey);
-            for(int i = 0; i< xAkse.Count; i++)
+            for (int i = 0; i < xAkse.Count; i++)
             {
                 //Datapunkterne skal laegges her i
                 DataPoint data = new DataPoint();
@@ -69,36 +82,46 @@ namespace AbonnementsimuleringKlient
                 serie.IsVisibleInLegend = false;
             }
             //Sletter alle andre titler der er i forvejen
-            chart1.Series.Clear();
+            simuleringsGraf.Series.Clear();
 
             //tilfoejer serien til grafen
-            chart1.Series.Add(serie);
+            simuleringsGraf.Series.Add(serie);
+        }
 
+        private void SetLabelPaaAlleXAkseValues()
+        {
             //Sætter labels på alle xakse værdier
-            chart1.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
+            simuleringsGraf.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
+        }
 
+        private void DrejLabelVedTidPaaXAkse(string xAkseKey)
+        {
             //Sætter labels på højkant ved Tid
             if (xAkseKey == "Tid")
             {
-                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -90;
+                simuleringsGraf.ChartAreas[0].AxisX.LabelStyle.Angle = -90;
             }
             else
             {
-                chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
+                simuleringsGraf.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
             }
-
         }
 
         public void OpenVindue()
         {
             this.visBrugerAdminKnap.Enabled = this.simuleringsVindueController.aktuelBruger.Ansvarlig;
             this.KorNy.Enabled = this.simuleringsVindueController.aktuelBruger.Ansvarlig;
-            simuleringsVindueController.HentSimuleringsDTO(this.listBox1.SelectedIndex);
+            simuleringsVindueController.HentSimuleringsDTO(this.simuleringslisteBox.SelectedIndex);
+            InitAkseNavneOgLaengde();
+            this.Show();
+        }
+
+        private void InitAkseNavneOgLaengde()
+        {
             yAkse.Items.AddRange(yAkseKey);
             yAkse.Text = yAkseKey[0];
             xAkse.Items.AddRange(xAkseKey);
             xAkse.Text = xAkseKey[0];
-            this.Show();
         }
 
         public void CloseVindue()
@@ -114,52 +137,62 @@ namespace AbonnementsimuleringKlient
         public SimuleringsVindue()
         {
             InitializeComponent();
-            _arbejder = new BackgroundWorker();
-            _arbejder.WorkerReportsProgress = true;
-            _arbejder.DoWork += new DoWorkEventHandler(arbejder_doWork);
-            _arbejder.RunWorkerCompleted += new RunWorkerCompletedEventHandler(arbejder_done);
+            InitTraadTilNySimFraServer();
+        }
+
+        private void InitTraadTilNySimFraServer()
+        {
+            _traadVentNySimFraServer = new BackgroundWorker();
+            _traadVentNySimFraServer.WorkerReportsProgress = true;
+            _traadVentNySimFraServer.DoWork += new DoWorkEventHandler(arbejder_doWork);
+            _traadVentNySimFraServer.RunWorkerCompleted += new RunWorkerCompletedEventHandler(arbejder_done);
         }
 
         private void arbejder_doWork(object sender, DoWorkEventArgs e)
         {
-            pictureBox1.Image = Properties.Resources.loading;
+            animationServerGeneratingSimulering.Image = Properties.Resources.loading;
             int index = Convert.ToInt32(e.Argument);
-            simuleringsVindueController.BygNyesteSimuleringsDTO(index);
+            simuleringsVindueController.BygNyesteSimulering(index);
         }
 
         private void arbejder_done(object sender, RunWorkerCompletedEventArgs e)
         {
             KorNy.Enabled = true;
-            pictureBox1.Image = null;
-            listBox1.SelectedIndex = 0;
+            animationServerGeneratingSimulering.Image = null;
+            simuleringslisteBox.SelectedIndex = 0;
             simuleringsVindueController.HentSimuleringsList();
             visSimuleringKnap_Click(null, EventArgs.Empty);
         }
 
         private void visSimuleringKnap_Click(object sender, EventArgs e)
         {
-            simuleringsVindueController.HentSimuleringsDTO(this.listBox1.SelectedIndex);
+            simuleringsVindueController.HentSimuleringsDTO(this.simuleringslisteBox.SelectedIndex);
             OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
 
         public void OpdaterVindue(string xKey, string yKey)
+        {
+            BygGrafMedNyeVaerdierPaaAkser(xKey, yKey);
+        }
+
+        private void BygGrafMedNyeVaerdierPaaAkser(string xKey, string yKey)
         {
             var simuleringsDTO = this.simuleringsVindueController.getSimuleringsDTO();
 
             switch (yKey)
             {
                 case "Stk":
-                    getXAxisValueToDisplayWithYAxisStk(xKey, yKey, simuleringsDTO);
+                    SetXAxisValueToDisplayWithYAxisStk(xKey, yKey, simuleringsDTO);
                     break;
 
                 case "DKK":
-                    getXAxisValueToDisplayWithYAxisDKK(xKey, yKey, simuleringsDTO);
+                    SetXAxisValueToDisplayWithYAxisDKK(xKey, yKey, simuleringsDTO);
                     break;
             }
         }
 
 
-        private void getXAxisValueToDisplayWithYAxisStk(string xKey, string yKey, ISimuleringsDTO simuleringsDTO)
+        private void SetXAxisValueToDisplayWithYAxisStk(string xKey, string yKey, ISimuleringsDTO simuleringsDTO)
         {
             switch (xKey)
             {
@@ -178,7 +211,7 @@ namespace AbonnementsimuleringKlient
             }
         }
 
-        private void getXAxisValueToDisplayWithYAxisDKK(string xKey, string yKey, ISimuleringsDTO simuleringsDTO)
+        private void SetXAxisValueToDisplayWithYAxisDKK(string xKey, string yKey, ISimuleringsDTO simuleringsDTO)
         {
             switch (xKey)
             {
@@ -201,19 +234,24 @@ namespace AbonnementsimuleringKlient
         {
             try
             {
-                label2.Hide();
-                var index = Convert.ToInt32(textBox1.Text);
-                if (!this._arbejder.IsBusy)
-                {
-                    KorNy.Enabled = false;
-                }
-                _arbejder.RunWorkerAsync(index);
+                IndexFejlLabel.Hide();
+                KoerNySimulering();
             }
             catch (Exception)
             {
-                label2.Show();
+                IndexFejlLabel.Show();
             }
 
+        }
+
+        private void KoerNySimulering()
+        {
+            var index = Convert.ToInt32(indexTextbox.Text);
+            if (!this._traadVentNySimFraServer.IsBusy)
+            {
+                KorNy.Enabled = false;
+            }
+            _traadVentNySimFraServer.RunWorkerAsync(index);
         }
 
         private void xAkse_SelectedIndexChanged(object sender, EventArgs e)

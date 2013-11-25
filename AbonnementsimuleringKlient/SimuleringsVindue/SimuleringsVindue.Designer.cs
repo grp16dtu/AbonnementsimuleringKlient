@@ -30,32 +30,32 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.simuleringsGraf = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.yAkse = new System.Windows.Forms.ComboBox();
             this.xAkse = new System.Windows.Forms.ComboBox();
             this.visBrugerAdminKnap = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.simuleringslisteBox = new System.Windows.Forms.ListBox();
             this.visSimuleringKnap = new System.Windows.Forms.Button();
             this.KorNy = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.indexTextbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.IndexFejlLabel = new System.Windows.Forms.Label();
+            this.animationServerGeneratingSimulering = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.simuleringsGraf)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animationServerGeneratingSimulering)).BeginInit();
             this.SuspendLayout();
             // 
-            // chart1
+            // simuleringsGraf
             // 
             chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            this.simuleringsGraf.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(12, 50);
-            this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(423, 300);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            this.simuleringsGraf.Legends.Add(legend2);
+            this.simuleringsGraf.Location = new System.Drawing.Point(12, 50);
+            this.simuleringsGraf.Name = "simuleringsGraf";
+            this.simuleringsGraf.Size = new System.Drawing.Size(423, 300);
+            this.simuleringsGraf.TabIndex = 0;
+            this.simuleringsGraf.Text = "chart1";
             // 
             // yAkse
             // 
@@ -86,14 +86,14 @@
             this.visBrugerAdminKnap.UseVisualStyleBackColor = true;
             this.visBrugerAdminKnap.Click += new System.EventHandler(this.visBrugerAdminKnap_Click);
             // 
-            // listBox1
+            // simuleringslisteBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(441, 50);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(135, 69);
-            this.listBox1.TabIndex = 5;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.simuleringslisteBox.FormattingEnabled = true;
+            this.simuleringslisteBox.Location = new System.Drawing.Point(441, 50);
+            this.simuleringslisteBox.Name = "simuleringslisteBox";
+            this.simuleringslisteBox.Size = new System.Drawing.Size(135, 69);
+            this.simuleringslisteBox.TabIndex = 5;
+            this.simuleringslisteBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // visSimuleringKnap
             // 
@@ -116,14 +116,14 @@
             this.KorNy.UseVisualStyleBackColor = true;
             this.KorNy.Click += new System.EventHandler(this.KorNy_Click);
             // 
-            // textBox1
+            // indexTextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(543, 167);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(33, 20);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "1";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.indexTextbox.Location = new System.Drawing.Point(543, 167);
+            this.indexTextbox.Name = "indexTextbox";
+            this.indexTextbox.Size = new System.Drawing.Size(33, 20);
+            this.indexTextbox.TabIndex = 8;
+            this.indexTextbox.Text = "1";
+            this.indexTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
             // 
@@ -134,49 +134,49 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Index";
             // 
-            // label2
+            // IndexFejlLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(453, 161);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 26);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Index tal skal\r\n være heltal";
-            this.label2.Visible = false;
+            this.IndexFejlLabel.AutoSize = true;
+            this.IndexFejlLabel.ForeColor = System.Drawing.Color.Red;
+            this.IndexFejlLabel.Location = new System.Drawing.Point(453, 161);
+            this.IndexFejlLabel.Name = "IndexFejlLabel";
+            this.IndexFejlLabel.Size = new System.Drawing.Size(69, 26);
+            this.IndexFejlLabel.TabIndex = 10;
+            this.IndexFejlLabel.Text = "Index tal skal\r\n være heltal";
+            this.IndexFejlLabel.Visible = false;
             // 
-            // pictureBox1
+            // animationServerGeneratingSimulering
             // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox1.InitialImage = global::AbonnementsimuleringKlient.Properties.Resources.loading;
-            this.pictureBox1.Location = new System.Drawing.Point(477, 222);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 74);
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
+            this.animationServerGeneratingSimulering.Cursor = System.Windows.Forms.Cursors.Default;
+            this.animationServerGeneratingSimulering.InitialImage = global::AbonnementsimuleringKlient.Properties.Resources.loading;
+            this.animationServerGeneratingSimulering.Location = new System.Drawing.Point(477, 222);
+            this.animationServerGeneratingSimulering.Name = "animationServerGeneratingSimulering";
+            this.animationServerGeneratingSimulering.Size = new System.Drawing.Size(80, 74);
+            this.animationServerGeneratingSimulering.TabIndex = 11;
+            this.animationServerGeneratingSimulering.TabStop = false;
             // 
             // SimuleringsVindue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 362);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.animationServerGeneratingSimulering);
+            this.Controls.Add(this.IndexFejlLabel);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.indexTextbox);
             this.Controls.Add(this.KorNy);
             this.Controls.Add(this.visSimuleringKnap);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.simuleringslisteBox);
             this.Controls.Add(this.visBrugerAdminKnap);
             this.Controls.Add(this.xAkse);
             this.Controls.Add(this.yAkse);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.simuleringsGraf);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "SimuleringsVindue";
             this.Text = "Simulering";
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simuleringsGraf)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animationServerGeneratingSimulering)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,16 +184,16 @@
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart simuleringsGraf;
         private System.Windows.Forms.ComboBox yAkse;
         private System.Windows.Forms.ComboBox xAkse;
         private System.Windows.Forms.Button visBrugerAdminKnap;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox simuleringslisteBox;
         private System.Windows.Forms.Button visSimuleringKnap;
         private System.Windows.Forms.Button KorNy;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox indexTextbox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label IndexFejlLabel;
+        private System.Windows.Forms.PictureBox animationServerGeneratingSimulering;
     }
 }

@@ -60,7 +60,7 @@ namespace AbonnementsimuleringKlient
             _brugerAdminVindueController.OpenVindue(aktuelBruger);
         }
 
-        public void BygNyesteSimuleringsDTO(int index)
+        public void BygNyesteSimulering(int index)
         {
             _iDAO.KoerNySimulering(index);
         }
