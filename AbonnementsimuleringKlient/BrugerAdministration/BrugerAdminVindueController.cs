@@ -10,7 +10,7 @@ namespace AbonnementsimuleringKlient
     public class BrugerAdminVindueController
     {
         private IBrugerAdminVindue _brugerAdminVindue;
-        private IBrugerDTO _aktuelBruger;
+        public IBrugerDTO AktuelBruger{get; private set;}
         private IDAO _iDAO;
         public List<IBrugerDTO> MedarbejderListe { get; set; }
 
@@ -37,7 +37,7 @@ namespace AbonnementsimuleringKlient
         public void OpenVindue(IBrugerDTO bruger)
         {
             this._brugerAdminVindue.OpenVindue();
-            this._aktuelBruger = bruger;
+            this.AktuelBruger = bruger;
         }
 
         public void CloseVindue()

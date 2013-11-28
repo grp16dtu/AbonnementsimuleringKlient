@@ -81,17 +81,28 @@ namespace AbonnementsimuleringKlient
         private void sletBruger_Click(object sender, EventArgs e)
         {
             int index = medarbejdere.CurrentCellAddress.Y;
-            bool succes = this._controller.SletBruger(this._controller.MedarbejderListe[index]);
-            if (succes)
+
+
+            if (_controller.AktuelBruger.Brugernavn != _controller.MedarbejderListe[index].Brugernavn)
             {
-                this.colonWar.ForeColor = Color.Green;
-                this.colonWar.Text = "Sletning succesfuld.";
+
+                bool succes = this._controller.SletBruger(this._controller.MedarbejderListe[index]);
+                if (succes)
+                {
+                    this.colonWar.ForeColor = Color.Green;
+                    this.colonWar.Text = "Sletning succesfuld.";
+                }
+                else
+                {
+                    this.colonWar.ForeColor = Color.Red;
+                    this.colonWar.Text = "Sletning mislykket.";
+
+                }
             }
             else
             {
                 this.colonWar.ForeColor = Color.Red;
-                this.colonWar.Text = "Sletning mislykket.";
-
+                this.colonWar.Text = "Du kan ikke slette dig selv.";
             }
         }
 
