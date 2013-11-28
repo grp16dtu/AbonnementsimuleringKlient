@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginVindue));
             this.brugernavn = new System.Windows.Forms.TextBox();
             this.kodeord = new System.Windows.Forms.TextBox();
             this.logindKnap = new System.Windows.Forms.Button();
@@ -115,6 +116,7 @@
             this.Controls.Add(this.kodeord);
             this.Controls.Add(this.brugernavn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LoginVindue";
             this.Text = "Logind";

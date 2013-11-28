@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrugerAdminVindue));
             this.fornavn = new System.Windows.Forms.TextBox();
             this.efternavn = new System.Windows.Forms.TextBox();
             this.medarbejdernummer = new System.Windows.Forms.TextBox();
@@ -223,6 +224,7 @@
             this.Controls.Add(this.efternavn);
             this.Controls.Add(this.fornavn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "BrugerAdminVindue";
             this.Text = "Brugeradministration";
