@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>AboSimIcon.ico</ApplicationIcon>
+    <ApplicationIcon>AboSimIconTrans.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboSimIcon.ico" />
+    <Content Include="AboSimIconTrans.ico" />
     <Content Include="loading.gif" />
     <Content Include="Resources\loading.gif" />
   </ItemGroup>
