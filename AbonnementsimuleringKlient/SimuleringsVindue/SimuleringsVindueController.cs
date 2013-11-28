@@ -27,8 +27,15 @@ namespace AbonnementsimuleringKlient
         public async void OpenVindue(IBrugerDTO bruger) 
         {          
             this._aktuelBruger = bruger;
-            _datapunktsgrupperings = await this._iDAO.HentSimuleringsListe(); 
-            _simuleringsVindue.VisSimuleringsListe(_datapunktsgrupperings);
+            try
+            {
+                _datapunktsgrupperings = await this._iDAO.HentSimuleringsListe();
+                _simuleringsVindue.VisSimuleringsListe(_datapunktsgrupperings);
+            }
+            catch (Exception )
+            {
+                
+            }
             this._simuleringsVindue.OpenVindue();
         }
 

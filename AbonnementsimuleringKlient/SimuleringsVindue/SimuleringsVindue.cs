@@ -50,6 +50,13 @@ namespace AbonnementsimuleringKlient
             chart1.ResetAutoValues();
 
             chart1.Titles.Add(yAkseKey + "/" + xAkseKey);
+            if (xAkse == null || yAkse == null)
+            {
+                xAkse = new List<string>();
+                xAkse.Add("no data!");
+                yAkse = new List<double>();
+                yAkse.Add(0.0);
+            }
             for(int i = 0; i< xAkse.Count; i++)
             {
                 //Datapunkterne skal laegges her i
@@ -129,11 +136,21 @@ namespace AbonnementsimuleringKlient
 
         private void arbejder_done(object sender, RunWorkerCompletedEventArgs e)
         {
-            KorNy.Enabled = true;
-            pictureBox1.Image = null;
-            listBox1.SelectedIndex = 0;
-            simuleringsVindueController.HentSimuleringsList();
-            visSimuleringKnap_Click(null, EventArgs.Empty);
+
+            try
+            {
+                KorNy.Enabled = true;
+                pictureBox1.Image = null;
+                listBox1.SelectedIndex = 0;
+                simuleringsVindueController.HentSimuleringsList();
+                visSimuleringKnap_Click(null, EventArgs.Empty);
+            }
+            catch (Exception)
+            {
+                label2.Text = "Du er ikke et\n firma";
+                label2.Show();
+            }
+
         }
 
         private void visSimuleringKnap_Click(object sender, EventArgs e)
