@@ -43,6 +43,7 @@ namespace AbonnementsimuleringKlient
             this.fornavn.Text = brugerDTO.Fornavn;
             this.ansvarlig.Checked = brugerDTO.Ansvarlig;
             this.medarbejdernummer.Text = brugerDTO.MedarbejderNummer.ToString();
+            this.kodeord.Text = brugerDTO.Kodeord;
         }
 
         public void SetBrugerAdminVindueController(BrugerAdminVindueController controller)
