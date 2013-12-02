@@ -48,6 +48,7 @@ namespace AbonnementsimuleringKlient
             chart1.Titles.Clear();
 
             chart1.ResetAutoValues();
+            chart1.BackColor = Color.FromArgb(0, 0, 0, 0);
 
             chart1.Titles.Add(yAkseKey + "/" + xAkseKey);
             if (xAkse == null || yAkse == null)
