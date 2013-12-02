@@ -165,7 +165,8 @@ namespace AbonnementsimuleringKlient
             try
             {
                 label2.Hide();
-                var index = Convert.ToDecimal(textBox1.Text);
+                var indexString = textBox1.Text.Replace(',', '.');
+                var index = Convert.ToDecimal(indexString);
                 if (!this._arbejder.IsBusy)
                 {
                     KorNy.Enabled = false;
