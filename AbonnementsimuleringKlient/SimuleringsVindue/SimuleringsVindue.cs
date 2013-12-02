@@ -141,8 +141,8 @@ namespace AbonnementsimuleringKlient
             {
                 KorNy.Enabled = true;
                 pictureBox1.Image = null;
-                listBox1.SelectedIndex = 0;
                 simuleringsVindueController.HentSimuleringsList();
+                listBox1.SelectedIndex = 0;
                 visSimuleringKnap_Click(null, EventArgs.Empty);
             }
             catch (Exception)
