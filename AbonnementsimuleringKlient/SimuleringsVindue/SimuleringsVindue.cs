@@ -154,11 +154,11 @@ namespace AbonnementsimuleringKlient
 
         }
 
-        private void visSimuleringKnap_Click(object sender, EventArgs e)
-        {
-            simuleringsVindueController.HentSimuleringsDTO(this.listBox1.SelectedIndex);
-            simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
-        }
+        //private void visSimuleringKnap_Click(object sender, EventArgs e)
+        //{
+        //    simuleringsVindueController.HentSimuleringsDTO(this.listBox1.SelectedIndex);
+        //    simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
+        //}
 
         private void KorNy_Click(object sender, EventArgs e)
         {
