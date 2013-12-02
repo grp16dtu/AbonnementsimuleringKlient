@@ -51,10 +51,10 @@ namespace AbonnementsimuleringKlient
             bool opdateringLykkedes = this._iDAO.RedigerMedarbejder(this.MedarbejderListe[index]);
             _brugerAdminVindue.OpdaterMedarbejderListe(null, EventArgs.Empty);
 
-            if (AktuelBruger.Brugernavn == MedarbejderListe[index].Brugernavn)
-            {
-               AktuelBruger = _iDAO.LoginVerificering(MedarbejderListe[index].Brugernavn, MedarbejderListe[index].Kodeord);
-            }
+            //if (AktuelBruger.Brugernavn == MedarbejderListe[index].Brugernavn)
+            //{
+            //   AktuelBruger = _iDAO.LoginVerificering(MedarbejderListe[index].Brugernavn, MedarbejderListe[index].Kodeord);
+            //}
             return opdateringLykkedes;
             
         }
