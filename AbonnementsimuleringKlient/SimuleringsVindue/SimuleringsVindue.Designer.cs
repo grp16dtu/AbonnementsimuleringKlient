@@ -36,7 +36,6 @@
             this.xAkse = new System.Windows.Forms.ComboBox();
             this.visBrugerAdminKnap = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.visSimuleringKnap = new System.Windows.Forms.Button();
             this.KorNy = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -92,19 +91,9 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(441, 50);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(135, 69);
+            this.listBox1.Size = new System.Drawing.Size(135, 95);
             this.listBox1.TabIndex = 5;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // visSimuleringKnap
-            // 
-            this.visSimuleringKnap.Location = new System.Drawing.Point(441, 125);
-            this.visSimuleringKnap.Name = "visSimuleringKnap";
-            this.visSimuleringKnap.Size = new System.Drawing.Size(135, 23);
-            this.visSimuleringKnap.TabIndex = 6;
-            this.visSimuleringKnap.Text = "Vis";
-            this.visSimuleringKnap.UseVisualStyleBackColor = true;
-            this.visSimuleringKnap.Click += new System.EventHandler(this.visSimuleringKnap_Click);
             // 
             // KorNy
             // 
@@ -166,7 +155,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.KorNy);
-            this.Controls.Add(this.visSimuleringKnap);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.visBrugerAdminKnap);
             this.Controls.Add(this.xAkse);
@@ -191,7 +179,6 @@
         private System.Windows.Forms.ComboBox xAkse;
         private System.Windows.Forms.Button visBrugerAdminKnap;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button visSimuleringKnap;
         private System.Windows.Forms.Button KorNy;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;

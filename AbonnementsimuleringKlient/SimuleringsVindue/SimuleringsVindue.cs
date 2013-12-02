@@ -143,7 +143,8 @@ namespace AbonnementsimuleringKlient
                 pictureBox1.Image = null;
                 simuleringsVindueController.HentSimuleringsList();
                 listBox1.SelectedIndex = 0;
-                visSimuleringKnap_Click(null, EventArgs.Empty);
+                //visSimuleringKnap_Click(null, EventArgs.Empty);
+                listBox1_SelectedIndexChanged(null, EventArgs.Empty);
             }
             catch (Exception)
             {
@@ -190,7 +191,8 @@ namespace AbonnementsimuleringKlient
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            simuleringsVindueController.HentSimuleringsDTO(this.listBox1.SelectedIndex);
+            simuleringsVindueController.OpdaterVindue(this.xAkse.Text, this.yAkse.Text);
         }
     }
 }
